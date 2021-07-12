@@ -37,7 +37,6 @@ namespace ALgorithmPro.ALgorithm {
 
             if (!val || val.length <= 1) {
 
-                // if no customer ID yet (new record mode probably) use 'C' as a prefix
                 var prefix = (val || 'PC-').toUpperCase();
 
                 // call our service, see CustomerEndpoint.cs and CustomerRepository.cs
