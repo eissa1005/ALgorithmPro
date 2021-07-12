@@ -1,0 +1,324 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>ALgorithmPro.Web</AssemblyName>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <SerenitySrc>..\..\Serenity\src\</SerenitySrc>
+    <DotNetSergenExe>$(SerenitySrc)Serenity.Net.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\sergen.exe</DotNetSergenExe>
+    <DotNetSergen>dotnet sergen</DotNetSergen>
+    <DotNetSergen Condition="Exists('$(DotNetSergenExe)')">$(DotNetSergenExe)</DotNetSergen>
+    <CommonSrc>..\..\common-features\src\</CommonSrc>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <Compile Remove="Modules\UilitiesScript\**" />
+    <Content Remove="Modules\UilitiesScript\**" />
+    <EmbeddedResource Remove="Modules\UilitiesScript\**" />
+    <None Remove="Modules\UilitiesScript\**" />
+    <TypeScriptCompile Remove="Modules\UilitiesScript\**" />
+    <None Remove="Modules\ALgorithmsys\AS\BS.ts" />
+    <None Remove="Modules\ALgorithm\CheckTR\CheckTRGrid.ts" />
+    <None Remove="Modules\ALgorithm\CheckTR\CustomChecksDialog.ts" />
+    <None Remove="Modules\ALgorithm\CheckTR\CustomChecksGrid.ts" />
+    <None Remove="Modules\ALgorithm\ItemsLoc\CustomDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Account\AccountDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Account\AccountGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\ASCOST\ASCOSTDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\ASCOST\ASCOSTGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\ASREPS\ASREPSDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\ASREPS\ASREPSGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\AZSSUMS\AZSSUMSDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\AZSSUMS\AZSSUMSGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\AZSUMS\AZSUMSDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\AZSUMS\AZSUMSGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\AZSuper\AZSuperDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\AZSuper\AZSuperGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Bank\BankDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Bank\BankGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\CashBox\CashBoxDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\CashBox\CashBoxGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Customer\CustomerDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Customer\CustomerGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Expenses\ExpensesDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Expenses\ExpensesGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Items\ItemsLookupDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Items\ItemsLookupGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Revenu\RevenuDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Revenu\RevenuGrid.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Supplier\SupplierDialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\Supplier\SupplierGrid.ts" />
+    <None Remove="Modules\ALgorithm\Transaction\Purchase\CreditPurchase\PurchaseHeader\PurchInvoice.vsrepx" />
+    <None Remove="Modules\ALgorithm\Transaction\Sales\CashSales\Header\CashSalesInvoice.vsrepx" />
+    <None Remove="Modules\ALgorithm\Transaction\Sales\CreditSales\SalesHeader\SalesInvoice.vsrepx" />
+    <None Remove="Modules\Common\Helpers\CustomSlider.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\ACCNODialog.ts" />
+    <None Remove="Modules\ALgorithm\LookupGrid\ACCNOGrid.ts" />
+    <TypeScriptCompile Remove="Imports\_references.ts" />
+    <TypeScriptCompile Remove="Modules\ALgorithmsys\UilitiesScript\DialogUtils.ts" />
+    <TypeScriptCompile Remove="Modules\ALgorithmsys\UilitiesScript\EnumTRTY.ts" />
+    <TypeScriptCompile Remove="Modules\ALgorithmsys\UilitiesScript\Using.ts" />
+    <TypeScriptCompile Remove="Modules\ALgorithm\CheckTR\CheckTRDialog.ts" />
+    <TypeScriptCompile Remove="Modules\ALgorithm\ItemsBarcode\ItemBarcodeEditor.ts" />
+    <TypeScriptCompile Remove="Modules\ALgorithm\ItemsBarcode\ItemsBarcodeDialog.ts" />
+    <TypeScriptCompile Remove="Modules\ALgorithm\ItemsBarcode\ItemsBarcodeGrid.ts" />
+    <EmbeddedResource Include="Modules\ALgorithm\Transaction\Purchase\CashPurchase\Header\CashPurchInvoice.vsrepx" />
+    <EmbeddedResource Include="Modules\ALgorithm\Transaction\Purchase\CreditPurchase\PurchaseHeader\PurchInvoice.vsrepx" />
+    <EmbeddedResource Include="Modules\ALgorithm\Transaction\Sales\CashSales\Header\CashSalesInvoice.vsrepx" />
+    <EmbeddedResource Include="Modules\ALgorithm\Transaction\Sales\CreditSales\SalesHeader\SalesInvoice.vsrepx" />
+    <None Include="wwwroot\Content\adminlte\.csslintrc" />
+    <None Include="wwwroot\Content\adminlte\404_500_errors.less" />
+    <None Include="wwwroot\Content\adminlte\AdminLTE.less" />
+    <None Include="wwwroot\Content\adminlte\alerts.less" />
+    <None Include="wwwroot\Content\adminlte\bootstrap-social.less" />
+    <None Include="wwwroot\Content\adminlte\boxes.less" />
+    <None Include="wwwroot\Content\adminlte\buttons.less" />
+    <None Include="wwwroot\Content\adminlte\callout.less" />
+    <None Include="wwwroot\Content\adminlte\carousel.less" />
+    <None Include="wwwroot\Content\adminlte\control-sidebar.less" />
+    <None Include="wwwroot\Content\adminlte\core.less" />
+    <None Include="wwwroot\Content\adminlte\direct-chat.less" />
+    <None Include="wwwroot\Content\adminlte\dropdown.less" />
+    <None Include="wwwroot\Content\adminlte\forms.less" />
+    <None Include="wwwroot\Content\adminlte\fullcalendar.less" />
+    <None Include="wwwroot\Content\adminlte\header.less" />
+    <None Include="wwwroot\Content\adminlte\info-box.less" />
+    <None Include="wwwroot\Content\adminlte\invoice.less" />
+    <None Include="wwwroot\Content\adminlte\labels.less" />
+    <None Include="wwwroot\Content\adminlte\lockscreen.less" />
+    <None Include="wwwroot\Content\adminlte\login_and_register.less" />
+    <None Include="wwwroot\Content\adminlte\mailbox.less" />
+    <None Include="wwwroot\Content\adminlte\miscellaneous.less" />
+    <None Include="wwwroot\Content\adminlte\mixins.less" />
+    <None Include="wwwroot\Content\adminlte\modal.less" />
+    <None Include="wwwroot\Content\adminlte\navs.less" />
+    <None Include="wwwroot\Content\adminlte\print.less" />
+    <None Include="wwwroot\Content\adminlte\products.less" />
+    <None Include="wwwroot\Content\adminlte\profile.less" />
+    <None Include="wwwroot\Content\adminlte\progress-bars.less" />
+    <None Include="wwwroot\Content\adminlte\select2.less" />
+    <None Include="wwwroot\Content\adminlte\sidebar-mini.less" />
+    <None Include="wwwroot\Content\adminlte\sidebar.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-black-light.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-black.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-blue-light.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-blue.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-green-light.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-green.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-purple-light.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-purple.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-red-light.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-red.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-yellow-light.less" />
+    <None Include="wwwroot\Content\adminlte\skins\skin-yellow.less" />
+    <None Include="wwwroot\Content\adminlte\skins\_all-skins.less" />
+    <None Include="wwwroot\Content\adminlte\small-box.less" />
+    <None Include="wwwroot\Content\adminlte\social-widgets.less" />
+    <None Include="wwwroot\Content\adminlte\table.less" />
+    <None Include="wwwroot\Content\adminlte\timeline.less" />
+    <None Include="wwwroot\Content\adminlte\users-list.less" />
+    <None Include="wwwroot\Content\adminlte\variables.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\alerts.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\background-variant.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\border-radius.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\buttons.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\center-block.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\clearfix.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\forms.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\gradients.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\grid-framework.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\grid.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\hide-text.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\image.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\labels.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\list-group.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\nav-divider.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\nav-vertical-align.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\opacity.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\pagination.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\panels.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\progress-bar.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\reset-filter.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\reset-text.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\resize.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\responsive-visibility.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\size.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\tab-focus.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\table-row.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\text-emphasis.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\text-overflow.less" />
+    <None Include="wwwroot\Content\bootstrap-less\mixins\vendor-prefixes.less" />
+    <None Include="wwwroot\Content\bootstrap-less\variables.less" />
+    <None Include="wwwroot\Content\css\ExtStyles.css" />
+    <None Include="wwwroot\Content\site\site.administration.less" />
+    <None Include="wwwroot\Content\site\site.algorithm.less" />
+    <None Include="wwwroot\Content\site\site.algorithm\purchase.less" />
+    <None Include="wwwroot\Content\site\site.basicsamples.less" />
+    <None Include="wwwroot\Content\site\site.less" />
+    <None Include="wwwroot\Content\site\site.membership.less" />
+    <None Include="wwwroot\Content\site\site.mixins.less" />
+    <None Include="wwwroot\Content\site\site.northwind.less" />
+    <None Include="wwwroot\Content\site\site.theme.less" />
+    <None Include="wwwroot\Content\slickgrid\.gitignore" />
+    <None Include="wwwroot\Content\slickgrid\.travis.yml" />
+    <None Include="wwwroot\Content\slickgrid\dist\slick.autocolumnsize.js" />
+    <None Include="wwwroot\Content\slickgrid\dist\slick.autocolumnsize.min.js" />
+    <None Include="wwwroot\Content\slickgrid\dist\slick.autocolumnsize.min.js.map" />
+    <None Include="wwwroot\Content\slickgrid\gruntfile.js" />
+    <None Include="wwwroot\Content\slickgrid\lib\jquery-1.7.min.js" />
+    <None Include="wwwroot\Content\slickgrid\lib\jquery-ui-1.8.16.custom.min.js" />
+    <None Include="wwwroot\Content\slickgrid\lib\jquery.event.drag-2.2.js" />
+    <None Include="wwwroot\Content\slickgrid\lib\slick.core.js" />
+    <None Include="wwwroot\Content\slickgrid\lib\slick.formatters.js" />
+    <None Include="wwwroot\Content\slickgrid\lib\slick.grid.js" />
+    <None Include="wwwroot\Content\slickgrid\LICENSE" />
+    <None Include="wwwroot\Content\slickgrid\README.md" />
+    <None Include="wwwroot\Content\slickgrid\src\slick.autocolumnsize.js" />
+    <None Include="wwwroot\Scripts\colorpicker\bootstrap-colorpicker.js" />
+    <None Include="wwwroot\Scripts\colorpicker\bootstrap-colorpicker.min.js" />
+    <None Include="wwwroot\Scripts\CustomSlickGridPlugin\slick-headerfilters.css" />
+    <None Include="wwwroot\Scripts\CustomSlickGridPlugin\slick.autocolumnsize.js" />
+    <None Include="wwwroot\Scripts\CustomSlickGridPlugin\slick.headerfilters.js" />
+    <None Include="wwwroot\Scripts\devexpress\images\banner1.svg" />
+    <None Include="wwwroot\Scripts\devexpress\images\banner2.svg" />
+    <None Include="wwwroot\Scripts\devexpress\images\banner3.svg" />
+    <None Include="wwwroot\Scripts\Editors\SerenityInlineEditors.js" />
+    <None Include="wwwroot\Scripts\Editors\slick.editors.js" />
+    <None Include="wwwroot\Scripts\jquery.slidereveal\jquery.slidereveal.js" />
+    <None Include="wwwroot\Scripts\jquery.slidereveal\jquery.slidereveal.min.js" />
+    <None Include="wwwroot\Scripts\jsondiffpatch\jsondiffpatch-formatters.js" />
+    <None Include="wwwroot\Scripts\jsondiffpatch\jsondiffpatch-formatters.min.js" />
+    <None Include="wwwroot\Scripts\jsondiffpatch\jsondiffpatch-formatters.min.map" />
+    <None Include="wwwroot\Scripts\jsondiffpatch\jsondiffpatch-full.js" />
+    <None Include="wwwroot\Scripts\jsondiffpatch\jsondiffpatch-full.min.js" />
+    <None Include="wwwroot\Scripts\jsondiffpatch\jsondiffpatch-full.min.map" />
+    <None Include="wwwroot\Scripts\jsondiffpatch\jsondiffpatch.js" />
+    <None Include="wwwroot\Scripts\jsondiffpatch\jsondiffpatch.min.js" />
+    <None Include="wwwroot\Scripts\jsondiffpatch\jsondiffpatch.min.map" />
+    <None Update="wwwroot\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+    <None Update="Modules\**\*.Template.html;Modules\**\*.ts.html;Views\Templates\*.html">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="DevExpress.AspNetCore.Common" Version="21.1.3" />
+    <PackageReference Include="DevExpress.AspNetCore.Core" Version="21.1.3" />
+    <PackageReference Include="DevExpress.AspNetCore.Reporting" Version="21.1.3" />
+    <PackageReference Include="DevExtreme.AspNet.Core" Version="21.1.3" />
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.8.5" />
+    <PackageReference Include="DevExtreme.Library" Version="17.1.5" />
+    <PackageReference Include="devextreme.TypeScript.DefinitelyTyped" Version="2.9.4" />
+    <PackageReference Include="EPPlus" Version="5.6.4" />
+    <PackageReference Include="FastMember" Version="1.5.0" />
+    <PackageReference Include="FluentMigrator.Runner" Version="3.2.9" />
+    <PackageReference Include="HtmlTableHelper" Version="1.2.2" />
+    <PackageReference Include="MailKit" Version="2.13.0" />
+    <PackageReference Include="Mapster" Version="7.2.0" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.7" />
+    <PackageReference Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.3.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.113" />
+    <PackageReference Include="Serenity.Extra" Version="3.8.7" />
+    <PackageReference Include="Serenity.Net.Core" Version="5.0.43" />
+    <PackageReference Include="Serenity.Net.Data" Version="5.0.43" />
+    <PackageReference Include="Serenity.Net.Entity" Version="5.0.43" />
+    <PackageReference Include="StackExchange.Exceptional.AspNetCore" Version="2.2.17" />
+    <PackageReference Include="Serenity.Net.Web" Version="5.0.43" />
+    <PackageReference Include="Serenity.Assets" Version="5.0.44" />
+    <PackageReference Include="Serenity.Scripts" Version="5.0.43" />
+    <PackageReference Include="Serenity.Demo.ThemeSamples" Version="5.0.43" />
+    <PackageReference Include="System.CodeDom" Version="5.0.0" />
+    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Update="Modules\Common\Helpers\CustomSlider.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Imports\ServerTypings\" />
+    <Folder Include="wwwroot\Content\devexpress\css\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.XtraReports.v21.1.Extensions">
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\NetCore\DevExpress.XtraReports.v21.1.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v21.1.Web">
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Standard\DevExpress.XtraReports.v21.1.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExtreme.AspNet.Core">
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\DevExtreme\Tools\DevExtreme\DevExtreme.AspNet.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Modules\ALgorithm\Transaction\Purchase\CashPurchase\Header\CashPurchInvoice.cs">
+      <DependentUpon>CashPurchInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Purchase\CashPurchase\Header\CashPurchInvoice.Designer.cs">
+      <DependentUpon>CashPurchInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Purchase\CreditPurchase\PurchaseHeader\PurchInvoice.cs">
+      <DependentUpon>PurchInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Purchase\CreditPurchase\PurchaseHeader\PurchInvoice.Designer.cs">
+      <DependentUpon>PurchInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Sales\CashSales\Header\CashSalesInvoice.cs">
+      <DependentUpon>CashSalesInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Sales\CashSales\Header\CashSalesInvoice.Designer.cs">
+      <DependentUpon>CashSalesInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Sales\CreditSales\SalesHeader\SalesInvoice.cs">
+      <DependentUpon>SalesInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Sales\CreditSales\SalesHeader\SalesInvoice.Designer.cs">
+      <DependentUpon>SalesInvoice.vsrepx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(SolutionDir)Serenity\build\submodule.targets" Condition="Exists('$(SolutionDir)Serenity\build\submodule.targets')" />
+  <Target Name="CreateInputsOutputs" BeforeTargets="BeforeBuild">
+    <CreateItem Include="Modules\**\*.ts;Imports\**\*.ts">
+      <Output TaskParameter="Include" ItemName="CompileTSCInputs" />
+    </CreateItem>
+    <CreateItem Include="wwwroot\Content\site\**\*.less">
+      <Output TaskParameter="Include" ItemName="CompileSiteLessInputs" />
+    </CreateItem>
+  </Target>
+  <Target Name="NpmInstall" BeforeTargets="BeforeBuild" Condition="!Exists('node_modules\@types\jquery\index.d.ts')">
+    <Message Text="Installing NPM packages..." Importance="high"></Message>
+    <Exec Command="npm install" />
+  </Target>
+  <Target Name="TransformMvcClientTypes" BeforeTargets="BeforeBuild">
+    <Exec Command="dotnet tool restore" ContinueOnError="true" />
+    <Exec Command="$(DotNetSergen) mvct" ContinueOnError="true" />
+  </Target>
+  <Target Name="CompileSiteLess" AfterTargets="AfterBuild" Inputs="@(CompileSiteLessInputs)" Outputs="wwwroot\Content\site\site.css">
+    <Message Text="Compiling site.less..." Importance="high"></Message>
+    <Exec Command="node_modules/.bin/lessc ./wwwroot/Content/site/site.less ./wwwroot/Content/site/site.css" ContinueOnError="true" />
+  </Target>
+  <Target Name="TransformServerTypings" AfterTargets="AfterBuild">
+    <Exec Command="$(DotNetSergen) servertypings" ContinueOnError="true" />
+  </Target>
+  <Target Name="CompileTSC" AfterTargets="AfterBuild" Inputs="@(CompileTSCInputs)" Outputs="wwwroot\Scripts\site\ALgorithmPro.Web.js">
+    <Message Text="Executing TypeScript compiler..." Importance="high"></Message>
+    <Exec Command="node &quot;$(TSJavaScriptFile.Replace('build\\..\tools\', 'tools\'))&quot; -p ./tsconfig.json" ContinueOnError="true" />
+  </Target>
+</Project>

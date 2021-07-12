@@ -1,0 +1,83 @@
+﻿<div id="GridDiv">
+    @(Html.DevExtreme().DataGrid<ALgorithmPro.ALgorithm.Entities.RestoreASTRDRow>()
+    .DataSource(s=> s.Mvc().Controller("Custom").LoadAction("Index")).ID("GridDiv")
+    .Columns(columns => {
+
+        columns.AddFor(m => m.LN_NO);
+
+        columns.AddFor(m => m.ItemBAL);
+
+        columns.AddFor(m => m.Item_CD);
+
+        columns.AddFor(m => m.ItemBarCode);
+
+        columns.AddFor(m => m.PKID);
+
+        columns.AddFor(m => m.PKName);
+
+        columns.AddFor(m => m.QTY);
+
+        columns.AddFor(m => m.Price);
+
+        columns.AddFor(m => m.PKPRC);
+
+        columns.AddFor(m => m.Value);
+
+        columns.AddFor(m => m.DISC);
+
+        columns.AddFor(m => m.DISC1);
+
+        columns.AddFor(m => m.DISC2);
+
+        columns.AddFor(m => m.DISC3);
+
+        columns.AddFor(m => m.DISC1R);
+
+        columns.AddFor(m => m.NetBeforeTAX);
+
+        columns.AddFor(m => m.STAX_VL);
+
+        columns.AddFor(m => m.TAX1);
+
+        columns.AddFor(m => m.TAX2);
+
+        columns.AddFor(m => m.TAX3);
+
+        columns.AddFor(m => m.TAX1R);
+
+        columns.AddFor(m => m.NetAfterTAX);
+
+        columns.AddFor(m => m.NET);
+
+        columns.AddFor(m => m.ITM_NM_AR);
+    })
+)
+
+    <script type="text/javascript">
+        $(function () {
+            $("#GridDiv").dxDataGrid({
+                
+                // ...
+                columns: [{
+                    dataField: "FullName"
+                }, {
+                    dataField: "Position"
+                }, {
+                    dataField: "BirthDate",
+                    dataType: "date",
+                }, {
+                    dataField: "HireDate",
+                    dataType: "date",
+                }, "City", {
+                    dataField: "Country"
+                },
+                    "Address",
+                    "HomePhone",
+                {
+                    dataField: "PostalCode",
+                }],
+                allowColumnReordering: true,
+            });
+        });
+    </script>
+</div>

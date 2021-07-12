@@ -1,0 +1,233 @@
+{
+  "RootNamespace": "ALgorithmPro",
+  "ServerTypings": {
+    "LocalTexts": true
+  },
+  "Connections": [
+    {
+      "Key": "Default",
+      "Tables": [
+        {
+          "Tablename": "dbo.AppCodes",
+          "Identifier": "AppCodes",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASACCMF",
+          "Identifier": "ACCMF",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASACCTRD",
+          "Identifier": "ACCTRD",
+          "Module": "Model",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASACCTRH",
+          "Identifier": "ACCTRH",
+          "Module": "Model",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASCHKS",
+          "Identifier": "Checks",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASCHKTR",
+          "Identifier": "CheckTR",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASCST",
+          "Identifier": "ASCST",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASCURRAT",
+          "Identifier": "ASCURRAT",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASITMLOC",
+          "Identifier": "ItemsLoc",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASITMS",
+          "Identifier": "Items",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASREPS",
+          "Identifier": "REPS",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASTRD",
+          "Identifier": "CashSalesASTRD",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASTRDVIEW",
+          "Identifier": "ASTRDVIEW",
+          "Module": "Model",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASTRH",
+          "Identifier": "CashSalesASTRH",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ASTRTY",
+          "Identifier": "ASTRTY",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.AZSSUMS",
+          "Identifier": "SSUMS",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.AZSUMS",
+          "Identifier": "SUMS",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.CheckTRTYVIEW",
+          "Identifier": "CheckTRTYVIEW",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Cities",
+          "Identifier": "Cities",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Currency",
+          "Identifier": "Currency",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.DefaultTable",
+          "Identifier": "DefaultTable",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.DefaultView",
+          "Identifier": "DefaultView",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Districts",
+          "Identifier": "Districts",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ItemGroups",
+          "Identifier": "ItemGroups",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ItemlocView",
+          "Identifier": "ItemlocView",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ItemsBarcode",
+          "Identifier": "ItemsBarcode",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ItemSubGroups",
+          "Identifier": "ItemSubGroups",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ItemTypes",
+          "Identifier": "ItemTypes",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.MAXTable",
+          "Identifier": "MaxTable",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Notes",
+          "Identifier": "Notes",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Package",
+          "Identifier": "Package",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.PriceTypes",
+          "Identifier": "PriceTypes",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Regions",
+          "Identifier": "Regions",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Stores",
+          "Identifier": "Stores",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Supervisors",
+          "Identifier": "Supervisors",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.TRTY",
+          "Identifier": "ASTRTY",
+          "Module": "ALgorithm",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
+  "UpgradeInfo": {
+    "InitialType": "Community",
+    "InitialVersion": "5.0.24.0"
+  }
+}

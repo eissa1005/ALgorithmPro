@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ALgorithmPro</title>
+    <link rel="stylesheet" href="~/Scripts/devexpress/css/site.css" />
+    <link rel="stylesheet" href="~/Scripts/devexpress/css/thirdparty.bundle.css" />
+   @* <link href="~/Scripts/devexpress/css/viewer.part.bundle.css" rel="stylesheet" />*@
+</head>
+<body>
+
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year - ALgorithmPro</p>
+        </div>
+    </footer>
+    <script src="~/Scripts/devexpress/lib/jquery/dist.jquery.min.js"></script>
+    @*<script src="~/Scripts/devexpress/js/reporting.thirdparty.bundle.js"></script>*@
+   @* <script src="~/Scripts/devexpress/js/viewer.part.bundle.js"></script>*@
+    <script src="~/Scripts/devexpress/js/thirdparty.bundle.js"></script>
+    <script src="~/Scripts/devexpress/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>

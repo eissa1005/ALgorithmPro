@@ -1,0 +1,21 @@
+﻿@using ALgorithmPro.Reports
+@using DevExpress.AspNetCore
+
+<link href="~/Content/devexpress/css/dx-reporting-skeleton-screen.css" rel="stylesheet" />
+<script src="~/Scripts/devexpress/js/knockout.js"></script>
+<link href="~/Content/devexpress/css/viewer.part.bundle.css" rel="stylesheet" />
+<script src="~/Scripts/devexpress/js/viewer.part.bundle.js"></script>
+<link href="~/Content/devextreme/vendor.css" rel="stylesheet" />
+
+
+@{
+    double HeaderID = 0;
+    if (!AS.IsNullValue(ViewBag.HeaderID))
+    {
+        HeaderID = AS.ToDouble(ViewBag.HeaderID);
+    }
+
+}
+
+@Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("600px").Bind(new CashPurchInvoice(HeaderID));
+
