@@ -14,16 +14,12 @@ ErrorLog.db
 StyleCop.Cache
 CodeGenerator/app.config
 /Bin/
-/Imports/
 /.config
 *.crunchsolution.cache
 *.ncrunchproject
 *.ncrunchsolution
 project.lock.json
 *.project.lock.json
-/wwwroot/Scripts/SlickGrid/slick.grid.js
-/wwwroot/Script/Serenity.CoreLib.d.ts
-/wwwroot/Script/Serenity.CoreLib.js
 /wwwroot/Script/Serenity.Script.UI.js
 /wwwroot/Script/Serenity.Script.UI.min.js
 /wwwroot/Script/Serenity.CoreLib.js
@@ -42,7 +38,6 @@ npm-debug.log
 /.axoCover/
 /wwwroot/Script/*.min.js
 /wwwroot/Script/*.map
-
 /bin/Debug/net5.0/
 /wwwroot/Script/serenity/Serenity.CoreLib.*
 /wwwroot/Script/serenity/Serenity.CodeGeneration.*

@@ -15,7 +15,8 @@ StyleCop.Cache
 /ALgorithmPro.Web/CodeGenerator/app.config
 /Bin/
 /bin/
-/Imports/
+/Imports/ClientTypes/
+/Imports/ServerTypings/
 /.config
 *.crunchsolution.cache
 *.ncrunchproject
