@@ -34,7 +34,6 @@ namespace ALgorithmPro.ALgorithm {
 
             var val = Q.trimToNull(this.form.CityID.value);
 
-            // we will only get next number when customer ID is empty or 1 character in length
             if (!val || val.length <= 1) {
 
                 // if no customer ID yet (new record mode probably) use 'C' as a prefix

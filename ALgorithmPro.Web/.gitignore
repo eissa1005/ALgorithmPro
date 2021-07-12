@@ -42,7 +42,7 @@ npm-debug.log
 /.axoCover/
 /wwwroot/Script/*.min.js
 /wwwroot/Script/*.map
-/App_Data/
+
 /bin/Debug/net5.0/
 /wwwroot/Script/serenity/Serenity.CoreLib.*
 /wwwroot/Script/serenity/Serenity.CodeGeneration.*
