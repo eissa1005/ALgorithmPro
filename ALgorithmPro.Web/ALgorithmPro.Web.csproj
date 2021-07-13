@@ -49,6 +49,7 @@
     <None Remove="Modules\ALgorithm\LookupGrid\Revenu\RevenuGrid.ts" />
     <None Remove="Modules\ALgorithm\LookupGrid\Supplier\SupplierDialog.ts" />
     <None Remove="Modules\ALgorithm\LookupGrid\Supplier\SupplierGrid.ts" />
+    <None Remove="Modules\ALgorithm\Transaction\Purchase\CashRestore\Header\CashRestoreInvoice.vsrepx" />
     <None Remove="Modules\ALgorithm\Transaction\Purchase\CreditPurchase\PurchaseHeader\PurchInvoice.vsrepx" />
     <None Remove="Modules\ALgorithm\Transaction\Sales\CashSales\Header\CashSalesInvoice.vsrepx" />
     <None Remove="Modules\ALgorithm\Transaction\Sales\CreditSales\SalesHeader\SalesInvoice.vsrepx" />
@@ -64,6 +65,7 @@
     <TypeScriptCompile Remove="Modules\ALgorithm\ItemsBarcode\ItemsBarcodeDialog.ts" />
     <TypeScriptCompile Remove="Modules\ALgorithm\ItemsBarcode\ItemsBarcodeGrid.ts" />
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Purchase\CashPurchase\Header\CashPurchInvoice.vsrepx" />
+    <EmbeddedResource Include="Modules\ALgorithm\Transaction\Purchase\CashRestore\Header\CashRestoreInvoice.vsrepx" />
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Purchase\CreditPurchase\PurchaseHeader\PurchInvoice.vsrepx" />
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Sales\CashSales\Header\CashSalesInvoice.vsrepx" />
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Sales\CreditSales\SalesHeader\SalesInvoice.vsrepx" />
@@ -273,6 +275,12 @@
     </Compile>
     <Compile Update="Modules\ALgorithm\Transaction\Purchase\CashPurchase\Header\CashPurchInvoice.Designer.cs">
       <DependentUpon>CashPurchInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Purchase\CashRestore\Header\CashRestoreInvoice.cs">
+      <DependentUpon>CashRestoreInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Purchase\CashRestore\Header\CashRestoreInvoice.Designer.cs">
+      <DependentUpon>CashRestoreInvoice.vsrepx</DependentUpon>
     </Compile>
     <Compile Update="Modules\ALgorithm\Transaction\Purchase\CreditPurchase\PurchaseHeader\PurchInvoice.cs">
       <DependentUpon>PurchInvoice.vsrepx</DependentUpon>

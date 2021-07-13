@@ -106,6 +106,8 @@ namespace ALgorithmPro.ALgorithm {
 
                 var prefix = StoreID;
                 CashPurchService.GetNextNumber({
+                    StoreID: StoreID,
+                    TR_TY: Q.parseInteger(TRTY),
                     Prefix: TRTY,
                     Length: prefix.length + 15
                 }, response => {

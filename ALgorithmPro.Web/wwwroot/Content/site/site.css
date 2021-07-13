@@ -8428,6 +8428,18 @@ section.content > .s-DataGrid {
 .s-ALgorithm-CashSalesASTRDDialog .caption {
   width: 150px;
 }
+.s-Model-ASTRHVIEWDialog > .size {
+  width: 650px;
+}
+.s-Model-ASTRHVIEWDialog .caption {
+  width: 150px;
+}
+.s-Model-ASTRDVIEWDialog > .size {
+  width: 650px;
+}
+.s-Model-ASTRDVIEWDialog .caption {
+  width: 150px;
+}
 /*@import "site.algorithm/purchase.less";*/
 .slider-container .s-Panel {
   box-shadow: none !important;
@@ -8441,8 +8453,4 @@ section.content > .s-DataGrid {
 }
 .s-ALgorithm-CustomDialog .ui-tabs .tab-pane {
   padding: 2px 0;
-}
-
-.s-ALgorithm-ItemsLookupDialog .ui-tabs .tab-pane {
-    padding: 0px;
 }

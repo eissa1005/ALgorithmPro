@@ -7,90 +7,101 @@ using Serenity.Services;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using MyRow = ALgorithmPro.ALgorithm.Entities.CashRestoreASTRHRow;
+using MyRow = ALgorithmPro.ALgorithm.Entities.CashRestoreRow;
 using static ALgorithmPro.Contstants;
 
 namespace ALgorithmPro.ALgorithm.Repositories
 {
-    public class CashRestoreASTRHRepository : BaseRepository
+    public class CashRestoreRepository : BaseRepository
     {
         private static MyRow.RowFields Fld => MyRow.Fields;
         public static TRTYType SelectTRTY { set; get; }
+        public static IDbTransaction transaction;
         public static List<CashRestoreASTRDRow> listASTRD { set; get; }
-        public CashRestoreASTRHRepository(IRequestContext context) : base(context)
+        public CashRestoreRepository(IRequestContext context) : base(context)
         {
             SelectTRTY = TRTYType.CashRestore;
         }
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
             var header = request.Entity;
-            listASTRD = request.Entity.DetailList;
-            SelectTRTY = (TRTYType)request.Entity.TR_TY;
+            listASTRD = header.DetailList;
+            SelectTRTY = (TRTYType)header.TR_TY;
+            string ACCNO = header.ACC_NO;
+            string ACC_NAME = header.ACC_NAME;
+            transaction = uow.Connection.GetCurrentActualTransaction();
             try
             {
-                var RATE = AS.GetValue(uow, FunctionName.GetCurrencyRate, "'" + request.Entity.CurrencyID + "'");
-                request.Entity.RATE = AS.ToDouble(RATE);
-                request.Entity.TRTY_NAME = AS.GetName(uow, FunctionName.GetTRTYNAME, request.Entity.TR_TY.ToString());
-                request.Entity.Store_NAME = AS.GetName(uow, FunctionName.GetStoreName, "'" + request.Entity.StoreID + "'");
-                request.Entity.Currency_NAME = AS.GetName(uow, FunctionName.GetCurrencyName, "'" + request.Entity.CurrencyID + "'");
-                request.Entity.CST_NAME = AS.GetName(uow, FunctionName.GetCostName, "'" + request.Entity.CST_CD + "'");
-                request.Entity.HDSCR_AR = " فاتورة " + request.Entity.TRTY_NAME + " رقم " + request.Entity.TR_NO;
-                request.Entity.HDSCR_EN = request.Entity.HDSCR_AR;
 
+                var RATE = AS.GetValue(uow, FunctionName.GetCurrencyRate, "'" + header.CurrencyID + "'");
+                header.RATE = AS.ToDouble(RATE);
+                header.TRTY_NAME = AS.GetName(uow, FunctionName.GetTRTYNAME, header.TR_TY.ToString());
+                header.Store_NAME = AS.GetName(uow, FunctionName.GetStoreName, "'" + header.StoreID + "'");
+                header.Currency_NAME = AS.GetName(uow, FunctionName.GetCurrencyName, "'" + header.CurrencyID + "'");
+                header.CST_NAME = AS.GetName(uow, FunctionName.GetCostName, "'" + header.CST_CD + "'");
+                header.HDSCR_AR = " فاتورة " + header.TRTY_NAME + " رقم " + header.TR_NO;
+                header.HDSCR_EN = header.HDSCR_AR;
+                header.TR_DT = header.TR_DT != null ? header.TR_DT : DateTime.Now.Date;
 
                 int LNNO = 1;
                 if (SelectTRTY == TRTYType.CashRestore)
                 {
                     listASTRD.ForEach(s =>
                     {
-                        s.DetailID = request.Entity.HeaderID;
-                        s.TR_NO = request.Entity.TR_NO;
+                        s.DetailID = header.HeaderID;
+                        s.TR_NO = header.TR_NO;
                         s.TR_TY = (int)TRTYType.CashRestore;
-                        s.TRTY_NAME = request.Entity.TRTY_NAME;
+                        s.TRTY_NAME = header.TRTY_NAME;
+                        s.TR_DT = header.TR_DT != null ? header.TR_DT : DateTime.Now;
                         s.TR_DS = (int)TRDSTYPE.CashRestore;
                         s.GRP = (int)GRPTYPE.CashRestore;
-                        s.StoreID = request.Entity.StoreID;
-                        s.Store_NAME = request.Entity.Store_NAME;
+                        s.StoreID = header.StoreID;
+                        s.Store_NAME = header.Store_NAME;
                         s.ItemBarCode = AS.IsNullValue(s.ItemBarCode) ? s.Item_CD : s.ItemBarCode;
                         s.LN_NO = LNNO;
-                        s.ACC_NO = request.Entity.CashBoxID;
-                        s.ACC_NAME = request.Entity.Cash_NAME;
-                        s.ACC_NO2 = request.Entity.ACC_NO;
-                        s.ACC_NAME2 = request.Entity.ACC_NAME;
-                        s.CashBoxID = request.Entity.CashBoxID;
-                        s.Cash_NAME = request.Entity.Cash_NAME;
-                        s.REP_CD = request.Entity.REP_CD;
-                        s.REP_NAME = request.Entity.REP_NAME;
-                        s.REP_CD2 = request.Entity.REP_CD;
-                        s.REP_NAME2 = request.Entity.REP_NAME2;
-                        s.CurrencyID = request.Entity.CurrencyID;
-                        s.Currency_Name = request.Entity.Currency_NAME;
-                        s.RATE = request.Entity.RATE;
-                        s.CUR_VL = s.NET * s.RATE;
+                        s.ACC_NO = header.CashBoxID;
+                        s.ACC_NAME = header.Cash_NAME;
+                        s.ACC_NO2 = ACCNO;
+                        s.ACC_NAME2 = ACC_NAME;
+                        s.CashBoxID = header.CashBoxID;
+                        s.Cash_NAME = header.Cash_NAME;
+                        s.REP_CD = header.REP_CD;
+                        s.REP_NAME = header.REP_NAME;
+                        s.REP_CD2 = header.REP_CD;
+                        s.REP_NAME2 = header.REP_NAME2;
+                        s.CurrencyID = header.CurrencyID;
+                        s.Currency_Name = header.Currency_NAME;
+                        s.RATE = header.RATE;
+                        s.CUR_VL = s.NET;
                         s.DISC = s.DISC1 + s.DISC2 + s.DISC3 + s.DISC3;
                         s.STAX_VL = s.TAX1 + s.TAX2 + s.TAX3 + s.TAX3;
-                        s.disc_cur_val = s.DISC * s.RATE;
-                        s.tax_cur_val = s.STAX_VL * s.RATE;
-                        s.PTR_NO = request.Entity.PTR_NO;
-                        s.PTR_TY = request.Entity.PTR_TY;
-                        s.PStoreID = request.Entity.PStoreID;
+                        s.disc_cur_val = s.DISC;
+                        s.tax_cur_val = s.STAX_VL;
+                        s.PTR_NO = header.PTR_NO;
+                        s.PTR_TY = header.PTR_TY;
+                        s.PStoreID = header.PStoreID;
+                        s.PK = (!AS.IsNullValue(s.PK)) ? s.PK : 1;
                         s.PKPRC = s.Price / s.PK;
                         s.PKName = AS.GetName(uow, FunctionName.GetPKNAME, s.PKID);
                         s.TR_DS_AR = " فاتورة " + s.TRTY_NAME + " رقم " + s.TR_NO;
                         s.TR_DS_EN = " فاتورة " + s.TRTY_NAME + " رقم " + s.TR_NO;
+                        s.PriceID = header.PriceID;
+                        s.EnteredBy = CurrentUser.Username;
+                        s.EntryDate = DateTime.Now;
                         LNNO++;
                     });
 
-                    request.Entity.DetailList = listASTRD;
+                    header.DetailList = listASTRD;
                     header.TR_DS = (int)TRDSTYPE.CashRestore;
-                    header.ACC_NO2 = header.ACC_NO;
-                    header.ACC_NAME2 = header.ACC_NAME;
                     header.ACC_NO = header.CashBoxID;
                     header.ACC_NAME = header.Cash_NAME;
+                    header.ACC_NO2 = ACCNO;
+                    header.ACC_NAME2 = ACC_NAME;
                     header.ReferenceNo = header.ReferenceNo == 0 ? header.TR_NO : header.ReferenceNo;
                     header.Paid = header.Paid == 0 ? header.NetTotal : header.Paid;
-                    header.CUR_VL = header.NetTotal * header.RATE;
+                    header.CUR_VL = header.NetTotal;
                     header.Balance = 0;
+                    request.Entity = header;
                 }
 
                 return new MySaveHandler(Context).Process(uow, request, SaveRequestType.Create);
@@ -98,6 +109,7 @@ namespace ALgorithmPro.ALgorithm.Repositories
             }
             catch (Exception exception)
             {
+                transaction.Rollback();
                 AS.AppendException(exception, exception.Message);
                 return new SaveResponse();
             }
@@ -106,73 +118,83 @@ namespace ALgorithmPro.ALgorithm.Repositories
         public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
             var header = request.Entity;
-            listASTRD = request.Entity.DetailList;
-            SelectTRTY = (TRTYType)request.Entity.TR_TY;
+            listASTRD = header.DetailList;
+            SelectTRTY = (TRTYType)header.TR_TY;
+            string ACCNO = header.ACC_NO;
+            string ACC_NAME = header.ACC_NAME;
+            transaction = uow.Connection.GetCurrentActualTransaction();
             try
             {
-                var RATE = AS.GetValue(uow, FunctionName.GetCurrencyRate, "'" + request.Entity.CurrencyID + "'");
-                request.Entity.RATE = AS.ToDouble(RATE);
-                request.Entity.TRTY_NAME = AS.GetName(uow, FunctionName.GetTRTYNAME, request.Entity.TR_TY.ToString());
-                request.Entity.Store_NAME = AS.GetName(uow, FunctionName.GetStoreName, "'" + request.Entity.StoreID + "'");
-                request.Entity.Currency_NAME = AS.GetName(uow, FunctionName.GetCurrencyName, "'" + request.Entity.CurrencyID + "'");
-                request.Entity.CST_NAME = AS.GetName(uow, FunctionName.GetCostName, "'" + request.Entity.CST_CD + "'");
-                request.Entity.HDSCR_AR = " فاتورة " + request.Entity.TRTY_NAME + " رقم " + request.Entity.TR_NO;
-                request.Entity.HDSCR_EN = request.Entity.HDSCR_AR;
 
+                var RATE = AS.GetValue(uow, FunctionName.GetCurrencyRate, "'" + header.CurrencyID + "'");
+                header.RATE = AS.ToDouble(RATE);
+                header.TRTY_NAME = AS.GetName(uow, FunctionName.GetTRTYNAME, header.TR_TY.ToString());
+                header.Store_NAME = AS.GetName(uow, FunctionName.GetStoreName, "'" + header.StoreID + "'");
+                header.Currency_NAME = AS.GetName(uow, FunctionName.GetCurrencyName, "'" + header.CurrencyID + "'");
+                header.CST_NAME = AS.GetName(uow, FunctionName.GetCostName, "'" + header.CST_CD + "'");
+                header.HDSCR_AR = " فاتورة " + header.TRTY_NAME + " رقم " + header.TR_NO;
+                header.HDSCR_EN = header.HDSCR_AR;
+                header.TR_DT = header.TR_DT != null ? header.TR_DT : DateTime.Now.Date;
 
                 int LNNO = 1;
                 if (SelectTRTY == TRTYType.CashRestore)
                 {
                     listASTRD.ForEach(s =>
                     {
-                        s.DetailID = request.Entity.HeaderID;
-                        s.TR_NO = request.Entity.TR_NO;
+                        s.DetailID = header.HeaderID;
+                        s.TR_NO = header.TR_NO;
                         s.TR_TY = (int)TRTYType.CashRestore;
-                        s.TRTY_NAME = request.Entity.TRTY_NAME;
+                        s.TRTY_NAME = header.TRTY_NAME;
+                        s.TR_DT = header.TR_DT != null ? header.TR_DT : DateTime.Now;
                         s.TR_DS = (int)TRDSTYPE.CashRestore;
                         s.GRP = (int)GRPTYPE.CashRestore;
-                        s.StoreID = request.Entity.StoreID;
-                        s.Store_NAME = request.Entity.Store_NAME;
+                        s.StoreID = header.StoreID;
+                        s.Store_NAME = header.Store_NAME;
                         s.ItemBarCode = AS.IsNullValue(s.ItemBarCode) ? s.Item_CD : s.ItemBarCode;
                         s.LN_NO = LNNO;
-                        s.ACC_NO = request.Entity.CashBoxID;
-                        s.ACC_NAME = request.Entity.Cash_NAME;
-                        s.ACC_NO2 = request.Entity.ACC_NO;
-                        s.ACC_NAME2 = request.Entity.ACC_NAME;
-                        s.CashBoxID = request.Entity.CashBoxID;
-                        s.Cash_NAME = request.Entity.Cash_NAME;
-                        s.REP_CD = request.Entity.REP_CD;
-                        s.REP_NAME = request.Entity.REP_NAME;
-                        s.REP_CD2 = request.Entity.REP_CD;
-                        s.REP_NAME2 = request.Entity.REP_NAME2;
-                        s.CurrencyID = request.Entity.CurrencyID;
-                        s.Currency_Name = request.Entity.Currency_NAME;
-                        s.RATE = request.Entity.RATE;
-                        s.CUR_VL = s.NET * s.RATE;
+                        s.ACC_NO = header.CashBoxID;
+                        s.ACC_NAME = header.Cash_NAME;
+                        s.ACC_NO2 = ACCNO;
+                        s.ACC_NAME2 = ACC_NAME;
+                        s.CashBoxID = header.CashBoxID;
+                        s.Cash_NAME = header.Cash_NAME;
+                        s.REP_CD = header.REP_CD;
+                        s.REP_NAME = header.REP_NAME;
+                        s.REP_CD2 = header.REP_CD;
+                        s.REP_NAME2 = header.REP_NAME2;
+                        s.CurrencyID = header.CurrencyID;
+                        s.Currency_Name = header.Currency_NAME;
+                        s.RATE = header.RATE;
+                        s.CUR_VL = s.NET;
                         s.DISC = s.DISC1 + s.DISC2 + s.DISC3 + s.DISC3;
                         s.STAX_VL = s.TAX1 + s.TAX2 + s.TAX3 + s.TAX3;
-                        s.disc_cur_val = s.DISC * s.RATE;
-                        s.tax_cur_val = s.STAX_VL * s.RATE;
-                        s.PTR_NO = request.Entity.PTR_NO;
-                        s.PTR_TY = request.Entity.PTR_TY;
-                        s.PStoreID = request.Entity.PStoreID;
+                        s.disc_cur_val = s.DISC;
+                        s.tax_cur_val = s.STAX_VL;
+                        s.PTR_NO = header.PTR_NO;
+                        s.PTR_TY = header.PTR_TY;
+                        s.PStoreID = header.PStoreID;
+                        s.PK = (!AS.IsNullValue(s.PK)) ? s.PK : 1;
                         s.PKPRC = s.Price / s.PK;
                         s.PKName = AS.GetName(uow, FunctionName.GetPKNAME, s.PKID);
                         s.TR_DS_AR = " فاتورة " + s.TRTY_NAME + " رقم " + s.TR_NO;
                         s.TR_DS_EN = " فاتورة " + s.TRTY_NAME + " رقم " + s.TR_NO;
+                        s.PriceID = header.PriceID;
+                        s.UpdatedBy = CurrentUser.Username;
+                        s.UpdateDate = DateTime.Now;
                         LNNO++;
                     });
 
-                    request.Entity.DetailList = listASTRD;
-                    header.TR_DS = (int)TRDSTYPE.CashRestore;
-                    header.ACC_NO2 = header.ACC_NO;
-                    header.ACC_NAME2 = header.ACC_NAME;
+                    header.DetailList = listASTRD;
+                    header.TR_DS = (int)TRDSTYPE.CashPurchase;
                     header.ACC_NO = header.CashBoxID;
                     header.ACC_NAME = header.Cash_NAME;
+                    header.ACC_NO2 = ACCNO;
+                    header.ACC_NAME2 = ACC_NAME;
                     header.ReferenceNo = header.ReferenceNo == 0 ? header.TR_NO : header.ReferenceNo;
                     header.Paid = header.Paid == 0 ? header.NetTotal : header.Paid;
-                    header.CUR_VL = header.NetTotal * header.RATE;
+                    header.CUR_VL = header.NetTotal;
                     header.Balance = 0;
+                    request.Entity = header;
                 }
 
                 return new MySaveHandler(Context).Process(uow, request, SaveRequestType.Update);
@@ -180,6 +202,7 @@ namespace ALgorithmPro.ALgorithm.Repositories
             }
             catch (Exception exception)
             {
+                transaction.Rollback();
                 AS.AppendException(exception, exception.Message);
                 return new SaveResponse();
             }
@@ -187,6 +210,7 @@ namespace ALgorithmPro.ALgorithm.Repositories
 
         public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request)
         {
+            transaction = uow.Connection.GetCurrentActualTransaction();
             try
             {
                 if (SelectTRTY == TRTYType.CashRestore)
@@ -200,6 +224,7 @@ namespace ALgorithmPro.ALgorithm.Repositories
             }
             catch (Exception exception)
             {
+                transaction.Rollback();
                 AS.AppendException(exception, exception.Message);
                 return new DeleteResponse();
             }
@@ -246,22 +271,53 @@ namespace ALgorithmPro.ALgorithm.Repositories
                 AS.AppendException(exception, exception.Message);
                 return new ListResponse<MyRow>();
             }
+            finally
+            {
+                connection.Execute(StoredName.ADJITMLOCBAL, commandTimeout: 30, commandType: CommandType.StoredProcedure);
+                connection.Execute(StoredName.GetItemBAL, commandTimeout: 30, commandType: CommandType.StoredProcedure);
+                connection.Execute(StoredName.ADJCST, commandTimeout: 30, commandType: CommandType.StoredProcedure);
+            }
+        }
+        // Validatetion 
+        public static bool IsValidate(SaveRequest<MyRow> request)
+        {
+            bool IsValid = false;
+            var ASTRD = request.Entity.DetailList;
+
+            if (ASTRD == null || ASTRD.Count == 0)
+                IsValid = true;
+
+            return IsValid;
         }
         private class MySaveHandler : SaveRequestHandler<MyRow>
         {
             public MySaveHandler(IRequestContext context) : base(context)
             {
             }
-
+            protected override void ValidateRequest()
+            {
+                base.ValidateRequest();
+                if (IsValidate(Request))
+                {
+                    transaction.Rollback();
+                    throw new ValidationError("user DetailList is Null");
+                }
+            }
             protected override void AfterSave()
             {
+
                 listASTRD.ForEach(d =>
                 {
+                    d.ID = Request.Entity.HeaderID;
                     d.DetailID = Request.Entity.HeaderID;
                     d.HeaderID = Request.Entity.HeaderID;
                     d.TR_NO = Request.Entity.TR_NO;
                     d.StoreID = Request.Entity.StoreID;
+                    d.PK = (!AS.IsNullValue(d.PK)) ? d.PK : 1;
                     d.PKPRC = d.Price / d.PK;
+                    d.RATE = Request.Entity.RATE;
+                    d.TR_DT = Request.Entity.TR_DT != null ? Request.Entity.TR_DT : DateTime.Now;
+
                 });
                 try
                 {
@@ -270,6 +326,7 @@ namespace ALgorithmPro.ALgorithm.Repositories
                 }
                 catch (Exception exception)
                 {
+                    transaction.Rollback();
                     AS.AppendException(exception, exception.Message);
                 }
                 finally

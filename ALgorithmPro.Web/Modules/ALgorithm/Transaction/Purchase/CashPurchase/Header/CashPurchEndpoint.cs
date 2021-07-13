@@ -40,7 +40,7 @@ namespace ALgorithmPro.ALgorithm.Endpoints
         }
         public GetNextNumberResponse GetNextNumber(IDbConnection connection, GetNextNumberRequest request)
         {
-            string SQL = "SELECT ISNULL(MAX(TR_NO),0) AS MAXNO FROM ASTRH WHERE Status = 1 AND TR_TY=" + (int)TRTYType.CashPurchase + " AND StoreID=" + request.Prefix + "";
+            string SQL = "SELECT ISNULL(MAX(TR_NO),0) AS MAXNO FROM ASTRH WHERE Status = 1 AND TR_TY=" + (int)TRTYType.CashPurchase + " AND StoreID=" + request.StoreID + "";
             var Query = connection.Query<string>(SQL);
             var MaxNO = Query.ToList().First();
             return GetNextNumberHelper.GetNextNumber(connection, request, MyRow.Fields.TR_NO, MaxNO);

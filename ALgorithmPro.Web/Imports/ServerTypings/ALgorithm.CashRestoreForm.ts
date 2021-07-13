@@ -1,5 +1,5 @@
 ﻿namespace ALgorithmPro.ALgorithm {
-    export interface CashRestoreASTRHForm {
+    export interface CashRestoreForm {
         TR_TY: Serenity.LookupEditor;
         StoreID: Serenity.LookupEditor;
         CashBoxID: Serenity.LookupEditor;
@@ -13,6 +13,7 @@
         REP_CD2: Serenity.LookupEditor;
         CST_CD: Serenity.LookupEditor;
         CurrencyID: Serenity.LookupEditor;
+        ReferenceNo: Serenity.IntegerEditor;
         PriceID: Serenity.LookupEditor;
         Balance: Serenity.DecimalEditor;
         Notes: Serenity.TextAreaEditor;
@@ -39,7 +40,6 @@
         PTR_TY: Serenity.IntegerEditor;
         HDSCR_EN: Serenity.StringEditor;
         Priceedit: Serenity.BooleanEditor;
-        ReferenceNo: Serenity.IntegerEditor;
         HDISC1: Serenity.DecimalEditor;
         HDISC2: Serenity.DecimalEditor;
         HDISC3: Serenity.DecimalEditor;
@@ -50,7 +50,6 @@
         HTAX1: Serenity.DecimalEditor;
         HTAX2: Serenity.DecimalEditor;
         HTAX3: Serenity.DecimalEditor;
-        HTAX4: Serenity.DecimalEditor;
         HTAX1R: Serenity.DecimalEditor;
         HTAX2R: Serenity.DecimalEditor;
         HTAX3R: Serenity.DecimalEditor;
@@ -79,15 +78,15 @@
         NetTotal: Serenity.DecimalEditor;
     }
 
-    export class CashRestoreASTRHForm extends Serenity.PrefixedContext {
-        static formKey = 'ALgorithm.CashRestoreASTRH';
+    export class CashRestoreForm extends Serenity.PrefixedContext {
+        static formKey = 'ALgorithm.CashRestore';
         private static init: boolean;
 
         constructor(prefix: string) {
             super(prefix);
 
-            if (!CashRestoreASTRHForm.init)  {
-                CashRestoreASTRHForm.init = true;
+            if (!CashRestoreForm.init)  {
+                CashRestoreForm.init = true;
 
                 var s = Serenity;
                 var w0 = s.LookupEditor;
@@ -101,7 +100,7 @@
                 var w8 = s.DateEditor;
                 var w9 = CashRestoreASTRDEditor;
 
-                Q.initFormType(CashRestoreASTRHForm, [
+                Q.initFormType(CashRestoreForm, [
                     'TR_TY', w0,
                     'StoreID', w0,
                     'CashBoxID', w0,
@@ -115,6 +114,7 @@
                     'REP_CD2', w0,
                     'CST_CD', w0,
                     'CurrencyID', w0,
+                    'ReferenceNo', w1,
                     'PriceID', w0,
                     'Balance', w4,
                     'Notes', w5,
@@ -141,7 +141,6 @@
                     'PTR_TY', w1,
                     'HDSCR_EN', w3,
                     'Priceedit', w6,
-                    'ReferenceNo', w1,
                     'HDISC1', w4,
                     'HDISC2', w4,
                     'HDISC3', w4,
@@ -152,7 +151,6 @@
                     'HTAX1', w4,
                     'HTAX2', w4,
                     'HTAX3', w4,
-                    'HTAX4', w4,
                     'HTAX1R', w4,
                     'HTAX2R', w4,
                     'HTAX3R', w4,

@@ -8,9 +8,9 @@ using System.IO;
 
 namespace ALgorithmPro.ALgorithm.Columns
 {
-    [ColumnsScript("ALgorithm.CashRestoreASTRH")]
-    [BasedOnRow(typeof(Entities.CashRestoreASTRHRow), CheckNames = true)]
-    public class CashRestoreASTRHColumns
+    [ColumnsScript("ALgorithm.CashRestore")]
+    [BasedOnRow(typeof(Entities.CashRestoreRow), CheckNames = true)]
+    public class CashRestoreColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int64 HeaderID { get; set; }

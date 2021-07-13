@@ -165,7 +165,6 @@ namespace MVC
 
                         public static class Header
                         {
-                            public const string CashPurchDetailReport = "~/Modules/ALgorithm/Transaction/Purchase/CashPurchase/Header/CashPurchDetailReport.cshtml";
                             public const string CashPurchIndex = "~/Modules/ALgorithm/Transaction/Purchase/CashPurchase/Header/CashPurchIndex.cshtml";
                             public const string InvoicReport = "~/Modules/ALgorithm/Transaction/Purchase/CashPurchase/Header/InvoicReport.cshtml";
                         }
@@ -181,7 +180,8 @@ namespace MVC
 
                         public static class Header
                         {
-                            public const string CashRestoreASTRHIndex = "~/Modules/ALgorithm/Transaction/Purchase/CashRestore/Header/CashRestoreASTRHIndex.cshtml";
+                            public const string CashRestoreIndex = "~/Modules/ALgorithm/Transaction/Purchase/CashRestore/Header/CashRestoreIndex.cshtml";
+                            public const string InvoicReport = "~/Modules/ALgorithm/Transaction/Purchase/CashRestore/Header/InvoicReport.cshtml";
                         }
 
                     }
@@ -330,6 +330,20 @@ namespace MVC
                     public const string AccountSignUp = "~/Modules/Membership/Account/SignUp/AccountSignUp.cshtml";
                     public const string AccountSignUp_AdminLTE = "~/Modules/Membership/Account/SignUp/AccountSignUp.AdminLTE.cshtml";
                 }
+            }
+
+        }
+
+        public static class Model
+        {
+            public static class ASTRDVIEW
+            {
+                public const string ASTRDVIEWIndex = "~/Modules/Model/ASTRDVIEW/ASTRDVIEWIndex.cshtml";
+            }
+
+            public static class ASTRHVIEW
+            {
+                public const string ASTRHVIEWIndex = "~/Modules/Model/ASTRHVIEW/ASTRHVIEWIndex.cshtml";
             }
         }
 

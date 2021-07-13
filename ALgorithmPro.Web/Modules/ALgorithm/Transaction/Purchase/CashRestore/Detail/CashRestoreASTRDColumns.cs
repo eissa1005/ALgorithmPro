@@ -33,6 +33,8 @@ namespace ALgorithmPro.ALgorithm.Columns
         public Double TAX1 { get; set; }
         public Double TAX2 { get; set; }
         public Double TAX3 { get; set; }
+       
+        [Hidden]
         public Double TAXVAL { get; set; }
         public Double NetAfterTAX { get; set; }
         public Double NET { get; set; }

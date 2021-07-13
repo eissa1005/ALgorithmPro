@@ -1,12 +1,10 @@
-﻿using Serenity;
-using Serenity.ComponentModel;
+﻿using System;
 using Serenity.Data;
+using Serenity.ComponentModel;
 using Serenity.Data.Mapping;
-using System;
 using System.ComponentModel;
-using System.IO;
 
-namespace ALgorithmPro.Model
+namespace ALgorithmPro.Model.Entities
 {
     [ConnectionKey("Default"), Module("Model"), TableName("[dbo].[ASTRDVIEW]")]
     [DisplayName("ASTRDVIEW"), InstanceName("ASTRDVIEW")]
@@ -21,14 +19,14 @@ namespace ALgorithmPro.Model
             set => fields.HeaderID[this] = value;
         }
 
-        [DisplayName("TR_NO"), Column("TR_NO"), NotNull]
+        [DisplayName("TR_NO"), Column("TR_NO"),PrimaryKey, NotNull]
         public Int32? TR_NO
         {
             get => fields.TR_NO[this];
             set => fields.TR_NO[this] = value;
         }
 
-        [DisplayName("TR_TY"), Column("TR_TY"), NotNull]
+        [DisplayName("TR_TY"), Column("TR_TY"), PrimaryKey, NotNull]
         public Int32? TR_TY
         {
             get => fields.TR_TY[this];
@@ -42,14 +40,14 @@ namespace ALgorithmPro.Model
             set => fields.TR_DT[this] = value;
         }
 
-        [DisplayName("TRTY_NAME"), Column("TRTY_NAME"), Size(255), QuickSearch, NameProperty]
+        [DisplayName("TRTY_NAME"), Column("TRTY_NAME"), Size(255), QuickSearch]
         public String TRTY_NAME
         {
             get => fields.TRTY_NAME[this];
             set => fields.TRTY_NAME[this] = value;
         }
 
-        [DisplayName("StoreID"), Column("StoreID"), Size(100), NotNull]
+        [DisplayName("StoreID"), Column("StoreID"), NameProperty,Size(100), NotNull]
         public String StoreID
         {
             get => fields.StoreID[this];
@@ -63,6 +61,13 @@ namespace ALgorithmPro.Model
             set => fields.Store_NAME[this] = value;
         }
 
+        [DisplayName("ReferenNumer"), Column("ReferenNumer")]
+        public Int32? ReferenNumer
+        {
+            get => fields.ReferenNumer[this];
+            set => fields.ReferenNumer[this] = value;
+        }
+        
         [DisplayName("ACC_NO"), Column("ACC_NO"), Size(100)]
         public String ACC_NO
         {
@@ -259,11 +264,11 @@ namespace ALgorithmPro.Model
             set => fields.HdrAddtionsR[this] = value;
         }
 
-        [DisplayName("CurrencyId"), Size(100), NotNull]
-        public String CurrencyId
+        [DisplayName("CurrencyID"), Size(100), NotNull]
+        public String CurrencyID
         {
-            get => fields.CurrencyId[this];
-            set => fields.CurrencyId[this] = value;
+            get => fields.CurrencyID[this];
+            set => fields.CurrencyID[this] = value;
         }
 
         [DisplayName("Currency Name"), Column("Currency_NAME"), Size(255)]
@@ -413,11 +418,11 @@ namespace ALgorithmPro.Model
             set => fields.DISC4[this] = value;
         }
 
-        [DisplayName("HDISC"), Column("HDISC"), NotNull]
-        public Double? HDISC
+        [DisplayName("DISCVAL"), Column("DISCVAL"), NotNull]
+        public Double? DISCVAL
         {
-            get => fields.HDISC[this];
-            set => fields.HDISC[this] = value;
+            get => fields.DISCVAL[this];
+            set => fields.DISCVAL[this] = value;
         }
 
         [DisplayName("TAX1"), Column("TAX1"), NotNull]
@@ -441,11 +446,11 @@ namespace ALgorithmPro.Model
             set => fields.TAX3[this] = value;
         }
 
-        [DisplayName("HTAX"), Column("HTAX"), NotNull]
-        public Double? HTAX
+        [DisplayName("TAXVAL"), Column("TAXVAL"), NotNull]
+        public Double? TAXVAL
         {
-            get => fields.HTAX[this];
-            set => fields.HTAX[this] = value;
+            get => fields.TAXVAL[this];
+            set => fields.TAXVAL[this] = value;
         }
 
         [DisplayName("NET"), Column("NET"), NotNull]
@@ -637,6 +642,13 @@ namespace ALgorithmPro.Model
             set => fields.SDISCR[this] = value;
         }
 
+        [DisplayName("NetBeforeTAX"), Column("NetBeforeTAX"), NotNull]
+        public Double? NetBeforeTAX
+        {
+            get => fields.NetBeforeTAX[this];
+            set => fields.NetBeforeTAX[this] = value;
+        }
+
         [DisplayName("TAX1R"), Column("TAX1R"), NotNull]
         public Double? TAX1R
         {
@@ -663,6 +675,13 @@ namespace ALgorithmPro.Model
         {
             get => fields.STAXR[this];
             set => fields.STAXR[this] = value;
+        }
+
+        [DisplayName("NetAfterTAX"), Column("NetAfterTAX"), NotNull]
+        public Double? NetAfterTAX
+        {
+            get => fields.NetAfterTAX[this];
+            set => fields.NetAfterTAX[this] = value;
         }
 
         [DisplayName("CUR_VL"), Column("CUR_VL"), NotNull]
@@ -789,6 +808,7 @@ namespace ALgorithmPro.Model
             public StringField TRTY_NAME;
             public StringField StoreID;
             public StringField Store_NAME;
+            public Int32Field ReferenNumer;
             public StringField ACC_NO;
             public StringField ACC_NAME;
             public StringField ACC_NO2;
@@ -800,7 +820,7 @@ namespace ALgorithmPro.Model
             public StringField SupervisorID;
             public StringField Supervisor_NAME;
             public StringField TR_DS_EN;
-            public StringField REP_CD;    
+            public StringField REP_CD;
             public StringField REP_NAME;
             public StringField REP_CD2;
             public StringField REP_NAME2;
@@ -817,7 +837,7 @@ namespace ALgorithmPro.Model
             public DoubleField EXPENSEVL;
             public DoubleField HAddtions;
             public DoubleField HdrAddtionsR;
-            public StringField CurrencyId;
+            public StringField CurrencyID;
             public StringField Currency_NAME;
             public DoubleField RATE;
             public Int32Field LN_NO;
@@ -839,11 +859,11 @@ namespace ALgorithmPro.Model
             public DoubleField DISC2;
             public DoubleField DISC3;
             public DoubleField DISC4;
-            public DoubleField HDISC;
+            public DoubleField DISCVAL;
             public DoubleField TAX1;
             public DoubleField TAX2;
             public DoubleField TAX3;
-            public DoubleField HTAX;
+            public DoubleField TAXVAL;
             public DoubleField NET;
             public DoubleField NetTotal;
             public DoubleField CostValue;
@@ -871,10 +891,12 @@ namespace ALgorithmPro.Model
             public DoubleField DISC2R;
             public DoubleField DISC3R;
             public DoubleField SDISCR;
+            public DoubleField NetBeforeTAX;
             public DoubleField TAX1R;
             public DoubleField TAX2R;
             public DoubleField TAX3R;
             public DoubleField STAXR;
+            public DoubleField NetAfterTAX;
             public DoubleField CUR_VL;
             public DoubleField DISC_CUR_VAL;
             public DoubleField TAX_CUR_VAL;

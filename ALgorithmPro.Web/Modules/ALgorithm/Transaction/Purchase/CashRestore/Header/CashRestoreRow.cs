@@ -12,10 +12,10 @@ using System.IO;
 namespace ALgorithmPro.ALgorithm.Entities
 {
     [ConnectionKey("Default"), Module("ALgorithm"), TableName("[dbo].[ASTRH]")]
-    [DisplayName("Cash Restore"), InstanceName("Cash Restore")]
+    [DisplayName("CashRestore"), InstanceName("CashRestore")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
-    public sealed class CashRestoreASTRHRow : Row<CashRestoreASTRHRow.RowFields>, IIdRow, INameRow
+    public sealed class CashRestoreRow : Row<CashRestoreRow.RowFields>, IIdRow, INameRow
     {
         [DisplayName("HeaderID"), Column("HeaderID"), Identity, IdProperty]
         public Int64? HeaderID
@@ -270,7 +270,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.HDSCR_EN[this] = value;
         }
 
-        [DisplayName("Price"), Column("PriceID"), Size(100), DefaultValue(0)]
+        [DisplayName("Price"), Column("PriceID"), Size(100)]
         [LookupEditor(typeof(PricePurchLookup), AutoComplete = true, InplaceAdd = true)]
         public String PriceID
         {
@@ -571,12 +571,12 @@ namespace ALgorithmPro.ALgorithm.Entities
             get => fields.NetTotal[this];
             set => fields.NetTotal[this] = value;
         }
-        public CashRestoreASTRHRow()
+        public CashRestoreRow()
             : base()
         {
         }
 
-        public CashRestoreASTRHRow(RowFields fields)
+        public CashRestoreRow(RowFields fields)
             : base(fields)
         {
         }

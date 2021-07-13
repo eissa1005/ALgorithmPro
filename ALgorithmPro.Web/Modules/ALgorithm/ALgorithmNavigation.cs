@@ -31,7 +31,7 @@ using MyPages = ALgorithmPro.ALgorithm.Pages;
 [assembly: NavigationMenu(13000, "ALgorithm/Transactions/Purchase", icon: "fa-cube")]
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/CashPurchase", typeof(MyPages.CashPurchASTRHController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/CreditPurchase", typeof(MyPages.PurchaseController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/CashRestore", typeof(MyPages.CashRestoreASTRHController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/CashRestore", typeof(MyPages.CashRestoreController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/CreditRestore", typeof(MyPages.RestoreASTRHController), icon: null)]
 
 

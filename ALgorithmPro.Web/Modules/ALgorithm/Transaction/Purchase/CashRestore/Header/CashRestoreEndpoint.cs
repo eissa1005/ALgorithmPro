@@ -3,16 +3,16 @@ using Serenity.Data;
 using Serenity.Services;
 using System.Data;
 using Microsoft.AspNetCore.Mvc;
-using MyRepository = ALgorithmPro.ALgorithm.Repositories.CashRestoreASTRHRepository;
-using MyRow = ALgorithmPro.ALgorithm.Entities.CashRestoreASTRHRow;
+using MyRepository = ALgorithmPro.ALgorithm.Repositories.CashRestoreRepository;
+using MyRow = ALgorithmPro.ALgorithm.Entities.CashRestoreRow;
 using System.Linq;
 using ALgorithmPro.Web.Modules.Common;
 
 namespace ALgorithmPro.ALgorithm.Endpoints
 {
-    [Route("Services/ALgorithm/CashRestoreASTRH/[action]")]
+    [Route("Services/ALgorithm/CashRestore/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
-    public class CashRestoreASTRHController : ServiceEndpoint
+    public class CashRestoreController : ServiceEndpoint
     {
         [HttpPost, AuthorizeCreate(typeof(MyRow))]
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
@@ -33,7 +33,7 @@ namespace ALgorithmPro.ALgorithm.Endpoints
         }
         public GetNextNumberResponse GetNextNumber(IDbConnection connection, GetNextNumberRequest request)
         {
-            string SQL = "SELECT ISNULL(MAX(TR_NO),0) AS MAXNO FROM ASTRH WHERE Status = 1 AND TR_TY=" + (int)TRTYType.CashRestore + " AND StoreID=" + request.Prefix + "";
+            string SQL = "SELECT ISNULL(MAX(TR_NO),0) AS MAXNO FROM ASTRH WHERE Status = 1 AND TR_TY=" + (int)TRTYType.CashRestore + " AND StoreID=" + request.StoreID + "";
             var Query = connection.Query<string>(SQL);
             var MaxNO = Query.ToList().First();
             return GetNextNumberHelper.GetNextNumber(connection, request, MyRow.Fields.TR_NO, MaxNO);

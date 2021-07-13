@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel.Channels;
 using ALgorithmPro.ALgorithm.Entities;
 using ALgorithmPro.Model;
+using ALgorithmPro.Model.Entities;
 using DevExpress.XtraReports.UI;
 using Serenity.Data;
 

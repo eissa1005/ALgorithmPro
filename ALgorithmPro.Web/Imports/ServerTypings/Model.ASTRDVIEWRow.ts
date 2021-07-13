@@ -7,6 +7,7 @@
         TRTY_NAME?: string;
         StoreID?: string;
         Store_NAME?: string;
+        ReferenNumer?: number;
         ACC_NO?: string;
         ACC_NAME?: string;
         ACC_NO2?: string;
@@ -35,7 +36,7 @@
         EXPENSEVL?: number;
         HAddtions?: number;
         HdrAddtionsR?: number;
-        CurrencyId?: string;
+        CurrencyID?: string;
         Currency_NAME?: string;
         RATE?: number;
         LN_NO?: number;
@@ -57,11 +58,11 @@
         DISC2?: number;
         DISC3?: number;
         DISC4?: number;
-        HDISC?: number;
+        DISCVAL?: number;
         TAX1?: number;
         TAX2?: number;
         TAX3?: number;
-        HTAX?: number;
+        TAXVAL?: number;
         NET?: number;
         NetTotal?: number;
         CostValue?: number;
@@ -89,10 +90,12 @@
         DISC2R?: number;
         DISC3R?: number;
         SDISCR?: number;
+        NetBeforeTAX?: number;
         TAX1R?: number;
         TAX2R?: number;
         TAX3R?: number;
         STAXR?: number;
+        NetAfterTAX?: number;
         CUR_VL?: number;
         DISC_CUR_VAL?: number;
         TAX_CUR_VAL?: number;
@@ -112,7 +115,7 @@
 
     export namespace ASTRDVIEWRow {
         export const idProperty = 'HeaderID';
-        export const nameProperty = 'TRTY_NAME';
+        export const nameProperty = 'StoreID';
         export const localTextPrefix = 'Model.ASTRDVIEW';
         export const deletePermission = 'Administration:General';
         export const insertPermission = 'Administration:General';
@@ -127,6 +130,7 @@
             TRTY_NAME = "TRTY_NAME",
             StoreID = "StoreID",
             Store_NAME = "Store_NAME",
+            ReferenNumer = "ReferenNumer",
             ACC_NO = "ACC_NO",
             ACC_NAME = "ACC_NAME",
             ACC_NO2 = "ACC_NO2",
@@ -155,7 +159,7 @@
             EXPENSEVL = "EXPENSEVL",
             HAddtions = "HAddtions",
             HdrAddtionsR = "HdrAddtionsR",
-            CurrencyId = "CurrencyId",
+            CurrencyID = "CurrencyID",
             Currency_NAME = "Currency_NAME",
             RATE = "RATE",
             LN_NO = "LN_NO",
@@ -177,11 +181,11 @@
             DISC2 = "DISC2",
             DISC3 = "DISC3",
             DISC4 = "DISC4",
-            HDISC = "HDISC",
+            DISCVAL = "DISCVAL",
             TAX1 = "TAX1",
             TAX2 = "TAX2",
             TAX3 = "TAX3",
-            HTAX = "HTAX",
+            TAXVAL = "TAXVAL",
             NET = "NET",
             NetTotal = "NetTotal",
             CostValue = "CostValue",
@@ -209,10 +213,12 @@
             DISC2R = "DISC2R",
             DISC3R = "DISC3R",
             SDISCR = "SDISCR",
+            NetBeforeTAX = "NetBeforeTAX",
             TAX1R = "TAX1R",
             TAX2R = "TAX2R",
             TAX3R = "TAX3R",
             STAXR = "STAXR",
+            NetAfterTAX = "NetAfterTAX",
             CUR_VL = "CUR_VL",
             DISC_CUR_VAL = "DISC_CUR_VAL",
             TAX_CUR_VAL = "TAX_CUR_VAL",

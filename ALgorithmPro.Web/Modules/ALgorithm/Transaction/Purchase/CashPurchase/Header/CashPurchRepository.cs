@@ -112,7 +112,6 @@ namespace ALgorithmPro.ALgorithm.Repositories
             {
                 transaction.Rollback();
                 AS.AppendException(exception, exception.Message);
-                uow.Connection.GetCurrentActualTransaction().Rollback();
                 return new SaveResponse();
             }
 
@@ -206,7 +205,6 @@ namespace ALgorithmPro.ALgorithm.Repositories
             {
                 transaction.Rollback();
                 AS.AppendException(exception, exception.Message);
-                uow.Connection.GetCurrentActualTransaction().Rollback();
                 return new SaveResponse();
             }
         }
@@ -229,7 +227,6 @@ namespace ALgorithmPro.ALgorithm.Repositories
             {
                 transaction.Rollback();
                 AS.AppendException(exception, exception.Message);
-                uow.Connection.GetCurrentActualTransaction().Rollback();
                 return new DeleteResponse();
             }
         }

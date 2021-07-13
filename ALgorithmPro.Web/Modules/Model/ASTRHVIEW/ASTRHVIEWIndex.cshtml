@@ -1,13 +1,13 @@
 ﻿@inject Serenity.ITextLocalizer Localizer
 @{
-    ViewData["Title"] = Localizer.Get("Db.ALgorithm.CashRestoreASTRH.EntityPlural");
+    ViewData["Title"] = Localizer.Get("Db.Model.ASTRHVIEW.EntityPlural");
 }
 
 <div id="GridDiv"></div>
 
 <script type="text/javascript">
     jQuery(function () {
-        new ALgorithmPro.ALgorithm.CashRestoreASTRHGrid($('#GridDiv'), {}).init();
+        new ALgorithmPro.Model.ASTRHVIEWGrid($('#GridDiv'), {}).init();
 
         Q.initFullHeightGridPage($('#GridDiv'));
     });

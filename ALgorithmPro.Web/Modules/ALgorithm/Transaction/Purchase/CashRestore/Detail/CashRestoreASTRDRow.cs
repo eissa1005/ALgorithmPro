@@ -69,7 +69,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.LN_NO[this] = value;
         }
         [Hidden]
-        [DisplayName("Date"), Column("TR_DT"), DefaultValue("now")]
+        [DisplayName("Date"), Column("TR_DT")]
         public DateTime? TR_DT
         {
             get => fields.TR_DT[this];
@@ -168,7 +168,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.ItemBarCode[this] = value;
         }
 
-        [DisplayName("Package Name"), Column("PKID"), Size(10), Required, DefaultValue(1), Width(130)]
+        [DisplayName("Package"), Column("PKID"), Size(10), Required, DefaultValue(1), Width(130)]
         [LookupEditor(typeof(PackageLookup), AutoComplete = true)]
         public String PKID
         {
@@ -350,6 +350,8 @@ namespace ALgorithmPro.ALgorithm.Entities
             get => fields.TAX3[this];
             set => fields.TAX3[this] = value;
         }
+
+        [Hidden]
         [DisplayName("TAXVAL"), Column("TAXVAL"), DefaultValue(0), Width(100)]
         public Double? TAXVAL
         {
@@ -659,7 +661,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.EnteredBy[this] = value;
         }
         [Hidden]
-        [DisplayName("EntryDate"), DefaultValue("now")]
+        [DisplayName("EntryDate")]
         public DateTime? EntryDate
         {
             get => fields.EntryDate[this];
@@ -673,7 +675,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.UpdatedBy[this] = value;
         }
         [Hidden]
-        [DisplayName("UpdateDate"), DefaultValue("now")]
+        [DisplayName("UpdateDate")]
         public DateTime? UpdateDate
         {
             get => fields.UpdateDate[this];

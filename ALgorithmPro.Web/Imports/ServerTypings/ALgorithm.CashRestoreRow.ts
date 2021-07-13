@@ -1,5 +1,5 @@
 ﻿namespace ALgorithmPro.ALgorithm {
-    export interface CashRestoreASTRHRow {
+    export interface CashRestoreRow {
         HeaderID?: number;
         TR_TY?: number;
         TR_NO?: number;
@@ -80,10 +80,10 @@
         DetailList?: CashRestoreASTRDRow[];
     }
 
-    export namespace CashRestoreASTRHRow {
+    export namespace CashRestoreRow {
         export const idProperty = 'HeaderID';
         export const nameProperty = 'StoreID';
-        export const localTextPrefix = 'ALgorithm.CashRestoreASTRH';
+        export const localTextPrefix = 'ALgorithm.CashRestore';
         export const deletePermission = 'Administration:General';
         export const insertPermission = 'Administration:General';
         export const readPermission = 'Administration:General';

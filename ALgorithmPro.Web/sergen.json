@@ -92,6 +92,12 @@
           "PermissionKey": "Administration:General"
         },
         {
+          "Tablename": "dbo.ASTRHVIEW",
+          "Identifier": "ASTRHVIEW",
+          "Module": "Model",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.ASTRTY",
           "Identifier": "ASTRTY",
           "Module": "ALgorithm",

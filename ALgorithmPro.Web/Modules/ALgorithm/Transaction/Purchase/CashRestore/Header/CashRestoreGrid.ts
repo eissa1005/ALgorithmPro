@@ -2,13 +2,13 @@
 namespace ALgorithmPro.ALgorithm {
 
     @Serenity.Decorators.registerClass()
-    export class CashRestoreASTRHGrid extends Serenity.EntityGrid<CashRestoreASTRHRow, any> {
-        protected getColumnsKey() { return 'ALgorithm.CashRestoreASTRH'; }
-        protected getDialogType() { return CashRestoreASTRHDialog; }
-        protected getIdProperty() { return CashRestoreASTRHRow.idProperty; }
-        protected getInsertPermission() { return CashRestoreASTRHRow.insertPermission; }
-        protected getLocalTextPrefix() { return CashRestoreASTRHRow.localTextPrefix; }
-        protected getService() { return CashRestoreASTRHService.baseUrl; }
+    export class CashRestoreGrid extends Serenity.EntityGrid<CashRestoreRow, any> {
+        protected getColumnsKey() { return 'ALgorithm.CashRestore'; }
+        protected getDialogType() { return CashRestoreDialog; }
+        protected getIdProperty() { return CashRestoreRow.idProperty; }
+        protected getInsertPermission() { return CashRestoreRow.insertPermission; }
+        protected getLocalTextPrefix() { return CashRestoreRow.localTextPrefix; }
+        protected getService() { return CashRestoreService.baseUrl; }
 
         constructor(container: JQuery) {
             super(container);
@@ -17,11 +17,12 @@ namespace ALgorithmPro.ALgorithm {
         protected getPersistanceStorage(): Serenity.SettingStorage {
             return new Common.UserPreferenceStorage();
         }
+
         protected addButtonClick() {
 
             var row = ALgorithm.DefaultTableRow.getLookup().items[0];
 
-            this.editItem(<ALgorithm.CashRestoreASTRHRow>{
+            this.editItem(<ALgorithm.CashRestoreRow>{
 
                 TR_TY: row.CashRestore,
                 StoreID: row.StoreID,

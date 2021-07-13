@@ -9,9 +9,9 @@ using ALgorithmPro.ALgorithm.Entities;
 
 namespace ALgorithmPro.ALgorithm.Forms
 {
-    [FormScript("ALgorithm.CashRestoreASTRH")]
-    [BasedOnRow(typeof(Entities.CashRestoreASTRHRow), CheckNames = true)]
-    public class CashRestoreASTRHForm
+    [FormScript("ALgorithm.CashRestore")]
+    [BasedOnRow(typeof(Entities.CashRestoreRow), CheckNames = true)]
+    public class CashRestoreForm
     {
         [Category("CashRestore Info")]
         [FormWidth("col-sm-4")]
@@ -52,14 +52,16 @@ namespace ALgorithmPro.ALgorithm.Forms
         public String CurrencyID { get; set; }
 
         [FormWidth("col-sm-4")]
+        public Int32 ReferenceNo { get; set; }
+
+        [FormWidth("col-sm-4")]
         public String PriceID { get; set; }
 
         [FormWidth("col-sm-4")]
         public Double Balance { get; set; }
 
         public String Notes { get; set; }
-
-
+        
         [Hidden]
         public String HDSCR_AR { get; set; }
         [Hidden]
@@ -106,8 +108,6 @@ namespace ALgorithmPro.ALgorithm.Forms
         public String HDSCR_EN { get; set; }
         [Hidden]
         public Boolean Priceedit { get; set; }
-        [Hidden]
-        public Int32 ReferenceNo { get; set; }
 
         [Hidden]
         public Double HDISC1 { get; set; }
@@ -130,8 +130,7 @@ namespace ALgorithmPro.ALgorithm.Forms
         public Double HTAX2 { get; set; }
         [Hidden]
         public Double HTAX3 { get; set; }
-        [Hidden]
-        public Double HTAX4 { get; set; }
+ 
         [Hidden]
         public Double HTAX1R { get; set; }
         [Hidden]

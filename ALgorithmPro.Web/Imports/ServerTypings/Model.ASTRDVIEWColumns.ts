@@ -1,0 +1,2 @@
+﻿namespace ALgorithmPro.Model {
+}

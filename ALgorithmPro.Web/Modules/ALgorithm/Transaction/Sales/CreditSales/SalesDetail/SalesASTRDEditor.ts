@@ -170,8 +170,9 @@ namespace ALgorithmPro.ALgorithm {
         }
 
         // validateEntity 👈
-        protected validateEntity(row) {
-
+        protected validateEntity(row: SalesASTRDRow) {
+           
+            var Grid = this.slickGrid;
             if (AS.IsNullObject(row)) return true;
             let RATE = BS.GetCurrencyRAT(SalesDialog.OldValue, SalesDialog.NewValue);
             if (AS.IsNullValue(RATE)) RATE = 1;
@@ -179,8 +180,8 @@ namespace ALgorithmPro.ALgorithm {
             let SumDisc = (AS.IsNull(row.DISC1) + AS.IsNull(row.DISC2) + AS.IsNull(row.DISC3)) * RATE;
             let SumTax = (AS.IsNull(row.TAX1) + AS.IsNull(row.TAX2) + AS.IsNull(row.TAX3)) * RATE;
             let NET = value + SumTax;
+            let ItemBAL = BS.GetItemBAL(row.StoreID, row.Item_CD);
 
-            if (row == null) return true;
             if (row.QTY == 0) {
                 Q.alert("Quantity Should Gertter Than Zero");
                 return true;
@@ -200,6 +201,14 @@ namespace ALgorithmPro.ALgorithm {
             if (SumDisc > NET) {
                 Q.alert("Disc Should be Less Than NET");
                 return true;
+            }
+            if (!AS.IsNullValue(ItemBAL)) {
+                if (ItemBAL < row.QTY) {
+                    Q.alert("Item balance is not allowed");
+                    Grid.invalidate();
+                   
+                    return true;
+                }
             }
             return false;
         }
