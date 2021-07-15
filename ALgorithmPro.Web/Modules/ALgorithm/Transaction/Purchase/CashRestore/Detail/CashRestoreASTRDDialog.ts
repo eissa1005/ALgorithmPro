@@ -21,7 +21,6 @@ namespace ALgorithmPro.ALgorithm {
 
             this.ItemGrid = this.byId('ItemsGrid');
             this.form = new CashRestoreASTRDForm(this.idPrefix);
-
         }
         protected getDialogButtons() {
             var buttons = super.getDialogButtons();
