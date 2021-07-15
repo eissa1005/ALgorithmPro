@@ -149,7 +149,38 @@ namespace ALgorithmPro
                 AS.AppendException(exception, exception.Message);
             }
         }
-       
+
+        public static void StoredProcedure(IDbConnection connection, string StoredName, Dictionary<string, object> dic)
+        {
+            var dictionary = new Dictionary<string, object>();
+            var cmd = connection.CreateCommand();
+            try
+            {
+                foreach (KeyValuePair<string, object> items in dic)
+                {
+                    var paramters = cmd.CreateParameter();
+                    paramters.ParameterName = items.Key;
+                    if (items.Value.GetType() == typeof(string))
+                    {
+                        paramters.Value = "'" + items.Value + "'";
+                        paramters.DbType = DbType.String;
+                    }
+                    else
+                    {
+                        paramters.Value = items.Value;
+                        paramters.DbType = DbType.Int32;
+                    }
+
+                    dictionary.Add(paramters.ParameterName, paramters.Value);
+                }
+
+                connection.Execute(sql: StoredName, param: dictionary.ToList(), commandTimeout: 30, commandType: CommandType.StoredProcedure);
+            }
+            catch (SqlException exception)
+            {
+                AS.AppendException(exception, exception.Message);
+            }
+        }
         public static double GetItemBAL(IDbConnection connection, string StoredName, Dictionary<string, object> dic)
         {
             double ItemBal = default(double);
@@ -485,6 +516,8 @@ namespace ALgorithmPro
             }
 
         }
+
+     
 
     }
 }

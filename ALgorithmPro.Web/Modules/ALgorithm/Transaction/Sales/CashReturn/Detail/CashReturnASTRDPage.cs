@@ -1,5 +1,4 @@
-﻿using Serenity;
-using Serenity.Web;
+﻿using Serenity.Web;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ALgorithmPro.ALgorithm.Pages

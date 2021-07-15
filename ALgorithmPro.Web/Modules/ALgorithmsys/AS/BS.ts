@@ -1,4 +1,5 @@
-﻿namespace BS {
+﻿
+namespace BS {
 
     var array = Array<object>();
     //GetCurrencyRAT
@@ -33,7 +34,6 @@
             return ItemBAL = AS.IsNull(ItemLoc.BAL);
         }
     }
-
     // UpdateGrid
     export function UpdateGrid(grid: Slick.Grid, index, row: any) {
 
@@ -70,7 +70,7 @@
     export function PackageChange(grid: Slick.Grid, Field, index, items: any) {
 
         if (AS.IsNullObject(items)) return;
-        var FLD = ALgorithmPro.Model.ASTRDVIEWRow;
+        var FLD = ALgorithmPro.ASTRDVIEWRow;
         var item = items;
 
         if (Field == FLD.Fields.PKID) {

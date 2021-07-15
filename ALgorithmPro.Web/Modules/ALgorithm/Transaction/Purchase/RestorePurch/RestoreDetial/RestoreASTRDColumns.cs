@@ -18,12 +18,14 @@ namespace ALgorithmPro.ALgorithm.Columns
         public Int64 DetailID { get; set; }
         [Hidden]
         public Int64 HeaderID { get; set; }
-        [EditLink]
+        [EditLink, Width(120)]
         public String Item_CD { get; set; }
+        [Width(200)]
         public String ITM_NM_AR { get; set; }
         public String PKID { get; set; }
         public Double Price { set; get; }
         public Double QTY { get; set; }
+        public Double RestoreQty { get; set; }
         public Double Value { get; set; }
         public Double DISC { get; set; }
         public Double DISC1 { get; set; }
@@ -33,6 +35,7 @@ namespace ALgorithmPro.ALgorithm.Columns
         public Double TAX1 { get; set; }
         public Double TAX2 { get; set; }
         public Double TAX3 { get; set; }
+        [Hidden]
         public Double TAXVAL { get; set; }
         public Double NetAfterTAX { get; set; }
         public Double NET { get; set; }
@@ -59,8 +62,6 @@ namespace ALgorithmPro.ALgorithm.Columns
         public Double TAX3R { get; set; }
         [Hidden]
         public Double ReturnQty { get; set; }
-        [Hidden]
-        public Double RestoreQty { get; set; }
         public Double ItemBAL { get; set; }
 
         [Hidden]

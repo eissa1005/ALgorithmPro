@@ -19,7 +19,7 @@ namespace ALgorithmPro.Common.Entities
             set => fields.UserPreferenceId[this] = value;
         }
 
-        [DisplayName("User ID")]
+        [DisplayName("UserID")]
         public Int32? UserId
         {
             get => fields.UserId[this];

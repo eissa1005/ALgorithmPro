@@ -18,6 +18,7 @@ namespace ALgorithmPro.Model.Repositories
             var lst = new ListResponse<MyRow>();
             try
             {
+           
                 return new MyListHandler(Context).Process(connection, request);
             }
             catch (Exception exception)

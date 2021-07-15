@@ -6,8 +6,7 @@ using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
 using System.ComponentModel;
-using System.IO;
-using System.Text.Json.Serialization;
+
 
 namespace ALgorithmPro.ALgorithm.Entities
 {

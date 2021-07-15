@@ -4,8 +4,8 @@
         TR_TY?: number;
         TR_NO?: number;
         TR_DT?: string;
-        TR_DS?: number;
         StoreID?: string;
+        TR_DS?: number;
         TRTY_NAME?: string;
         Store_NAME?: string;
         DocTransNo?: string;
@@ -94,8 +94,8 @@
             TR_TY = "TR_TY",
             TR_NO = "TR_NO",
             TR_DT = "TR_DT",
-            TR_DS = "TR_DS",
             StoreID = "StoreID",
+            TR_DS = "TR_DS",
             TRTY_NAME = "TRTY_NAME",
             Store_NAME = "Store_NAME",
             DocTransNo = "DocTransNo",

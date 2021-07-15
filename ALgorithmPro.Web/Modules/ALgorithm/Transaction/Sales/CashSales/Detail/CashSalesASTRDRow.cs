@@ -14,6 +14,7 @@ namespace ALgorithmPro.ALgorithm.Entities
     [DisplayName("CashSales Detail"), InstanceName("CashSales Detail")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
+    [LookupScript("ALgorithm.CashSalesASTRD")]
     public sealed class CashSalesASTRDRow : Row<CashSalesASTRDRow.RowFields>, IIdRow, INameRow
     {
         [Hidden]
@@ -33,14 +34,14 @@ namespace ALgorithmPro.ALgorithm.Entities
 
         }
         [Hidden]
-        [DisplayName("HeaderID"), NotNull, NameProperty, ForeignKey("[dbo].[ASTRH]", "HeaderID"), LeftJoin("jHeaderID")]
+        [DisplayName("HeaderID"), NotNull, NameProperty,LookupInclude, ForeignKey("[dbo].[ASTRH]", "HeaderID"), LeftJoin("jHeaderID")]
         public Int64? HeaderID
         {
             get => fields.HeaderID[this];
             set => fields.HeaderID[this] = value;
         }
         [Hidden]
-        [DisplayName("Transaction NAME"), Column("TR_TY"), PrimaryKey, NotNull, ForeignKey("[dbo].[ASTRH]", "TR_TY"), LeftJoin("jTRTY"), Updatable(false), Width(130)]
+        [DisplayName("Transaction NAME"), Column("TR_TY"), PrimaryKey, LookupInclude, NotNull, ForeignKey("[dbo].[ASTRH]", "TR_TY"), LeftJoin("jTRTY"), Updatable(false), Width(130)]
         [LookupEditor(typeof(CashSalesTRTYLookup), AutoComplete = true)]
         public Int32? TR_TY
         {
@@ -55,7 +56,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.TRTY_NAME[this] = value;
         }
         [Hidden]
-        [DisplayName("Invoice Number"), Column("TR_NO"), PrimaryKey, NotNull, ForeignKey("[dbo].[ASTRH]", "TR_NO"), LeftJoin("jTRNO"), Updatable(false)]
+        [DisplayName("Invoice Number"), Column("TR_NO"), PrimaryKey, LookupInclude,NotNull, ForeignKey("[dbo].[ASTRH]", "TR_NO"), LeftJoin("jTRNO"), Updatable(false)]
         public Int32? TR_NO
         {
             get => fields.TR_NO[this];
@@ -76,7 +77,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.TR_DT[this] = value;
         }
         [Hidden]
-        [DisplayName("Store Name"), Column("StoreID"), Size(100), PrimaryKey, NotNull, ForeignKey("[dbo].[ASTRH]", "StoreID"), LeftJoin("jStoreID"), Updatable(false)]
+        [DisplayName("Store Name"), Column("StoreID"), Size(100), PrimaryKey, LookupInclude, NotNull, ForeignKey("[dbo].[ASTRH]", "StoreID"), LeftJoin("jStoreID"), Updatable(false)]
         [LookupEditor(typeof(StoreLookup), AutoComplete = true)]
         public String StoreID
         {
@@ -91,21 +92,21 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.Store_NAME[this] = value;
         }
         [Hidden]
-        [DisplayName("TRDS"), Column("TR_DS"), NotNull]
+        [DisplayName("TRDS"), Column("TR_DS"), NotNull, LookupInclude]
         public Int32? TR_DS
         {
             get => fields.TR_DS[this];
             set => fields.TR_DS[this] = value;
         }
         [Hidden]
-        [DisplayName("GRP"), Column("GRP"), DefaultValue(0)]
+        [DisplayName("GRP"), Column("GRP"), DefaultValue(0), LookupInclude]
         public Int32? GRP
         {
             get => fields.GRP[this];
             set => fields.GRP[this] = value;
         }
         [Hidden]
-        [DisplayName("Account Name"), Column("ACC_NO"), Size(100)]
+        [DisplayName("Account Name"), Column("ACC_NO"), Size(100), LookupInclude]
         public String ACC_NO
         {
             get => fields.ACC_NO[this];
@@ -119,7 +120,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.ACC_NAME[this] = value;
         }
         [Hidden]
-        [DisplayName("Account Name2"), Column("ACC_NO2"), Size(100)]
+        [DisplayName("Account Name2"), Column("ACC_NO2"), Size(100), LookupInclude]
         public String ACC_NO2
         {
             get => fields.ACC_NO2[this];
@@ -147,28 +148,28 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.TR_DS_EN[this] = value;
         }
 
-        [DisplayName("ItemBAL"), Column("ItemBAL"), DefaultValue(0), ReadOnly(true), Width(100)]
+        [DisplayName("ItemBAL"), Column("ItemBAL"), DefaultValue(0), LookupInclude, ReadOnly(true), Width(100)]
         public Double? ItemBAL
         {
             get => fields.ItemBAL[this];
             set => fields.ItemBAL[this] = value;
         }
 
-        [DisplayName("Item Code"), Column("Item_CD"), Size(100), NotNull, Width(130)]
+        [DisplayName("Item Code"), Column("Item_CD"), Size(100), LookupInclude,NotNull, Width(130)]
         public String Item_CD
         {
             get => fields.Item_CD[this];
             set => fields.Item_CD[this] = value;
         }
 
-        [DisplayName("ItemBarCode"), Size(100), Width(130)]
+        [DisplayName("ItemBarCode"), Size(100), Width(130), LookupInclude]
         public String ItemBarCode
         {
             get => fields.ItemBarCode[this];
             set => fields.ItemBarCode[this] = value;
         }
 
-        [DisplayName("Package Name"), Column("PKID"), Size(10), Required, DefaultValue(1), Width(130)]
+        [DisplayName("Package Name"), Column("PKID"), Size(10), LookupInclude, Required, DefaultValue(1), Width(130)]
         [LookupEditor(typeof(PackageLookup), AutoComplete = true)]
         public String PKID
         {
@@ -183,21 +184,21 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.PKName[this] = value;
         }
 
-        [DisplayName("PKCNT"), Column("PK"), DefaultValue(1), ReadOnly(true)]
+        [DisplayName("PKCNT"), Column("PK"), DefaultValue(1), LookupInclude, ReadOnly(true)]
         public Double? PK
         {
             get => fields.PK[this];
             set => fields.PK[this] = value;
         }
 
-        [DisplayName("QTY"), Column("QTY"), NotNull, Required, Width(100)]
+        [DisplayName("QTY"), Column("QTY"), NotNull, Required, LookupInclude, Width(100)]
         public Double? QTY
         {
             get => fields.QTY[this];
             set => fields.QTY[this] = value;
         }
 
-        [DisplayName("Price"), Column("Price"), Required(false), DefaultValue(1), Width(120)]
+        [DisplayName("Price"), Column("Price"), Required(false), LookupInclude, DefaultValue(1), Width(120)]
         public Double? Price
         {
             get => fields.Price[this];
@@ -211,14 +212,14 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.PKPRC[this] = value;
         }
 
-        [DisplayName("Value"), NotNull, Required, ReadOnly(true), Width(100)]
+        [DisplayName("Value"), NotNull, Required, ReadOnly(true), Width(100), LookupInclude]
         public Double? Value
         {
             get => fields.Value[this];
             set => fields.Value[this] = value;
         }
 
-        [DisplayName("Cost Value"), Column("PKCST"), DefaultValue(0), ReadOnly(true)]
+        [DisplayName("Cost Value"), Column("PKCST"), DefaultValue(0), ReadOnly(true), LookupInclude]
         public Double? PKCST
         {
             get => fields.PKCST[this];
@@ -260,35 +261,35 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.LIFOVL[this] = value;
         }
         [Hidden]
-        [DisplayName("DISC"), Column("DISC"), DefaultValue(0)]
+        [DisplayName("DISC"), Column("DISC"), DefaultValue(0), LookupInclude]
         public Double? DISC
         {
             get => fields.DISC[this];
             set => fields.DISC[this] = value;
         }
 
-        [DisplayName("DISC1"), Column("DISC1"), DefaultValue(0), Width(120)]
+        [DisplayName("DISC1"), Column("DISC1"), DefaultValue(0), Width(120), LookupInclude]
         public Double? DISC1
         {
             get => fields.DISC1[this];
             set => fields.DISC1[this] = value;
         }
 
-        [DisplayName("DISC2"), Column("DISC2"), DefaultValue(0), Width(100)]
+        [DisplayName("DISC2"), Column("DISC2"), DefaultValue(0), Width(100), LookupInclude]
         public Double? DISC2
         {
             get => fields.DISC2[this];
             set => fields.DISC2[this] = value;
         }
 
-        [DisplayName("DISC3"), Column("DISC3"), DefaultValue(0), Width(100)]
+        [DisplayName("DISC3"), Column("DISC3"), DefaultValue(0), Width(100), LookupInclude]
         public Double? DISC3
         {
             get => fields.DISC3[this];
             set => fields.DISC3[this] = value;
         }
         [Hidden]
-        [DisplayName("DISC4"), Column("DISC4"), DefaultValue(0), Width(100)]
+        [DisplayName("DISC4"), Column("DISC4"), DefaultValue(0), Width(100), LookupInclude]
         public Double? DISC4
         {
             get => fields.DISC4[this];
@@ -323,28 +324,28 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.NetBeforeTAX[this] = value;
         }
         [Hidden]
-        [DisplayName("STAX_VL"), Column("STAX_VL"), DefaultValue(0)]
+        [DisplayName("STAX_VL"), Column("STAX_VL"), DefaultValue(0), LookupInclude]
         public Double? STAX_VL
         {
             get => fields.STAX_VL[this];
             set => fields.STAX_VL[this] = value;
         }
 
-        [DisplayName("TAX1"), Column("TAX1"), DefaultValue(0), Width(100)]
+        [DisplayName("TAX1"), Column("TAX1"), DefaultValue(0), Width(100), LookupInclude]
         public Double? TAX1
         {
             get => fields.TAX1[this];
             set => fields.TAX1[this] = value;
         }
 
-        [DisplayName("TAX2"), Column("TAX2"), DefaultValue(0), Width(100)]
+        [DisplayName("TAX2"), Column("TAX2"), DefaultValue(0), Width(100), LookupInclude]
         public Double? TAX2
         {
             get => fields.TAX2[this];
             set => fields.TAX2[this] = value;
         }
 
-        [DisplayName("TAX3"), Column("TAX3"), DefaultValue(0), Width(100)]
+        [DisplayName("TAX3"), Column("TAX3"), DefaultValue(0), Width(100), LookupInclude]
         public Double? TAX3
         {
             get => fields.TAX3[this];
@@ -380,7 +381,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.TAX3R[this] = value;
         }
         [Hidden]
-        [DisplayName("EXPENSEVL"), Column("EXPENSEVL"), DefaultValue(0)]
+        [DisplayName("EXPENSEVL"), Column("EXPENSEVL"), DefaultValue(0), LookupInclude]
         public Double? EXPENSEVL
         {
             get => fields.EXPENSEVL[this];
@@ -394,20 +395,20 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.EXPENSE_CNT[this] = value;
         }
 
-        [DisplayName("NetAfterTAX"), DefaultValue(0), Width(130)]
+        [DisplayName("NetAfterTAX"), DefaultValue(0), Width(130), LookupInclude]
         public Double? NetAfterTAX
         {
             get => fields.NetAfterTAX[this];
             set => fields.NetAfterTAX[this] = value;
         }
-        [DisplayName("NET"), DefaultValue(0), ReadOnly(true), Width(100)]
+        [DisplayName("NET"), DefaultValue(0), ReadOnly(true), Width(100), LookupInclude]
         public Double? NET
         {
             get => fields.NET[this];
             set => fields.NET[this] = value;
         }
         [Hidden]
-        [DisplayName("Currency Name"), Column("CurrencyID"), Size(100)]
+        [DisplayName("Currency Name"), Column("CurrencyID"), Size(100), LookupInclude]
         public String CurrencyID
         {
             get => fields.CurrencyID[this];
@@ -421,7 +422,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.Currency_Name[this] = value;
         }
         [Hidden]
-        [DisplayName("RATE"), Column("RATE"), DefaultValue(1)]
+        [DisplayName("RATE"), Column("RATE"), DefaultValue(1), LookupInclude]
         public Double? RATE
         {
             get => fields.RATE[this];
@@ -449,35 +450,35 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.BonusID[this] = value;
         }
         [Hidden]
-        [DisplayName("Return Qty"), DefaultValue(0)]
+        [DisplayName("Return Qty"), DefaultValue(0), LookupInclude]
         public Double? ReturnQty
         {
             get => fields.ReturnQty[this];
             set => fields.ReturnQty[this] = value;
         }
         [Hidden]
-        [DisplayName("Restore Qty"), DefaultValue(0)]
+        [DisplayName("Restore Qty"), DefaultValue(0), LookupInclude]
         public Double? RestoreQty
         {
             get => fields.RestoreQty[this];
             set => fields.RestoreQty[this] = value;
         }
         [Hidden]
-        [DisplayName("PTR_NO"), Column("PTR_NO"), DefaultValue(0)]
+        [DisplayName("PTR_NO"), Column("PTR_NO"), DefaultValue(0), LookupInclude]
         public Int32? PTR_NO
         {
             get => fields.PTR_NO[this];
             set => fields.PTR_NO[this] = value;
         }
         [Hidden]
-        [DisplayName("PTR_TY"), Column("PTR_TY"), DefaultValue(0)]
+        [DisplayName("PTR_TY"), Column("PTR_TY"), DefaultValue(0), LookupInclude]
         public Int32? PTR_TY
         {
             get => fields.PTR_TY[this];
             set => fields.PTR_TY[this] = value;
         }
         [Hidden]
-        [DisplayName("PStoreID"), Column("PStoreID"), Size(100)]
+        [DisplayName("PStoreID"), Column("PStoreID"), Size(100), LookupInclude]
         public String PStoreID
         {
             get => fields.PStoreID[this];
@@ -505,7 +506,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.PriceLevelId[this] = value;
         }
         [Hidden]
-        [DisplayName("Cash Name"), Column("CashBoxID"), Size(100)]
+        [DisplayName("Cash Name"), Column("CashBoxID"), Size(100), LookupInclude]
         public String CashBoxID
         {
             get => fields.CashBoxID[this];
@@ -526,14 +527,14 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.REP_CD[this] = value;
         }
         [Hidden]
-        [DisplayName("Rep Name"), Column("REP_NAME"), Size(300)]
+        [DisplayName("Rep Name"), Column("REP_NAME"), Size(300), LookupInclude]
         public String REP_NAME
         {
             get => fields.REP_NAME[this];
             set => fields.REP_NAME[this] = value;
         }
         [Hidden]
-        [DisplayName("Rep Name2"), Column("REP_CD2"), Size(100)]
+        [DisplayName("Rep Name2"), Column("REP_CD2"), Size(100), LookupInclude]
         public String REP_CD2
         {
             get => fields.REP_CD2[this];
@@ -547,7 +548,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.REP_NAME2[this] = value;
         }
         [Hidden]
-        [DisplayName("Cost Name"), Column("CST_CD"), Size(100)]
+        [DisplayName("Cost Name"), Column("CST_CD"), Size(100),LookupInclude]
         public String CST_CD
         {
             get => fields.CST_CD[this];
@@ -575,7 +576,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.SUM_NAME[this] = value;
         }
         [Hidden]
-        [DisplayName("SSum Name"), Column("SSUM_CD"), Size(100)]
+        [DisplayName("SSum Name"), Column("SSUM_CD"), Size(100), LookupInclude]
         public String SSUM_CD
         {
             get => fields.SSUM_CD[this];

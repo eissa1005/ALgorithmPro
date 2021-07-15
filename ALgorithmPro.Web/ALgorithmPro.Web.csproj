@@ -51,8 +51,11 @@
     <None Remove="Modules\ALgorithm\LookupGrid\Supplier\SupplierGrid.ts" />
     <None Remove="Modules\ALgorithm\Transaction\Purchase\CashRestore\Header\CashRestoreInvoice.vsrepx" />
     <None Remove="Modules\ALgorithm\Transaction\Purchase\CreditPurchase\PurchaseHeader\PurchInvoice.vsrepx" />
+    <None Remove="Modules\ALgorithm\Transaction\Purchase\RestorePurch\RestoreHeader\RestorePurchInvoice.vsrepx" />
+    <None Remove="Modules\ALgorithm\Transaction\Sales\CashReturn\Header\CashReturnInvoice.vsrepx" />
     <None Remove="Modules\ALgorithm\Transaction\Sales\CashSales\Header\CashSalesInvoice.vsrepx" />
     <None Remove="Modules\ALgorithm\Transaction\Sales\CreditSales\SalesHeader\SalesInvoice.vsrepx" />
+    <None Remove="Modules\ALgorithm\Transaction\Sales\ReturnSales\ReturnHeader\ReturnSalesInvoice.vsrepx" />
     <None Remove="Modules\Common\Helpers\CustomSlider.ts" />
     <None Remove="Modules\ALgorithm\LookupGrid\ACCNODialog.ts" />
     <None Remove="Modules\ALgorithm\LookupGrid\ACCNOGrid.ts" />
@@ -67,8 +70,11 @@
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Purchase\CashPurchase\Header\CashPurchInvoice.vsrepx" />
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Purchase\CashRestore\Header\CashRestoreInvoice.vsrepx" />
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Purchase\CreditPurchase\PurchaseHeader\PurchInvoice.vsrepx" />
+    <EmbeddedResource Include="Modules\ALgorithm\Transaction\Purchase\RestorePurch\RestoreHeader\RestorePurchInvoice.vsrepx" />
+    <EmbeddedResource Include="Modules\ALgorithm\Transaction\Sales\CashReturn\Header\CashReturnInvoice.vsrepx" />
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Sales\CashSales\Header\CashSalesInvoice.vsrepx" />
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Sales\CreditSales\SalesHeader\SalesInvoice.vsrepx" />
+    <EmbeddedResource Include="Modules\ALgorithm\Transaction\Sales\ReturnSales\ReturnHeader\ReturnSalesInvoice.vsrepx" />
     <None Include="wwwroot\Content\adminlte\.csslintrc" />
     <None Include="wwwroot\Content\adminlte\404_500_errors.less" />
     <None Include="wwwroot\Content\adminlte\AdminLTE.less" />
@@ -288,6 +294,18 @@
     <Compile Update="Modules\ALgorithm\Transaction\Purchase\CreditPurchase\PurchaseHeader\PurchInvoice.Designer.cs">
       <DependentUpon>PurchInvoice.vsrepx</DependentUpon>
     </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Purchase\RestorePurch\RestoreHeader\RestorePurchInvoice.cs">
+      <DependentUpon>RestorePurchInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Purchase\RestorePurch\RestoreHeader\RestorePurchInvoice.Designer.cs">
+      <DependentUpon>RestorePurchInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Sales\CashReturn\Header\CashReturnInvoice.cs">
+      <DependentUpon>CashReturnInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Sales\CashReturn\Header\CashReturnInvoice.Designer.cs">
+      <DependentUpon>CashReturnInvoice.vsrepx</DependentUpon>
+    </Compile>
     <Compile Update="Modules\ALgorithm\Transaction\Sales\CashSales\Header\CashSalesInvoice.cs">
       <DependentUpon>CashSalesInvoice.vsrepx</DependentUpon>
     </Compile>
@@ -299,6 +317,12 @@
     </Compile>
     <Compile Update="Modules\ALgorithm\Transaction\Sales\CreditSales\SalesHeader\SalesInvoice.Designer.cs">
       <DependentUpon>SalesInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Sales\ReturnSales\ReturnHeader\ReturnSalesInvoice.cs">
+      <DependentUpon>ReturnSalesInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transaction\Sales\ReturnSales\ReturnHeader\ReturnSalesInvoice.Designer.cs">
+      <DependentUpon>ReturnSalesInvoice.vsrepx</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(SolutionDir)Serenity\build\submodule.targets" Condition="Exists('$(SolutionDir)Serenity\build\submodule.targets')" />

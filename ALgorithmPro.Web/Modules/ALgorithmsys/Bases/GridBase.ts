@@ -180,7 +180,7 @@ namespace AS {
 
             columns.forEach(column => {
                 if (extOptions.AutoColumnSize == true) {
-                    column.width = column.minWidth || column.width || 100;
+                    column.width = column.minWidth || column.width || 110;
                     column.cssClass = column.cssClass || '';
                 }
 
@@ -199,13 +199,18 @@ namespace AS {
                         column.cssClass += ' align-center';
                         column.width = column.minWidth > 140 ? column.minWidth : 140;
                     } else if (formatterType == "Number") {
+                        column.width = column.minWidth > 100 ? column.minWidth : 110;
+                        column.cssClass += ' align-center';
+
+                    }else if (formatterType == "String") {
+                        column.width = column.minWidth > 200 ? column.minWidth : 200;
                         column.cssClass += ' align-left';
 
-                    } else if (formatterType == "Checkbox") {
+                    }
+                    else if (formatterType == "Checkbox") {
                         column.cssClass += ' align-center';
                     } else {
                         column.cssClass += ' align-left';
-                        column.width = column.minWidth > 99 ? column.minWidth : 99;
                     }
 
                     //formatter                    
@@ -314,8 +319,10 @@ namespace AS {
                                 column.editor = Slick['Editors']['PercentComplete'];
                             } else if (editorType == "LongText") {
                                 column.editor = Slick['Editors']['LongText'];
+                                column.width = column.minWidth > 160 ? column.minWidth : 200;
                             } else {
                                 column.editor = Slick['Editors']['Text'];
+                                column.width = column.minWidth > 160 ? column.minWidth : 200;
                             }
                         }
                     }

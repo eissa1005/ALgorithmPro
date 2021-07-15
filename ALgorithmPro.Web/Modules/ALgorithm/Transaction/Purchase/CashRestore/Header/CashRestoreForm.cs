@@ -1,19 +1,17 @@
-﻿using Serenity;
+﻿using System;
 using Serenity.ComponentModel;
-using Serenity.Data;
-using System;
 using System.ComponentModel;
 using System.Collections.Generic;
-using System.IO;
 using ALgorithmPro.ALgorithm.Entities;
 
 namespace ALgorithmPro.ALgorithm.Forms
 {
     [FormScript("ALgorithm.CashRestore")]
-    [BasedOnRow(typeof(Entities.CashRestoreRow), CheckNames = true)]
+    [BasedOnRow(typeof(CashRestoreRow), CheckNames = true)]
     public class CashRestoreForm
     {
         [Category("CashRestore Info")]
+
         [FormWidth("col-sm-4")]
         public Int32 TR_TY { get; set; }
 
@@ -27,9 +25,11 @@ namespace ALgorithmPro.ALgorithm.Forms
         public Int32 TR_NO { get; set; }
 
         [FormWidth("col-sm-4")]
+        public Int32 TR_DS { get; set; }
+
+        [FormWidth("col-sm-4")]
         [DateTimeEditor]
         public DateTime TR_DT { get; set; }
-        public Int32 TR_DS { get; set; }
 
         [FormWidth("col-sm-4")]
         public String DocTransNo { get; set; }
@@ -61,7 +61,8 @@ namespace ALgorithmPro.ALgorithm.Forms
         public Double Balance { get; set; }
 
         public String Notes { get; set; }
-        
+
+
         [Hidden]
         public String HDSCR_AR { get; set; }
         [Hidden]
@@ -130,7 +131,8 @@ namespace ALgorithmPro.ALgorithm.Forms
         public Double HTAX2 { get; set; }
         [Hidden]
         public Double HTAX3 { get; set; }
- 
+        [Hidden]
+        public Double HTAX4 { get; set; }
         [Hidden]
         public Double HTAX1R { get; set; }
         [Hidden]
@@ -180,9 +182,9 @@ namespace ALgorithmPro.ALgorithm.Forms
 
         [HalfWidth, ReadOnly(true)]
         public Double HDISC { get; set; }
-
+       
         [HalfWidth, ReadOnly(true)]
-        public Double NetBeforeTAX { get; set; }
+        public Double NetAfterTAX { get; set; }
 
         [HalfWidth, ReadOnly(true)]
         public Double HTAX { get; set; }
@@ -191,7 +193,7 @@ namespace ALgorithmPro.ALgorithm.Forms
         public Double HAddtions { get; set; }
 
         [HalfWidth, ReadOnly(true)]
-        public Double NetAfterTAX { get; set; }
+        public Double NetBeforeTAX { get; set; }
 
         [HalfWidth, ReadOnly(true)]
         public Double NetTotal { get; set; }

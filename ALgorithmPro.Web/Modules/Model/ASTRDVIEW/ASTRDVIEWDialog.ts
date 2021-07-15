@@ -1,5 +1,5 @@
 ﻿
-namespace ALgorithmPro.Model {
+namespace ALgorithmPro {
 
     @Serenity.Decorators.registerClass()
     export class ASTRDVIEWDialog extends Serenity.EntityDialog<ASTRDVIEWRow, any> {

@@ -126,7 +126,7 @@ namespace ALgorithmPro.ALgorithm {
                 title: 'Print',
                 cssClass: 'print-button',
                 reportKey: 'ALgorithm.CashPurchASTRD',
-                Url:'CashPurchase/Index',
+                Url:'CashPurch/Index',
                 getParams: () => ({
                     HeaderID: this.get_entityId()
                 })

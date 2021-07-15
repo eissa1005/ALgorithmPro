@@ -1,10 +1,6 @@
-﻿using Serenity;
+﻿using System;
 using Serenity.ComponentModel;
-using Serenity.Data;
-using System;
 using System.ComponentModel;
-using System.Collections.Generic;
-using System.IO;
 
 namespace ALgorithmPro.ALgorithm.Columns
 {
@@ -75,6 +71,8 @@ namespace ALgorithmPro.ALgorithm.Columns
         public String Notes { get; set; }
         public Double Paid { get; set; }
         public Double Total { get; set; }
+        public Double NetBeforeTAX { get; set; }
+        public Double NetAfterTAX { get; set; }
         public Double NetTotal { get; set; }
         public Double Balance { get; set; }
         public Int32 Periodterm { get; set; }

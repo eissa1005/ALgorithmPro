@@ -139,7 +139,7 @@ namespace ALgorithmPro.ALgorithm {
                 title: 'Print',
                 cssClass: 'print-button',
                 reportKey: 'ALgorithm.CashRestoreASTRD',
-                Url: 'CashRestore/Index',
+                Url: 'CashRestorePurch/Index',
                 getParams: () => ({
                     HeaderID: this.get_entityId()
                 })

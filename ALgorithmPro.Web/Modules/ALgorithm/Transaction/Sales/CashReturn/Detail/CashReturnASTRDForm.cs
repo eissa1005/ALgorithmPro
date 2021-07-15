@@ -23,6 +23,7 @@ namespace ALgorithmPro.ALgorithm.Forms
         public String Item_CD { get; set; }
         public String ITM_NM_AR { get; set; }
         public Double QTY { get; set; }
+        public Double ReturnQty { get; set; }
         public Double Price { set; get; }
         public Double Value { get; set; }
         public Double TAX1 { get; set; }
@@ -30,6 +31,7 @@ namespace ALgorithmPro.ALgorithm.Forms
         public Double TAX2 { get; set; }
         public Double DISC2 { get; set; }
         public Double TAX3 { get; set; }
+
         [Hidden]
         public Double TAXVAL { get; set; }
 
@@ -62,10 +64,10 @@ namespace ALgorithmPro.ALgorithm.Forms
         public Double TAX2R { get; set; }
         [Hidden]
         public Double TAX3R { get; set; }
-        [Hidden]
-        public Double ReturnQty { get; set; }
+
         [Hidden]
         public Double RestoreQty { get; set; }
+
         [Hidden]
         public Double ItemBAL { get; set; }
 

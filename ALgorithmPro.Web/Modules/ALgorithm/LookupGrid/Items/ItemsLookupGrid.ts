@@ -30,6 +30,15 @@ namespace ALgorithmPro.ALgorithm {
                 this.Grid = PurchASTRDEditor.GridName;
             }
 
+            if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.CashRestore) {
+                this.SelectTRTY = AS.TRTYType.CashRestore;
+                this.Grid = CashRestoreASTRDEditor.GridName;
+            }
+            //if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.RestorePurch) {
+            //    this.SelectTRTY = AS.TRTYType.RestorePurch;
+            //    this.Grid = RestoreASTRDEditor.GridName;
+            //}
+
             if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.CashSales) {
                 this.SelectTRTY = AS.TRTYType.CashSales;
                 this.Grid = CashSalesASTRDEditor.GridName;

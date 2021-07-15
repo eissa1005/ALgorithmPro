@@ -1,6 +1,4 @@
-﻿using ALgorithmPro;
-using ALgorithmPro.ALgorithm;
-using Serenity.Navigation;
+﻿using Serenity.Navigation;
 using MyPages = ALgorithmPro.ALgorithm.Pages;
 
 [assembly: NavigationMenu(10000, "ALgorithm", icon: "fa-desktop")]
@@ -29,17 +27,17 @@ using MyPages = ALgorithmPro.ALgorithm.Pages;
 
 [assembly: NavigationMenu(13000, "ALgorithm/Transactions", icon: "fa-cube")]
 [assembly: NavigationMenu(13000, "ALgorithm/Transactions/Purchase", icon: "fa-cube")]
-[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/CashPurchase", typeof(MyPages.CashPurchASTRHController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/CreditPurchase", typeof(MyPages.PurchaseController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/CashRestore", typeof(MyPages.CashRestoreController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/CreditRestore", typeof(MyPages.RestoreASTRHController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/Cash Purchase", typeof(MyPages.CashPurchASTRHController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/Credit Purchase", typeof(MyPages.PurchaseController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/Cash Restore", typeof(MyPages.CashRestoreController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Purchase/Restore Purchase", typeof(MyPages.RestorePurchaseController), icon: null)]
 
 
 [assembly: NavigationMenu(13000, "ALgorithm/Transactions/Sales", icon: "fa-cube")]
-[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/CashSales", typeof(MyPages.CashSalesController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/CreditSales", typeof(MyPages.SalesController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/CashReturn", typeof(MyPages.CashReturnASTRHController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/CreditReturn", typeof(MyPages.ReturnASTRHController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/Cash Sales", typeof(MyPages.CashSalesController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/Credit Sales", typeof(MyPages.SalesController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/Cash Return", typeof(MyPages.CashReturnController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/Credit Return", typeof(MyPages.ReturnSalesController), icon: null)]
 
 
 [assembly: NavigationMenu(14000, "ALgorithm/Checks", icon: "fa-desktop")]

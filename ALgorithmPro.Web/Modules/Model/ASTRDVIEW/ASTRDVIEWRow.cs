@@ -4,7 +4,7 @@ using Serenity.ComponentModel;
 using Serenity.Data.Mapping;
 using System.ComponentModel;
 
-namespace ALgorithmPro.Model.Entities
+namespace ALgorithmPro
 {
     [ConnectionKey("Default"), Module("Model"), TableName("[dbo].[ASTRDVIEW]")]
     [DisplayName("ASTRDVIEW"), InstanceName("ASTRDVIEW")]

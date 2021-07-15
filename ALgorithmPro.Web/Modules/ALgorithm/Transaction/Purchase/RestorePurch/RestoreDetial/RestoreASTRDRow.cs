@@ -1,12 +1,11 @@
-﻿using ALgorithmPro.Lookup;
+﻿using System;
+using ALgorithmPro.Lookup;
 using ALgorithmPro.Web.Modules.Common;
-using Serenity;
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
-using System;
 using System.ComponentModel;
-using System.IO;
+
 
 namespace ALgorithmPro.ALgorithm.Entities
 {
@@ -42,7 +41,7 @@ namespace ALgorithmPro.ALgorithm.Entities
         }
         [Hidden]
         [DisplayName("Transaction NAME"), Column("TR_TY"), PrimaryKey, NotNull, ForeignKey("[dbo].[ASTRH]", "TR_TY"), LeftJoin("jTRTY"), Updatable(false), Width(130)]
-        [LookupEditor(typeof(RestoreTRTYLookup), AutoComplete = true)]
+        [LookupEditor(typeof(CashRestoreTRTYLookup), AutoComplete = true)]
         public Int32? TR_TY
         {
             get => fields.TR_TY[this];
@@ -148,14 +147,14 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.TR_DS_EN[this] = value;
         }
 
-        [DisplayName("ItemBAL"), Column("ItemBAL"), DefaultValue(0), ReadOnly(true), Width(100)]
+        [DisplayName("ItemBAL"), Column("ItemBAL"), DefaultValue(0), ReadOnly(true)]
         public Double? ItemBAL
         {
             get => fields.ItemBAL[this];
             set => fields.ItemBAL[this] = value;
         }
 
-        [DisplayName("Item Code"), Column("Item_CD"), Size(100), NotNull, Width(130)]
+        [DisplayName("Item Code"), Column("Item_CD"), Size(100), NotNull]
         public String Item_CD
         {
             get => fields.Item_CD[this];
@@ -169,7 +168,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.ItemBarCode[this] = value;
         }
 
-        [DisplayName("Package Name"), Column("PKID"), Size(10), Required, DefaultValue(1), Width(130)]
+        [DisplayName("Package"), Column("PKID"), Size(10), Required, DefaultValue(1)]
         [LookupEditor(typeof(PackageLookup), AutoComplete = true)]
         public String PKID
         {
@@ -177,7 +176,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.PKID[this] = value;
         }
         [Hidden]
-        [DisplayName("Pk Name"), Column("PKName"), Size(100)]
+        [DisplayName("PKName"), Column("PKName"), Size(100)]
         public String PKName
         {
             get => fields.PKName[this];
@@ -191,14 +190,21 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.PK[this] = value;
         }
 
-        [DisplayName("QTY"), Column("QTY"), NotNull, Required, Width(100)]
+        [DisplayName("Bsic Quantity"), Column("QTY"), NotNull, ReadOnly(true)]
         public Double? QTY
         {
             get => fields.QTY[this];
             set => fields.QTY[this] = value;
         }
 
-        [DisplayName("Price"), Column("Price"), Required(false), DefaultValue(1), Width(120)]
+        [DisplayName("Quantity"), Column("RestoreQty"), DefaultValue(0)]
+        public Double? RestoreQty
+        {
+            get => fields.RestoreQty[this];
+            set => fields.RestoreQty[this] = value;
+        }
+
+        [DisplayName("Price"), Column("Price"), Required(false), DefaultValue(1)]
         public Double? Price
         {
             get => fields.Price[this];
@@ -212,7 +218,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.PKPRC[this] = value;
         }
 
-        [DisplayName("Value"), NotNull, Required, ReadOnly(true), Width(100)]
+        [DisplayName("Value"), NotNull, Required, ReadOnly(true)]
         public Double? Value
         {
             get => fields.Value[this];
@@ -268,28 +274,28 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.DISC[this] = value;
         }
 
-        [DisplayName("DISC1"), Column("DISC1"), DefaultValue(0), Width(120)]
+        [DisplayName("DISC1"), Column("DISC1"), DefaultValue(0)]
         public Double? DISC1
         {
             get => fields.DISC1[this];
             set => fields.DISC1[this] = value;
         }
 
-        [DisplayName("DISC2"), Column("DISC2"), DefaultValue(0), Width(100)]
+        [DisplayName("DISC2"), Column("DISC2"), DefaultValue(0)]
         public Double? DISC2
         {
             get => fields.DISC2[this];
             set => fields.DISC2[this] = value;
         }
 
-        [DisplayName("DISC3"), Column("DISC3"), DefaultValue(0), Width(100)]
+        [DisplayName("DISC3"), Column("DISC3"), DefaultValue(0)]
         public Double? DISC3
         {
             get => fields.DISC3[this];
             set => fields.DISC3[this] = value;
         }
         [Hidden]
-        [DisplayName("DISC4"), Column("DISC4"), DefaultValue(0), Width(100)]
+        [DisplayName("DISC4"), Column("DISC4"), DefaultValue(0)]
         public Double? DISC4
         {
             get => fields.DISC4[this];
@@ -317,12 +323,13 @@ namespace ALgorithmPro.ALgorithm.Entities
             get => fields.DISC3R[this];
             set => fields.DISC3R[this] = value;
         }
-        [DisplayName("NetBeforeTAX"), DefaultValue(0), Width(130)]
+        [DisplayName("NetBeforeTAX"), DefaultValue(0)]
         public Double? NetBeforeTAX
         {
             get => fields.NetBeforeTAX[this];
             set => fields.NetBeforeTAX[this] = value;
         }
+
         [Hidden]
         [DisplayName("STAX_VL"), Column("STAX_VL"), DefaultValue(0)]
         public Double? STAX_VL
@@ -331,27 +338,29 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.STAX_VL[this] = value;
         }
 
-        [DisplayName("TAX1"), Column("TAX1"), DefaultValue(0), Width(100)]
+        [DisplayName("TAX1"), Column("TAX1"), DefaultValue(0)]
         public Double? TAX1
         {
             get => fields.TAX1[this];
             set => fields.TAX1[this] = value;
         }
 
-        [DisplayName("TAX2"), Column("TAX2"), DefaultValue(0), Width(100)]
+        [DisplayName("TAX2"), Column("TAX2"), DefaultValue(0)]
         public Double? TAX2
         {
             get => fields.TAX2[this];
             set => fields.TAX2[this] = value;
         }
 
-        [DisplayName("TAX3"), Column("TAX3"), DefaultValue(0), Width(100)]
+        [DisplayName("TAX3"), Column("TAX3"), DefaultValue(0)]
         public Double? TAX3
         {
             get => fields.TAX3[this];
             set => fields.TAX3[this] = value;
         }
-        [DisplayName("TAXVAL"), Column("TAXVAL"), DefaultValue(0), Width(100)]
+
+        [Hidden]
+        [DisplayName("TAXVAL"), Column("TAXVAL"), DefaultValue(0)]
         public Double? TAXVAL
         {
             get => fields.TAXVAL[this];
@@ -394,13 +403,13 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.EXPENSE_CNT[this] = value;
         }
 
-        [DisplayName("NetAfterTAX"), DefaultValue(0), Width(130)]
+        [DisplayName("NetAfterTAX"), DefaultValue(0)]
         public Double? NetAfterTAX
         {
             get => fields.NetAfterTAX[this];
             set => fields.NetAfterTAX[this] = value;
         }
-        [DisplayName("NET"), DefaultValue(0), ReadOnly(true), Width(100)]
+        [DisplayName("NET"), DefaultValue(0), ReadOnly(true)]
         public Double? NET
         {
             get => fields.NET[this];
@@ -455,13 +464,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             get => fields.ReturnQty[this];
             set => fields.ReturnQty[this] = value;
         }
-        [Hidden]
-        [DisplayName("Restore Qty"), DefaultValue(0)]
-        public Double? RestoreQty
-        {
-            get => fields.RestoreQty[this];
-            set => fields.RestoreQty[this] = value;
-        }
+
         [Hidden]
         [DisplayName("PTR_NO"), Column("PTR_NO"), DefaultValue(0)]
         public Int32? PTR_NO
@@ -660,7 +663,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.EnteredBy[this] = value;
         }
         [Hidden]
-        [DisplayName("EntryDate"), DefaultValue("now")]
+        [DisplayName("EntryDate")]
         public DateTime? EntryDate
         {
             get => fields.EntryDate[this];
@@ -674,7 +677,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.UpdatedBy[this] = value;
         }
         [Hidden]
-        [DisplayName("UpdateDate"), DefaultValue("now")]
+        [DisplayName("UpdateDate")]
         public DateTime? UpdateDate
         {
             get => fields.UpdateDate[this];

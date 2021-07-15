@@ -7,6 +7,7 @@
         Item_CD: Serenity.StringEditor;
         ITM_NM_AR: Serenity.StringEditor;
         QTY: Serenity.DecimalEditor;
+        RestoreQty: Serenity.DecimalEditor;
         Price: Serenity.DecimalEditor;
         Value: Serenity.DecimalEditor;
         TAX1: Serenity.DecimalEditor;
@@ -30,7 +31,6 @@
         TAX2R: Serenity.DecimalEditor;
         TAX3R: Serenity.DecimalEditor;
         ReturnQty: Serenity.DecimalEditor;
-        RestoreQty: Serenity.DecimalEditor;
         ItemBAL: Serenity.DecimalEditor;
         HeaderID: Serenity.StringEditor;
         TR_TY: Serenity.LookupEditor;
@@ -123,6 +123,7 @@
                     'Item_CD', w0,
                     'ITM_NM_AR', w0,
                     'QTY', w2,
+                    'RestoreQty', w2,
                     'Price', w2,
                     'Value', w2,
                     'TAX1', w2,
@@ -146,7 +147,6 @@
                     'TAX2R', w2,
                     'TAX3R', w2,
                     'ReturnQty', w2,
-                    'RestoreQty', w2,
                     'ItemBAL', w2,
                     'HeaderID', w0,
                     'TR_TY', w1,

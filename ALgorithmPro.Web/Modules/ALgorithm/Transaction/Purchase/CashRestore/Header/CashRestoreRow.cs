@@ -45,6 +45,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             get => fields.TR_DT[this];
             set => fields.TR_DT[this] = value;
         }
+
         [Hidden]
         [DisplayName("TRDS"), Column("TR_DS"), NotNull]
         public Int32? TR_DS
@@ -220,7 +221,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             get => fields.SSUM_NAME[this];
             set => fields.SSUM_NAME[this] = value;
         }
-        
+
         [DisplayName("Supervisor Name"), Size(100)]
         public String SupervisorId
         {
@@ -270,7 +271,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.HDSCR_EN[this] = value;
         }
 
-        [DisplayName("Price"), Column("PriceID"), Size(100)]
+        [DisplayName("Price"), Column("PriceID"), Size(100), DefaultValue(0)]
         [LookupEditor(typeof(PricePurchLookup), AutoComplete = true, InplaceAdd = true)]
         public String PriceID
         {
@@ -285,7 +286,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.Priceedit[this] = value;
         }
 
-        [DisplayName("Reference Number"), DefaultValue(0)]
+        [DisplayName("Reference"), DefaultValue(0)]
         public Int32? ReferenceNo
         {
             get => fields.ReferenceNo[this];
@@ -491,7 +492,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.EnteredBy[this] = value;
         }
 
-        [DisplayName("EntryDate"), DefaultValue("now")]
+        [DisplayName("EntryDate")]
         public DateTime? EntryDate
         {
             get => fields.EntryDate[this];
@@ -505,14 +506,14 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.UpdatedBy[this] = value;
         }
 
-        [DisplayName("UpdateDate"), DefaultValue("now")]
+        [DisplayName("UpdateDate")]
         public DateTime? UpdateDate
         {
             get => fields.UpdateDate[this];
             set => fields.UpdateDate[this] = value;
         }
 
-        [DisplayName("Add Detail"), MasterDetailRelation(foreignKey: "HeaderID"), NotMapped, NotNull]
+        [DisplayName("Add Detail"), MasterDetailRelation(foreignKey: "HeaderID"), NotMapped , NotNull]
         public List<CashRestoreASTRDRow> DetailList
         {
             get => fields.DetailList[this];
@@ -587,8 +588,8 @@ namespace ALgorithmPro.ALgorithm.Entities
             public Int32Field TR_TY;
             public Int32Field TR_NO;
             public DateTimeField TR_DT;
-            public Int32Field TR_DS;
             public StringField StoreID;
+            public Int32Field TR_DS;
             public StringField TRTY_NAME;
             public StringField Store_NAME;
             public StringField DocTransNo;

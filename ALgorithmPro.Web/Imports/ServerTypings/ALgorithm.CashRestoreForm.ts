@@ -4,8 +4,8 @@
         StoreID: Serenity.LookupEditor;
         CashBoxID: Serenity.LookupEditor;
         TR_NO: Serenity.IntegerEditor;
-        TR_DT: Serenity.DateTimeEditor;
         TR_DS: Serenity.IntegerEditor;
+        TR_DT: Serenity.DateTimeEditor;
         DocTransNo: Serenity.StringEditor;
         ACC_NO: Serenity.StringEditor;
         ACC_NAME: Serenity.StringEditor;
@@ -50,6 +50,7 @@
         HTAX1: Serenity.DecimalEditor;
         HTAX2: Serenity.DecimalEditor;
         HTAX3: Serenity.DecimalEditor;
+        HTAX4: Serenity.DecimalEditor;
         HTAX1R: Serenity.DecimalEditor;
         HTAX2R: Serenity.DecimalEditor;
         HTAX3R: Serenity.DecimalEditor;
@@ -71,10 +72,10 @@
         Total: Serenity.DecimalEditor;
         Paid: Serenity.DecimalEditor;
         HDISC: Serenity.DecimalEditor;
-        NetBeforeTAX: Serenity.DecimalEditor;
+        NetAfterTAX: Serenity.DecimalEditor;
         HTAX: Serenity.DecimalEditor;
         HAddtions: Serenity.DecimalEditor;
-        NetAfterTAX: Serenity.DecimalEditor;
+        NetBeforeTAX: Serenity.DecimalEditor;
         NetTotal: Serenity.DecimalEditor;
     }
 
@@ -105,8 +106,8 @@
                     'StoreID', w0,
                     'CashBoxID', w0,
                     'TR_NO', w1,
-                    'TR_DT', w2,
                     'TR_DS', w1,
+                    'TR_DT', w2,
                     'DocTransNo', w3,
                     'ACC_NO', w3,
                     'ACC_NAME', w3,
@@ -151,6 +152,7 @@
                     'HTAX1', w4,
                     'HTAX2', w4,
                     'HTAX3', w4,
+                    'HTAX4', w4,
                     'HTAX1R', w4,
                     'HTAX2R', w4,
                     'HTAX3R', w4,
@@ -172,10 +174,10 @@
                     'Total', w4,
                     'Paid', w4,
                     'HDISC', w4,
-                    'NetBeforeTAX', w4,
+                    'NetAfterTAX', w4,
                     'HTAX', w4,
                     'HAddtions', w4,
-                    'NetAfterTAX', w4,
+                    'NetBeforeTAX', w4,
                     'NetTotal', w4
                 ]);
             }

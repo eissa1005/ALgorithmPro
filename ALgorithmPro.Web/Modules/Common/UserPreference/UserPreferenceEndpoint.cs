@@ -14,7 +14,6 @@ namespace ALgorithmPro.Common.Endpoints
         [HttpPost]
         public ServiceResponse Update(IUnitOfWork uow, UserPreferenceUpdateRequest request)
         {
-
             return new MyRepository(Context).Update(uow, request);
         }
 

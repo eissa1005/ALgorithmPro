@@ -166,7 +166,7 @@ namespace MVC
                         public static class Header
                         {
                             public const string CashPurchIndex = "~/Modules/ALgorithm/Transaction/Purchase/CashPurchase/Header/CashPurchIndex.cshtml";
-                            public const string InvoicReport = "~/Modules/ALgorithm/Transaction/Purchase/CashPurchase/Header/InvoicReport.cshtml";
+                            public const string CashPurchInvoice = "~/Modules/ALgorithm/Transaction/Purchase/CashPurchase/Header/CashPurchInvoice.cshtml";
                         }
 
                     }
@@ -181,7 +181,7 @@ namespace MVC
                         public static class Header
                         {
                             public const string CashRestoreIndex = "~/Modules/ALgorithm/Transaction/Purchase/CashRestore/Header/CashRestoreIndex.cshtml";
-                            public const string InvoicReport = "~/Modules/ALgorithm/Transaction/Purchase/CashRestore/Header/InvoicReport.cshtml";
+                            public const string CashRestorePurchInvoice = "~/Modules/ALgorithm/Transaction/Purchase/CashRestore/Header/CashRestorePurchInvoice.cshtml";
                         }
 
                     }
@@ -195,8 +195,8 @@ namespace MVC
 
                         public static class PurchaseHeader
                         {
-                            public const string InvoicPurchReport = "~/Modules/ALgorithm/Transaction/Purchase/CreditPurchase/PurchaseHeader/InvoicPurchReport.cshtml";
                             public const string PurchaseIndex = "~/Modules/ALgorithm/Transaction/Purchase/CreditPurchase/PurchaseHeader/PurchaseIndex.cshtml";
+                            public const string PurchInvoice = "~/Modules/ALgorithm/Transaction/Purchase/CreditPurchase/PurchaseHeader/PurchInvoice.cshtml";
                         }
 
                     }
@@ -210,7 +210,8 @@ namespace MVC
 
                         public static class RestoreHeader
                         {
-                            public const string RestoreASTRHIndex = "~/Modules/ALgorithm/Transaction/Purchase/RestorePurch/RestoreHeader/RestoreASTRHIndex.cshtml";
+                            public const string RestorePurchaseIndex = "~/Modules/ALgorithm/Transaction/Purchase/RestorePurch/RestoreHeader/RestorePurchaseIndex.cshtml";
+                            public const string RestorePurchInvoice = "~/Modules/ALgorithm/Transaction/Purchase/RestorePurch/RestoreHeader/RestorePurchInvoice.cshtml";
                         }
 
                     }
@@ -228,7 +229,8 @@ namespace MVC
 
                         public static class Header
                         {
-                            public const string CashReturnASTRHIndex = "~/Modules/ALgorithm/Transaction/Sales/CashReturn/Header/CashReturnASTRHIndex.cshtml";
+                            public const string CashReturnIndex = "~/Modules/ALgorithm/Transaction/Sales/CashReturn/Header/CashReturnIndex.cshtml";
+                            public const string CashReturnSalesInvoice = "~/Modules/ALgorithm/Transaction/Sales/CashReturn/Header/CashReturnSalesInvoice.cshtml";
                         }
 
                     }
@@ -273,7 +275,8 @@ namespace MVC
 
                         public static class ReturnHeader
                         {
-                            public const string ReturnASTRHIndex = "~/Modules/ALgorithm/Transaction/Sales/ReturnSales/ReturnHeader/ReturnASTRHIndex.cshtml";
+                            public const string ReturnSalesIndex = "~/Modules/ALgorithm/Transaction/Sales/ReturnSales/ReturnHeader/ReturnSalesIndex.cshtml";
+                            public const string ReturnSalesInvoice = "~/Modules/ALgorithm/Transaction/Sales/ReturnSales/ReturnHeader/ReturnSalesInvoice.cshtml";
                         }
                     }
                 }

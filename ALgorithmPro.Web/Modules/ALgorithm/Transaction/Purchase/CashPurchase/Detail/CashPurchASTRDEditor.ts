@@ -56,6 +56,8 @@ namespace ALgorithmPro.ALgorithm {
                 }
             });
 
+
+
             // onCellChange 👈
             this.slickGrid.onCellChange.subscribe((e, args) => {
 
@@ -65,7 +67,9 @@ namespace ALgorithmPro.ALgorithm {
                 var index = args.row;
                 var columns = grd.getColumns();
                 var field = columns[cell].field;
-                BS.PackageChange(grd, field, index, row);
+                if (field == FLD.PKID) {
+                    BS.PackageChange(grd, field, index, row);
+                }
                 BS.UpdateGrid(grd, index, row);
                 var items = this.slickGrid.getData().slice();
                 this.value = items;

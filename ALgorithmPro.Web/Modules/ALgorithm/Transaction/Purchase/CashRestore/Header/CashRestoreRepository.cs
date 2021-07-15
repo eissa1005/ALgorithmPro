@@ -276,8 +276,10 @@ namespace ALgorithmPro.ALgorithm.Repositories
                 connection.Execute(StoredName.ADJITMLOCBAL, commandTimeout: 30, commandType: CommandType.StoredProcedure);
                 connection.Execute(StoredName.GetItemBAL, commandTimeout: 30, commandType: CommandType.StoredProcedure);
                 connection.Execute(StoredName.ADJCST, commandTimeout: 30, commandType: CommandType.StoredProcedure);
+              
             }
         }
+        
         // Validatetion 
         public static bool IsValidate(SaveRequest<MyRow> request)
         {

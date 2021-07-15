@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using Serenity.Services;
-using MyRow = ALgorithmPro.Model.Entities.ASTRDVIEWRow;
+using MyRow = ALgorithmPro.ASTRDVIEWRow;
 
 namespace ALgorithmPro.Model.Repositories
 {

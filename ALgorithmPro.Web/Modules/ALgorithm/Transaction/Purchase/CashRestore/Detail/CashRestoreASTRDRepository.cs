@@ -1,8 +1,8 @@
-﻿using Serenity;
-using Serenity.Data;
-using Serenity.Services;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using Serenity.Services;
+using static ALgorithmPro.Contstants;
 using MyRow = ALgorithmPro.ALgorithm.Entities.CashRestoreASTRDRow;
 
 namespace ALgorithmPro.ALgorithm.Repositories
@@ -21,7 +21,17 @@ namespace ALgorithmPro.ALgorithm.Repositories
 
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
-            return new MyListHandler(Context).Process(connection, request);
+            var lst = new ListResponse<MyRow>();
+            try
+            {
+                return new MyListHandler(Context).Process(connection, request);
+            }
+            catch (Exception exception)
+            {
+                AS.AppendException(exception, exception.Message);
+                return lst;
+            }
+           
         }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
         {

@@ -41,7 +41,7 @@ namespace ALgorithmPro
                 ViewBag.HeaderID = HeaderID;
             }
            
-            return View(MVC.Views.ALgorithm.Transaction.Purchase.CashPurchase.Header.InvoicReport);
+            return View(MVC.Views.ALgorithm.Transaction.Purchase.CashPurchase.Header.CashPurchInvoice);
 
         }
         public IActionResult Error()

@@ -8440,9 +8440,10 @@ section.content > .s-DataGrid {
 .s-Model-ASTRDVIEWDialog .caption {
   width: 150px;
 }
+
 /*@import "site.algorithm/purchase.less";*/
 .slider-container .s-Panel {
-  box-shadow: none !important;
+    box-shadow: none !important;
 }
 .slider-dialog-force-show-target {
   display: block !important;
@@ -8454,3 +8455,29 @@ section.content > .s-DataGrid {
 .s-ALgorithm-CustomDialog .ui-tabs .tab-pane {
   padding: 2px 0;
 }
+
+.s-ALgorithm-ASTRHDialog > .size {
+    width: 800px;
+}
+
+.s-ALgorithm-ASTRHDialog .caption {
+    width: 150px;
+}
+.s-ALgorithm-ASTRHDialog .grid-title,
+.panel-titlebar {
+    display: none;
+}
+
+.s-ALgorithm-ASTRDDialog > .size {
+    width: 800px;
+}
+
+.s-ALgorithm-ASTRDDialog .caption {
+    width: 150px;
+}
+
+.s-ALgorithm-ASTRDDialog .grid-title,
+.panel-titlebar {
+    display: none;
+}
+

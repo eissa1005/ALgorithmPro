@@ -12,13 +12,13 @@ using Controller = Microsoft.AspNetCore.Mvc.Controller;
 namespace ALgorithmPro
 {
     [Route("ALgorithm/Sales/[action]")]
-    public class SalesControl : Controller
+    public class ReturnSaleControl : Controller
     {
         protected EnvironmentSettings EnvironmentSettings { get; }
         protected IReportRegistry ReportRegistry { get; }
         protected IRequestContext Context { get; }
         protected IWebHostEnvironment HostEnvironment { get; }
-        public SalesControl(IReportRegistry reportRegistry, IRequestContext context,
+        public ReturnSaleControl(IReportRegistry reportRegistry, IRequestContext context,
              IWebHostEnvironment hostEnvironment, IOptions<EnvironmentSettings> environmentSettings = null)
         {
             ReportRegistry = reportRegistry ??

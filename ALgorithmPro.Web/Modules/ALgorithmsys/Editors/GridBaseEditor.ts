@@ -4,7 +4,9 @@ namespace AS {
     @Serenity.Decorators.registerClass([Serenity.IGetEditValue, Serenity.ISetEditValue, Serenity.IReadOnly])
     @Serenity.Decorators.editor()
     @Serenity.Decorators.element("<div/>")
+
     export class GridBaseEditor<TEntity> extends AS.GridBase<TEntity, any>
+
         implements Serenity.IGetEditValue, Serenity.ISetEditValue, Serenity.IReadOnly {
 
         protected getASGridOptions(): ExtGridOptions { return Q.deepClone(AS.DefaultEditorGridOptions); }

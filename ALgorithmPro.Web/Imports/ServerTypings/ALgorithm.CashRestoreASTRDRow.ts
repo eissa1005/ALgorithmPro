@@ -100,6 +100,11 @@
         export const idProperty = 'ID';
         export const nameProperty = 'HeaderID';
         export const localTextPrefix = 'ALgorithm.CashRestoreASTRD';
+        export const lookupKey = 'ALgorithm.CashRestoreASTRD';
+
+        export function getLookup(): Q.Lookup<CashRestoreASTRDRow> {
+            return Q.getLookup<CashRestoreASTRDRow>('ALgorithm.CashRestoreASTRD');
+        }
         export const deletePermission = 'Administration:General';
         export const insertPermission = 'Administration:General';
         export const readPermission = 'Administration:General';

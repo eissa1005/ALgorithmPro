@@ -3,9 +3,9 @@ using Serenity.Services;
 using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using MyRepository = ALgorithmPro.Model.Repositories.ASTRDVIEWRepository;
-using MyRow = ALgorithmPro.Model.Entities.ASTRDVIEWRow;
+using MyRow = ALgorithmPro.ASTRDVIEWRow;
 
-namespace ALgorithmPro.Model.Endpoints
+namespace ALgorithmPro
 {
     [Route("Services/Model/ASTRDVIEW/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]

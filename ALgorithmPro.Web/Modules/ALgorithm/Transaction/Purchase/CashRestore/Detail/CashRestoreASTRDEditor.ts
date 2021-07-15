@@ -13,6 +13,7 @@ namespace ALgorithmPro.ALgorithm {
         protected getLocalTextPrefix() { return CashRestoreASTRDRow.localTextPrefix; }
         protected getService() { return CashRestoreASTRDService.baseUrl; }
 
+        public array = Array<object>();
         public static GridName: Slick.Grid;
         protected form: CashRestoreForm;
         public static isEditedFlag = 'isEdited';
@@ -24,15 +25,22 @@ namespace ALgorithmPro.ALgorithm {
             var PrefixId = BS.GetPrefixId(CashRestoreForm.formKey);
             this.form = new CashRestoreForm(PrefixId);
 
+           
             // KeyDown 👈
             this.slickGrid.onKeyDown.subscribe((e) => {
-                if (e.keyCode == AS.KeyCode.F2) {
 
+                if (e.keyCode == AS.KeyCode.F2) {
+                    var dialog;
                     SelectTRTY = AS.TRTYType.CashRestore;
                     CashRestoreASTRDEditor.GridName = this.slickGrid;
                     var ReferenNumer = this.form.ReferenceNo.value;
-                    var dialog = new ASTRDDialog(SelectTRTY, ReferenNumer);
-                    dialog.dialogOpen();
+                    if (ReferenNumer > 0) {
+                        dialog = new ASTRDDialog(SelectTRTY, ReferenNumer);
+                        dialog.dialogOpen();
+                    } else {
+                        dialog = new ItemsLookupDialog(SelectTRTY);
+                        dialog.dialogOpen();
+                    }
                 }
             })
 
@@ -44,11 +52,17 @@ namespace ALgorithmPro.ALgorithm {
                 var cell = args.cell;
                 var field = columns[cell].field;
                 if (field == FLD.Item_CD) {
+                    var dialog;
                     SelectTRTY = AS.TRTYType.CashRestore;
                     CashRestoreASTRDEditor.GridName = this.slickGrid;
                     var ReferenNumer = this.form.ReferenceNo.value;
-                    var dialog = new ASTRDDialog(SelectTRTY, ReferenNumer);
-                    dialog.dialogOpen();
+                    if (ReferenNumer > 0) {
+                        dialog = new ASTRDDialog(SelectTRTY, ReferenNumer);
+                        dialog.dialogOpen();
+                    } else {
+                        dialog = new ItemsLookupDialog(SelectTRTY);
+                        dialog.dialogOpen();
+                    }
                 }
             })
 
@@ -58,7 +72,7 @@ namespace ALgorithmPro.ALgorithm {
                 var grd = args.grid as Slick.Grid;
                 var CountRows = grd.getDataLength();
                 if (CountRows > 0) {
-                    this.UpdateFooter();
+                    // this.UpdateFooter();
                 }
             });
 
@@ -71,12 +85,12 @@ namespace ALgorithmPro.ALgorithm {
                 var index = args.row;
                 var columns = grd.getColumns();
                 var field = columns[cell].field;
-                BS.PackageChange(grd, field, index, row);
-                BS.UpdateGrid(grd, index, row);
+                this.PackageChange(field, index, row);
+                this.UpdateGrid(index, row);
                 var items = this.slickGrid.getData().slice();
                 this.value = items;
                 if (row) {
-                    this.validateEntity(row);
+                    // this.validateEntity(row);
                 }
             });
 
@@ -137,6 +151,11 @@ namespace ALgorithmPro.ALgorithm {
         }
 
 
+        protected getColumns() {
+            var columns = super.getColumns();
+            return columns;
+        }
+
         protected onItemsChanged(items: any) {
 
             if (items) {
@@ -168,12 +187,18 @@ namespace ALgorithmPro.ALgorithm {
             return opt;
         }
 
-
-
         // validateEntity 👈
         protected validateEntity(row: CashRestoreASTRDRow) {
 
             if (AS.IsNullObject(row)) return true;
+            var ASTRD: CashPurchASTRDRow;
+            if (!AS.IsNullValue(this.form.ReferenceNo)) {
+                var ACCNO = this.form.ACC_NO.value;
+                var ReferenceNumber = this.form.ReferenceNo.value;
+                ASTRD = Q.tryFirst(CashPurchASTRDRow.getLookup().items,
+                        x => x.TR_TY == AS.TRTYType.CashPurchase && x.ACC_NO2 == ACCNO && x.TR_NO == ReferenceNumber)
+            }
+           
             let RATE = BS.GetCurrencyRAT(CashRestoreDialog.OldValue, CashRestoreDialog.NewValue);
             if (AS.IsNullValue(RATE)) RATE = 1;
             let value = AS.IsNull(row.Value) * RATE;
@@ -183,33 +208,163 @@ namespace ALgorithmPro.ALgorithm {
             let ItemBAL = BS.GetItemBAL(row.StoreID, row.Item_CD);
 
             if (row == null) return true;
-            if (row.QTY == 0) {
-                Q.alert("Quantity Should Gertter Than Zero");
+            if (row.RestoreQty == 0) {
+                Q.alert("Quantity must be Gertter Than Zero");
+                return true;
+            }
+
+            if (row.RestoreQty > row.QTY) {
+                Q.alert("The Quantity must be less than or equal to the Basic Quantity");
                 return true;
             }
             if (row.Price == 0) {
-                Q.alert("Price Should Gertter Than Zero");
+                Q.alert("Price must be Gertter Than Zero");
                 return true;
             }
             if (row.Value == 0) {
-                Q.alert("Value Should Gertter Than Zero");
+                Q.alert("The Value must be Gertter Than Zero");
                 return true;
             }
             if (SumDisc > row.Value) {
-                Q.alert("Disc Should be Less Than Value");
+                Q.alert("Disc must be be Less Than Value");
                 return true;
             }
             if (SumDisc > NET) {
-                Q.alert("Disc Should be Less Than NET");
+                Q.alert("Disc must be Less Than NET");
                 return true;
             }
             if (!AS.IsNullValue(ItemBAL)) {
-                if (ItemBAL < row.QTY) {
+                if (ItemBAL < row.RestoreQty) {
                     Q.alert("Item balance is not allowed");
                     return true;
                 }
             }
+            if (!AS.IsNullObject(ASTRD)) {
+                if (!AS.IsNullValue(ASTRD.Item_CD)) {
+                    if (row.Item_CD !== ASTRD.Item_CD)
+                        Q.alert("The Item is Not Found on the invoice");
+                }
+
+                if (!AS.IsNullValue(ASTRD.Price)) {
+                    if (row.Price !== ASTRD.Price) {
+                        Q.alert("The price is different from the price on the cashPurchase invoice");
+                        var ActiveCell = this.slickGrid.getActiveCell();
+                        var cell = ActiveCell.cell;
+                        var rowss = ActiveCell.row;
+                    }
+                }
+                if (!AS.IsNullValue(ASTRD.DISC1)) {
+                    if (row.DISC1 !== ASTRD.DISC1)
+                        Q.alert("The DISC1 is different from the disc1 on the invoice");
+                }
+                if (!AS.IsNullValue(ASTRD.DISC2)) {
+                    if (row.DISC2 !== ASTRD.DISC2)
+                        Q.alert("The DISC2 is different from the disc2 on the invoice");
+                }
+                if (!AS.IsNullValue(ASTRD.DISC3)) {
+                    if (row.DISC3 !== ASTRD.DISC3)
+                        Q.alert("The DISC3 is different from the disc3 on the invoice");
+                }
+                if (!AS.IsNullValue(ASTRD.TAX1)) {
+                    if (row.TAX1 !== ASTRD.TAX1)
+                        Q.alert("The TAX1 is different from the TAX1 on the invoice");
+                }
+                if (!AS.IsNullValue(ASTRD.TAX2)) {
+                    if (row.TAX2 !== ASTRD.TAX2)
+                        Q.alert("The TAX2 is different from the TAX2 on the invoice");
+                }
+
+            }
             return false;
+        }
+
+        //PackageChange
+        private PackageChange(Field, index, items: CashRestoreASTRDRow) {
+
+            if (AS.IsNullObject(items)) return;
+            var FLD = ALgorithmPro.ASTRDVIEWRow;
+            var item = items;
+
+            if (Field == FLD.Fields.PKID) {
+
+                var PKID = Q.toId(item.PKID);
+
+                if (this.array.length == 0)
+                    this.array.push(PKID);
+
+                else if (this.array.length > 0) {
+                    if (!AS.ContainKey(this.array, PKID)) {
+                        this.array.push(PKID);
+                    }
+                }
+                if (this.array.length == 1) {
+                    var QTY = Q.toId(item.RestoreQty);
+                    var Price = Q.toId(item.Price);
+                    item.RestoreQty = QTY;
+                    var newPrice: number;
+                    var PK = Q.tryFirst(ALgorithmPro.ALgorithm.PackageRow.getLookup().items, x => x.PKID == PKID).PKCNT;
+                    item.PK = PK;
+                    if (Price != null && PK != null) {
+                        newPrice = PK * Q.parseDecimal(Price)
+                        item.Price = newPrice;
+                        item.PKPRC = newPrice / PK;
+                    }
+                    item.Value = newPrice * Q.parseDecimal(QTY);
+                    this.slickGrid.updateRow(index, item);
+                    this.slickGrid.render();
+                }
+                else if (this.array.length > 1) {
+                    var PKIDS = item.PKID;
+                    var PK = Q.tryFirst(ALgorithmPro.ALgorithm.PackageRow.getLookup().items, x => x.PKID == PKIDS).PKCNT;
+                    var FACT = Q.tryFirst(ALgorithmPro.ALgorithm.PackageRow.getLookup().items, x => x.PKID == PKIDS).FACT;
+                    item.PK = PK;
+                    var QTY = Q.toId(item.RestoreQty);
+                    item.RestoreQty = QTY;
+                    var Price = Q.toId(item.Price);
+                    var newPrice: number;
+                    if (Price != null && FACT != null) {
+                        newPrice = FACT * Q.parseDecimal(Price)
+                        newPrice = Q.round(newPrice, 0);
+                        item.Price = newPrice;
+                        item.PKPRC = newPrice / PK;
+                    }
+
+                    item.Value = newPrice * Q.parseDecimal(QTY);
+                    this.slickGrid.updateRow(index, item);
+                    this.slickGrid.render();
+                }
+            }
+        }
+        // UpdateGrid 
+        private UpdateGrid(index, row: CashRestoreASTRDRow) {
+
+            if (AS.IsNullObject(row)) return;
+            var price = row.Price;
+            var RestoreQty = AS.IsNull(row.RestoreQty);
+            var value = RestoreQty * price;
+            var DISC1 = AS.IsNull(row.DISC1);
+            var DISC2 = AS.IsNull(row.DISC2);
+            var DISC3 = AS.IsNull(row.DISC3);
+            var SumDisc = DISC1 + DISC2 + DISC3;
+            var TAX1 = AS.IsNull(row.TAX1);
+            var TAX2 = AS.IsNull(row.TAX2);
+            var TAX3 = AS.IsNull(row.TAX3);
+            var SumTAX = TAX1 + TAX2 + TAX3;
+            var PKID = row.PKID;
+            var PK = Q.tryFirst(ALgorithmPro.ALgorithm.PackageRow.getLookup().items, x => x.PKID == PKID).PKCNT;
+            row.PK = PK;
+            row.Price = price;
+            row.RestoreQty = RestoreQty;
+            row.Value = value;
+            row.DISC1 = DISC1;
+            row.DISC2 = DISC2;
+            row.DISC3 = DISC3;
+            row.NetBeforeTAX = value - SumDisc;
+            row.NetAfterTAX = value + SumTAX;
+            row.NET = value + SumTAX - SumDisc;
+            row.ItemBAL = BS.GetItemBAL(row.StoreID, row.Item_CD);
+            this.slickGrid.updateRow(index, row);
+            this.slickGrid.render();
         }
 
         // Clear Footer 👈

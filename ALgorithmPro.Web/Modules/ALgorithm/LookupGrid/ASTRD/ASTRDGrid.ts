@@ -3,21 +3,22 @@
 
 namespace ALgorithmPro.ALgorithm {
 
-    import FLD = ALgorithmPro.Model.ASTRDVIEWRow.Fields;
+    import FLD = ASTRDVIEWRow.Fields;
 
     @Serenity.Decorators.registerClass()
-    export class ASTRDGrid extends SelectableEntityGrid<ALgorithmPro.Model.ASTRDVIEWRow, any> {
-        protected getColumnsKey() { return 'Model.ASTRDVIEW'; }
+    export class ASTRDGrid extends SelectableEntityGrid<ASTRDVIEWRow, any> {
+        protected getColumnsKey() { return 'ALgorithmPro.ASTRDVIEW'; }
         protected getDialogType() { return ASTRDDialog; }
-        protected getIdProperty() { return ALgorithmPro.Model.ASTRDVIEWRow.idProperty; }
-        protected getInsertPermission() { return ALgorithmPro.Model.ASTRDVIEWRow.insertPermission; }
-        protected getLocalTextPrefix() { return ALgorithmPro.Model.ASTRDVIEWRow.localTextPrefix; }
-        protected getService() { return ALgorithmPro.Model.ASTRDVIEWService.baseUrl; }
+        protected getIdProperty() { return ASTRDVIEWRow.idProperty; }
+        protected getInsertPermission() { return ASTRDVIEWRow.insertPermission; }
+        protected getLocalTextPrefix() { return ASTRDVIEWRow.localTextPrefix; }
+        protected getService() { return ASTRDVIEWService.baseUrl; }
 
         public SelectTRTY: AS.TRTYType;
         public Grid: Slick.Grid;
         public ReferenceNumer: number;
         protected form: any;
+        public IdPrefix: string;
 
         constructor(container: JQuery) {
             super(container);
@@ -25,14 +26,16 @@ namespace ALgorithmPro.ALgorithm {
             if (ASTRDDialog.SelectTRTY == AS.TRTYType.CashRestore) {
                 this.SelectTRTY = AS.TRTYType.CashRestore;
                 this.Grid = CashRestoreASTRDEditor.GridName;
-                this.ReferenceNumer = ASTRDDialog.ReferenNumer;
+                this.ReferenceNumer = ASTRDDialog.ReferenceNumer;
+                this.IdPrefix = BS.GetPrefixId(CashRestoreForm.formKey);
+                this.form = new CashRestoreForm(this.IdPrefix);
+
             }
 
             var grid = this.slickGrid;
             grid.onSelectedRowsChanged.subscribe(() => {
-
                 var selectedRow = grid.getSelectedRows()[0];
-                var ASTRDRow: ALgorithmPro.Model.ASTRDVIEWRow = grid.getDataItem(selectedRow);
+                var ASTRDRow: ASTRDVIEWRow = grid.getDataItem(selectedRow);
 
                 if (ASTRDRow != null || ASTRDRow.HeaderID > 0) {
 
@@ -57,7 +60,7 @@ namespace ALgorithmPro.ALgorithm {
             });
         }
 
-        private SetDataGrid(grd: Slick.Grid, ASTRDVIEW: ALgorithmPro.Model.ASTRDVIEWRow) {
+        private SetDataGrid(grd: Slick.Grid, ASTRDVIEW: ASTRDVIEWRow) {
 
             if (AS.IsNullObject(ASTRDVIEW)) return;
             var SumDisc = 0;
@@ -74,6 +77,8 @@ namespace ALgorithmPro.ALgorithm {
                     row.RowNum = ASTRDVIEW.LN_NO;
                     row.Item_CD = ASTRDVIEW.Item_CD;
                     row.ITM_NM_AR = ASTRDVIEW.Item_Name_AR;
+                    row.PKID = ASTRDVIEW.PKID;
+                    row.PK = ASTRDVIEW.PK;
                     row.QTY = ASTRDVIEW.QTY;
                     row.RestoreQty = 0;
                     row.Price = ASTRDVIEW.Price;
@@ -101,6 +106,8 @@ namespace ALgorithmPro.ALgorithm {
                     row.RowNum = ASTRDVIEW.LN_NO;
                     row.Item_CD = ASTRDVIEW.Item_CD;
                     row.ITM_NM_AR = ASTRDVIEW.Item_Name_AR;
+                    row.PKID = ASTRDVIEW.PKID;
+                    row.PK = ASTRDVIEW.PK;
                     row.QTY = ASTRDVIEW.QTY;
                     row.ReturnQty = 0;
                     row.Price = ASTRDVIEW.Price;
@@ -138,17 +145,14 @@ namespace ALgorithmPro.ALgorithm {
             if (this.SelectTRTY == AS.TRTYType.CashRestore) {
 
                 var request = this.view.params as Serenity.ListRequest;
-                if (this.ReferenceNumer > 0) {
+                var ACCNO = this.form.ACC_NO.value;
+                if (this.ReferenceNumer > 0 && !AS.IsNullValue(ACCNO)) {
                     request.Criteria = Serenity.Criteria.and(
-                        request.Criteria, [[FLD.TR_TY], '=', AS.TRTYType.CashPurchase],
-                        request.Criteria, [[FLD.ReferenNumer], '=', this.ReferenceNumer]);
-                    return true;
-                } else {
-                    request.Criteria = Serenity.Criteria.and(
-                        request.Criteria, [[FLD.TR_TY], '=', AS.TRTYType.CashPurchase]);
+                    request.Criteria, [[FLD.TR_TY], '=', AS.TRTYType.CashPurchase],
+                    request.Criteria, [[FLD.ReferenNumer], '=', this.ReferenceNumer],
+                    request.Criteria, [[FLD.ACC_NO2], '=', ACCNO]);
                     return true;
                 }
-               
             }
             else if (this.SelectTRTY == AS.TRTYType.RestorePurch) {
 

@@ -14,6 +14,7 @@ namespace ALgorithmPro.ALgorithm.Endpoints
     {
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {
+          
             return new MyRepository(Context).Retrieve(connection, request);
         }
 

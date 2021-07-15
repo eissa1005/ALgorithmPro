@@ -22,7 +22,7 @@
                 $container.keydown(handleControlKeys);
 
                 context = document.createElement("canvas").getContext("2d");
-                //resizeAllColumns();
+                resizeAllColumns();
             }
 
             function destroy() {

@@ -1,10 +1,7 @@
-﻿using Serenity;
+﻿using System;
 using Serenity.ComponentModel;
-using Serenity.Data;
-using System;
 using System.ComponentModel;
-using System.Collections.Generic;
-using System.IO;
+
 
 namespace ALgorithmPro.ALgorithm.Columns
 {
@@ -15,11 +12,10 @@ namespace ALgorithmPro.ALgorithm.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int64 HeaderID { get; set; }
         public Int32 TR_TY { get; set; }
-        [EditLink]
         public Int32 TR_NO { get; set; }
         public DateTime TR_DT { get; set; }
-        [Hidden]
         public Int32 TR_DS { get; set; }
+        [EditLink]
         public String StoreID { get; set; }
         public String TRTY_NAME { get; set; }
         public String Store_NAME { get; set; }

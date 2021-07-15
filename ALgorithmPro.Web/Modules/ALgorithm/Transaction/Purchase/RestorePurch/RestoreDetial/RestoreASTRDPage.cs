@@ -11,7 +11,7 @@ namespace ALgorithmPro.ALgorithm.Pages
         [Route("ALgorithm/RestoreASTRD")]
         public ActionResult Index()
         {
-            return View("~/Modules/ALgorithm/RestoreASTRD/RestoreASTRDIndex.cshtml");
+            return View(MVC.Views.ALgorithm.Transaction.Purchase.RestorePurch.RestoreDetial.RestoreASTRDIndex);
         }
     }
 }
