@@ -25,27 +25,37 @@ namespace ALgorithmPro.ALgorithm {
                 this.Grid = CashPurchASTRDEditor.GridName;
             }
 
-            if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.Purchase) {
+            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.Purchase) {
                 this.SelectTRTY = AS.TRTYType.Purchase;
                 this.Grid = PurchASTRDEditor.GridName;
             }
 
-            if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.CashRestore) {
+            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.CashRestore) {
                 this.SelectTRTY = AS.TRTYType.CashRestore;
                 this.Grid = CashRestoreASTRDEditor.GridName;
             }
-            //if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.RestorePurch) {
-            //    this.SelectTRTY = AS.TRTYType.RestorePurch;
-            //    this.Grid = RestoreASTRDEditor.GridName;
-            //}
 
-            if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.CashSales) {
+            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.RestorePurch) {
+                this.SelectTRTY = AS.TRTYType.RestorePurch;
+                this.Grid = RestoreASTRDEditor.GridName;
+            }
+
+            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.CashSales) {
                 this.SelectTRTY = AS.TRTYType.CashSales;
                 this.Grid = CashSalesASTRDEditor.GridName;
             }
-            if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.Sales) {
+            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.Sales) {
                 this.SelectTRTY = AS.TRTYType.Sales;
                 this.Grid = SalesASTRDEditor.GridName;
+            }
+
+            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.CashReturn) {
+                this.SelectTRTY = AS.TRTYType.CashReturn;
+                this.Grid = CashReturnASTRDEditor.GridName;
+            }
+            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.ReturnSales) {
+                this.SelectTRTY = AS.TRTYType.ReturnSales;
+                this.Grid = ReturnASTRDEditor.GridName;
             }
 
             var grid = this.slickGrid;
@@ -203,7 +213,7 @@ namespace ALgorithmPro.ALgorithm {
                 }
 
                 data.push(row);
-               grd.setData(data, false);
+                grd.setData(data, false);
             }
         }
 

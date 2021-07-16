@@ -32,7 +32,7 @@ namespace ALgorithmPro.ALgorithm {
 
                 if (e.keyCode == AS.KeyCode.F2) {
                     var dialog;
-                    SelectTRTY = AS.TRTYType.CashRestore;
+                    SelectTRTY = AS.TRTYType.RestorePurch;
                     RestoreASTRDEditor.GridName = this.slickGrid;
                     var ReferenNumer = this.form.ReferenceNo.value;
                     if (ReferenNumer > 0) {
@@ -54,7 +54,7 @@ namespace ALgorithmPro.ALgorithm {
                 var field = columns[cell].field;
                 if (field == FLD.Item_CD) {
                     var dialog;
-                    SelectTRTY = AS.TRTYType.CashRestore;
+                    SelectTRTY = AS.TRTYType.RestorePurch;
                     RestoreASTRDEditor.GridName = this.slickGrid;
                     var ReferenNumer = this.form.ReferenceNo.value;
                     if (ReferenNumer > 0) {

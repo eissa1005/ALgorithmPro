@@ -32,6 +32,30 @@ namespace ALgorithmPro.ALgorithm {
 
             }
 
+            else if (ASTRDDialog.SelectTRTY == AS.TRTYType.RestorePurch) {
+                this.SelectTRTY = AS.TRTYType.RestorePurch;
+                this.Grid = RestoreASTRDEditor.GridName;
+                this.ReferenceNumer = ASTRDDialog.ReferenceNumer;
+                this.IdPrefix = BS.GetPrefixId(RestorePurchaseForm.formKey);
+                this.form = new RestorePurchaseForm(this.IdPrefix);
+            }
+
+            else if (ASTRDDialog.SelectTRTY == AS.TRTYType.CashReturn) {
+                this.SelectTRTY = AS.TRTYType.CashReturn;
+                this.Grid = CashReturnASTRDEditor.GridName;
+                this.ReferenceNumer = ASTRDDialog.ReferenceNumer;
+                this.IdPrefix = BS.GetPrefixId(CashReturnForm.formKey);
+                this.form = new CashReturnForm(this.IdPrefix);
+            }
+
+            else if (ASTRDDialog.SelectTRTY == AS.TRTYType.ReturnSales) {
+                this.SelectTRTY = AS.TRTYType.ReturnSales;
+                this.Grid = ReturnASTRDEditor.GridName;
+                this.ReferenceNumer = ASTRDDialog.ReferenceNumer;
+                this.IdPrefix = BS.GetPrefixId(ReturnSalesForm.formKey);
+                this.form = new ReturnSalesForm(this.IdPrefix);
+            }
+
             var grid = this.slickGrid;
             grid.onSelectedRowsChanged.subscribe(() => {
                 var selectedRow = grid.getSelectedRows()[0];
