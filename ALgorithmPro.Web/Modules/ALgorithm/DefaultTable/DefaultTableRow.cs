@@ -232,7 +232,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.RemoveInventory[this] = value;
         }
 
-        [DisplayName("CashReceive")]
+        [DisplayName("CashReceive"), LookupInclude]
         public Int32? CashReceive
         {
             get => fields.CashReceive[this];
