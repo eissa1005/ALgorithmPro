@@ -841,7 +841,7 @@ namespace ALgorithmPro.ALgorithm.Repositories
                             ACCTRD.UpdateDate = DateTime.Now;
                             try
                             {
-                                connection.Insert<ACCTRDRow>(ACCTRD);
+                                connection.UpdateById<ACCTRDRow>(ACCTRD);
                             }
                             catch (Exception exception)
                             {
@@ -897,7 +897,7 @@ namespace ALgorithmPro.ALgorithm.Repositories
                             ACCTRD.UpdateDate = DateTime.Now;
                             try
                             {
-                                connection.Insert<ACCTRDRow>(ACCTRD);
+                                connection.UpdateById<ACCTRDRow>(ACCTRD);
                             }
                             catch (Exception exception)
                             {

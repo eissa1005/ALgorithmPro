@@ -1,9 +1,11 @@
 ﻿using ALgorithmPro.ALgorithm;
 using ALgorithmPro.Common.Entities;
+using Newtonsoft.Json;
 using Serenity;
 using Serenity.Data;
 using Serenity.Services;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using MyRow = ALgorithmPro.Common.Entities.UserPreferenceRow;
@@ -35,6 +37,33 @@ namespace ALgorithmPro.Common.Repositories
                 fld.PreferenceType == request.PreferenceType &
                 fld.Name == request.Name;
 
+            var lstPreference = JSON.Parse<Preference>(request.Value);
+            var lstColumn = new List<Column>();
+            foreach (var item in lstPreference.columns)
+            {
+                int width = item.width;
+                int newwidth = 0;
+                if (width < 100)
+                    newwidth = 100;
+                else
+                    newwidth = width;
+
+                var column = new Column();
+                column.id = item.id;
+                column.width = newwidth;
+                column.visible = item.visible;
+                column.sort = item.sort;
+
+                lstColumn.Add(column);
+            }
+            var lst = new Preference();
+            lst.columns = lstColumn;
+            lst.filterItems = new List<object>();
+            lst.includeDeleted = false;
+
+            var values = JSON.Stringify(lst);
+
+
             if (string.IsNullOrEmpty(request.Value))
             {
                 new SqlDelete(fld.TableName)
@@ -52,18 +81,18 @@ namespace ALgorithmPro.Common.Repositories
                     uow.Connection.DeleteById<MyRow>(row.UserPreferenceId, ExpectedRows.ZeroOrOne);
                 }
 
-               if (new SqlUpdate(fld.TableName)
-                       .Set(fld.Value, request.Value)
-                       .Where(criteria)
-                       .Execute(uow.Connection, ExpectedRows.ZeroOrOne) == 0)
-               {
-                   new SqlInsert(fld.TableName)
-                       .Set(fld.UserId, userId)
-                       .Set(fld.PreferenceType, request.PreferenceType)
-                       .Set(fld.Name, request.Name)
-                       .Set(fld.Value, request.Value)
-                       .Execute(uow.Connection);
-               }
+                if (new SqlUpdate(fld.TableName)
+                        .Set(fld.Value, values)
+                        .Where(criteria)
+                        .Execute(uow.Connection, ExpectedRows.ZeroOrOne) == 0)
+                {
+                    new SqlInsert(fld.TableName)
+                        .Set(fld.UserId, userId)
+                        .Set(fld.PreferenceType, request.PreferenceType)
+                        .Set(fld.Name, request.Name)
+                        .Set(fld.Value, values)
+                        .Execute(uow.Connection);
+                }
             }
             catch (Exception exception)
             {

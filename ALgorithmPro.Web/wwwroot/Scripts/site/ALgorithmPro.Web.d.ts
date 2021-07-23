@@ -902,18 +902,7 @@ declare namespace ALgorithmPro.ALgorithm {
 declare namespace ALgorithmPro.ALgorithm {
 }
 declare namespace ALgorithmPro.ALgorithm {
-    namespace AdjustDetailEndpointService {
-        const baseUrl = "ALgorithm/AdjustDetail";
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AdjustDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AdjustDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Retrieve = "ALgorithm/AdjustDetail/Retrieve",
-            List = "ALgorithm/AdjustDetail/List"
-        }
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    interface AdjustDetailForm {
+    interface AddInventoryASTRDForm {
         ID: Serenity.StringEditor;
         DetailID: Serenity.StringEditor;
         PKID: Serenity.LookupEditor;
@@ -1009,14 +998,14 @@ declare namespace ALgorithmPro.ALgorithm {
         UpdatedBy: Serenity.StringEditor;
         UpdateDate: Serenity.DateEditor;
     }
-    class AdjustDetailForm extends Serenity.PrefixedContext {
+    class AddInventoryASTRDForm extends Serenity.PrefixedContext {
         static formKey: string;
         private static init;
         constructor(prefix: string);
     }
 }
 declare namespace ALgorithmPro.ALgorithm {
-    interface AdjustDetailRow {
+    interface AddInventoryASTRDRow {
         ID?: number;
         DetailID?: number;
         HeaderID?: number;
@@ -1112,12 +1101,12 @@ declare namespace ALgorithmPro.ALgorithm {
         NetAfterTAX?: number;
         NET?: number;
     }
-    namespace AdjustDetailRow {
+    namespace AddInventoryASTRDRow {
         const idProperty = "ID";
         const nameProperty = "HeaderID";
-        const localTextPrefix = "ALgorithm.AdjustDetail";
-        const lookupKey = "ALgorithm.AdjustDetail";
-        function getLookup(): Q.Lookup<AdjustDetailRow>;
+        const localTextPrefix = "ALgorithm.AddInventoryASTRD";
+        const lookupKey = "ALgorithm.AddInventoryASTRD";
+        function getLookup(): Q.Lookup<AddInventoryASTRDRow>;
         const deletePermission = "Administration:General";
         const insertPermission = "Administration:General";
         const readPermission = "Administration:General";
@@ -1221,30 +1210,43 @@ declare namespace ALgorithmPro.ALgorithm {
     }
 }
 declare namespace ALgorithmPro.ALgorithm {
+    namespace AddInventoryASTRDService {
+        const baseUrl = "ALgorithm/AddInventoryASTRD";
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AddInventoryASTRDRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AddInventoryASTRDRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Retrieve = "ALgorithm/AddInventoryASTRD/Retrieve",
+            List = "ALgorithm/AddInventoryASTRD/List"
+        }
+    }
 }
 declare namespace ALgorithmPro.ALgorithm {
-    interface AdjustHeaderForm {
+}
+declare namespace ALgorithmPro.ALgorithm {
+    interface AddInventoryForm {
         TR_TY: Serenity.LookupEditor;
         StoreID: Serenity.LookupEditor;
-        CashBoxID: Serenity.LookupEditor;
+        DocTransNo: Serenity.StringEditor;
         TR_NO: Serenity.IntegerEditor;
         TR_DT: Serenity.DateTimeEditor;
+        CurrencyID: Serenity.LookupEditor;
+        PriceID: Serenity.LookupEditor;
+        CST_CD: Serenity.LookupEditor;
+        SUM_CD: Serenity.LookupEditor;
         TR_DS: Serenity.IntegerEditor;
-        DocTransNo: Serenity.StringEditor;
+        CashBoxID: Serenity.LookupEditor;
         ACC_NO: Serenity.StringEditor;
         ACC_NAME: Serenity.StringEditor;
         REP_CD: Serenity.LookupEditor;
         REP_CD2: Serenity.LookupEditor;
-        CST_CD: Serenity.LookupEditor;
-        CurrencyID: Serenity.LookupEditor;
-        PriceID: Serenity.LookupEditor;
+        ReferenceNo: Serenity.IntegerEditor;
+        RATE: Serenity.DecimalEditor;
         Balance: Serenity.DecimalEditor;
         Notes: Serenity.TextAreaEditor;
         HDSCR_AR: Serenity.StringEditor;
         SSUM_CD: Serenity.LookupEditor;
         Cash_NAME: Serenity.StringEditor;
         OrderNo: Serenity.StringEditor;
-        SUM_CD: Serenity.LookupEditor;
         ACC_NO2: Serenity.StringEditor;
         ACC_NAME2: Serenity.StringEditor;
         ACC_NO3: Serenity.StringEditor;
@@ -1263,7 +1265,6 @@ declare namespace ALgorithmPro.ALgorithm {
         PTR_TY: Serenity.IntegerEditor;
         HDSCR_EN: Serenity.StringEditor;
         Priceedit: Serenity.BooleanEditor;
-        ReferenceNo: Serenity.IntegerEditor;
         HDISC1: Serenity.DecimalEditor;
         HDISC2: Serenity.DecimalEditor;
         HDISC3: Serenity.DecimalEditor;
@@ -1283,7 +1284,6 @@ declare namespace ALgorithmPro.ALgorithm {
         Periodterm: Serenity.IntegerEditor;
         InvStatus: Serenity.IntegerEditor;
         Currency_NAME: Serenity.StringEditor;
-        RATE: Serenity.DecimalEditor;
         CUR_VL: Serenity.DecimalEditor;
         PRT_CNT: Serenity.IntegerEditor;
         Status: Serenity.EnumEditor;
@@ -1292,7 +1292,8 @@ declare namespace ALgorithmPro.ALgorithm {
         UpdatedBy: Serenity.StringEditor;
         UpdateDate: Serenity.DateEditor;
         EXPENSEVL: Serenity.DecimalEditor;
-        DetailList: AdjustDetailEditor;
+        DetailList: AddInventoryASTRDEditor;
+        SQTY: Serenity.DecimalEditor;
         Total: Serenity.DecimalEditor;
         Paid: Serenity.DecimalEditor;
         HDISC: Serenity.DecimalEditor;
@@ -1302,14 +1303,14 @@ declare namespace ALgorithmPro.ALgorithm {
         NetAfterTAX: Serenity.DecimalEditor;
         NetTotal: Serenity.DecimalEditor;
     }
-    class AdjustHeaderForm extends Serenity.PrefixedContext {
+    class AddInventoryForm extends Serenity.PrefixedContext {
         static formKey: string;
         private static init;
         constructor(prefix: string);
     }
 }
 declare namespace ALgorithmPro.ALgorithm {
-    interface AdjustHeaderRow {
+    interface AddInventoryRow {
         HeaderID?: number;
         TR_TY?: number;
         TR_NO?: number;
@@ -1371,6 +1372,7 @@ declare namespace ALgorithmPro.ALgorithm {
         Notes?: string;
         Paid?: number;
         Total?: number;
+        SQTY?: number;
         NetTotal?: number;
         Balance?: number;
         Periodterm?: number;
@@ -1387,14 +1389,14 @@ declare namespace ALgorithmPro.ALgorithm {
         UpdateDate?: string;
         NetBeforeTAX?: number;
         NetAfterTAX?: number;
-        DetailList?: AdjustDetailRow[];
+        DetailList?: AddInventoryASTRDRow[];
     }
-    namespace AdjustHeaderRow {
+    namespace AddInventoryRow {
         const idProperty = "HeaderID";
         const nameProperty = "StoreID";
-        const localTextPrefix = "ALgorithm.AdjustHeader";
-        const lookupKey = "ALgorithm.AdjustHeader";
-        function getLookup(): Q.Lookup<AdjustHeaderRow>;
+        const localTextPrefix = "ALgorithm.AddInventory";
+        const lookupKey = "ALgorithm.AddInventory";
+        function getLookup(): Q.Lookup<AddInventoryRow>;
         const deletePermission = "Administration:General";
         const insertPermission = "Administration:General";
         const readPermission = "Administration:General";
@@ -1461,6 +1463,7 @@ declare namespace ALgorithmPro.ALgorithm {
             Notes = "Notes",
             Paid = "Paid",
             Total = "Total",
+            SQTY = "SQTY",
             NetTotal = "NetTotal",
             Balance = "Balance",
             Periodterm = "Periodterm",
@@ -1482,21 +1485,21 @@ declare namespace ALgorithmPro.ALgorithm {
     }
 }
 declare namespace ALgorithmPro.ALgorithm {
-    namespace AdjustHeaderService {
-        const baseUrl = "ALgorithm/AdjustHeader";
-        function Create(request: Serenity.SaveRequest<AdjustHeaderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<AdjustHeaderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+    namespace AddInventoryService {
+        const baseUrl = "ALgorithm/AddInventory";
+        function Create(request: Serenity.SaveRequest<AddInventoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<AddInventoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function GetNextNumber(request: GetNextNumberRequest, onSuccess?: (response: GetNextNumberResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AdjustHeaderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AdjustHeaderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AddInventoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AddInventoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
-            Create = "ALgorithm/AdjustHeader/Create",
-            Update = "ALgorithm/AdjustHeader/Update",
-            Delete = "ALgorithm/AdjustHeader/Delete",
-            GetNextNumber = "ALgorithm/AdjustHeader/GetNextNumber",
-            Retrieve = "ALgorithm/AdjustHeader/Retrieve",
-            List = "ALgorithm/AdjustHeader/List"
+            Create = "ALgorithm/AddInventory/Create",
+            Update = "ALgorithm/AddInventory/Update",
+            Delete = "ALgorithm/AddInventory/Delete",
+            GetNextNumber = "ALgorithm/AddInventory/GetNextNumber",
+            Retrieve = "ALgorithm/AddInventory/Retrieve",
+            List = "ALgorithm/AddInventory/List"
         }
     }
 }
@@ -2825,6 +2828,7 @@ declare namespace ALgorithmPro.ALgorithm {
         Item_CD: Serenity.StringEditor;
         ITM_NM_AR: Serenity.StringEditor;
         QTY: Serenity.DecimalEditor;
+        ReturnQty: Serenity.DecimalEditor;
         Price: Serenity.DecimalEditor;
         Value: Serenity.DecimalEditor;
         TAX1: Serenity.DecimalEditor;
@@ -2847,7 +2851,6 @@ declare namespace ALgorithmPro.ALgorithm {
         TAX1R: Serenity.DecimalEditor;
         TAX2R: Serenity.DecimalEditor;
         TAX3R: Serenity.DecimalEditor;
-        ReturnQty: Serenity.DecimalEditor;
         RestoreQty: Serenity.DecimalEditor;
         ItemBAL: Serenity.DecimalEditor;
         HeaderID: Serenity.StringEditor;
@@ -3136,6 +3139,284 @@ declare namespace ALgorithmPro.ALgorithm {
 declare namespace ALgorithmPro.ALgorithm {
 }
 declare namespace ALgorithmPro.ALgorithm {
+    interface CashReturnForm {
+        TR_TY: Serenity.LookupEditor;
+        StoreID: Serenity.LookupEditor;
+        CashBoxID: Serenity.LookupEditor;
+        TR_NO: Serenity.IntegerEditor;
+        TR_DS: Serenity.IntegerEditor;
+        TR_DT: Serenity.DateTimeEditor;
+        DocTransNo: Serenity.StringEditor;
+        ACC_NO: Serenity.StringEditor;
+        ACC_NAME: Serenity.StringEditor;
+        REP_CD: Serenity.LookupEditor;
+        REP_CD2: Serenity.LookupEditor;
+        CST_CD: Serenity.LookupEditor;
+        CurrencyID: Serenity.LookupEditor;
+        ReferenceNo: Serenity.IntegerEditor;
+        PriceID: Serenity.LookupEditor;
+        Balance: Serenity.DecimalEditor;
+        Notes: Serenity.TextAreaEditor;
+        HDSCR_AR: Serenity.StringEditor;
+        SSUM_CD: Serenity.LookupEditor;
+        Cash_NAME: Serenity.StringEditor;
+        OrderNo: Serenity.StringEditor;
+        SUM_CD: Serenity.LookupEditor;
+        ACC_NO2: Serenity.StringEditor;
+        ACC_NAME2: Serenity.StringEditor;
+        ACC_NO3: Serenity.StringEditor;
+        ACC_NAME3: Serenity.StringEditor;
+        REP_NAME: Serenity.StringEditor;
+        REP_NAME2: Serenity.StringEditor;
+        TRTY_NAME: Serenity.StringEditor;
+        Store_NAME: Serenity.StringEditor;
+        CST_NAME: Serenity.StringEditor;
+        SUM_NAME: Serenity.StringEditor;
+        SSUM_NAME: Serenity.StringEditor;
+        SupervisorId: Serenity.StringEditor;
+        Supervisor_NAME: Serenity.StringEditor;
+        PStoreID: Serenity.StringEditor;
+        PTR_NO: Serenity.IntegerEditor;
+        PTR_TY: Serenity.IntegerEditor;
+        HDSCR_EN: Serenity.StringEditor;
+        Priceedit: Serenity.BooleanEditor;
+        HDISC1: Serenity.DecimalEditor;
+        HDISC2: Serenity.DecimalEditor;
+        HDISC3: Serenity.DecimalEditor;
+        HDISC4: Serenity.DecimalEditor;
+        HDISC1R: Serenity.DecimalEditor;
+        HDISC2R: Serenity.DecimalEditor;
+        HDISC3R: Serenity.DecimalEditor;
+        HTAX1: Serenity.DecimalEditor;
+        HTAX2: Serenity.DecimalEditor;
+        HTAX3: Serenity.DecimalEditor;
+        HTAX4: Serenity.DecimalEditor;
+        HTAX1R: Serenity.DecimalEditor;
+        HTAX2R: Serenity.DecimalEditor;
+        HTAX3R: Serenity.DecimalEditor;
+        HdrAddtionsR: Serenity.DecimalEditor;
+        PeriodCredit: Serenity.StringEditor;
+        Periodterm: Serenity.IntegerEditor;
+        InvStatus: Serenity.IntegerEditor;
+        Currency_NAME: Serenity.StringEditor;
+        RATE: Serenity.DecimalEditor;
+        CUR_VL: Serenity.DecimalEditor;
+        PRT_CNT: Serenity.IntegerEditor;
+        Status: Serenity.EnumEditor;
+        EnteredBy: Serenity.StringEditor;
+        EntryDate: Serenity.DateEditor;
+        UpdatedBy: Serenity.StringEditor;
+        UpdateDate: Serenity.DateEditor;
+        EXPENSEVL: Serenity.DecimalEditor;
+        DetailList: CashReturnASTRDEditor;
+        Total: Serenity.DecimalEditor;
+        Paid: Serenity.DecimalEditor;
+        HDISC: Serenity.DecimalEditor;
+        NetAfterTAX: Serenity.DecimalEditor;
+        HTAX: Serenity.DecimalEditor;
+        HAddtions: Serenity.DecimalEditor;
+        NetBeforeTAX: Serenity.DecimalEditor;
+        NetTotal: Serenity.DecimalEditor;
+    }
+    class CashReturnForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    interface CashReturnRow {
+        HeaderID?: number;
+        TR_TY?: number;
+        TR_NO?: number;
+        TR_DT?: string;
+        StoreID?: string;
+        TR_DS?: number;
+        TRTY_NAME?: string;
+        Store_NAME?: string;
+        DocTransNo?: string;
+        OrderNo?: string;
+        ACC_NO?: string;
+        ACC_NAME?: string;
+        CashBoxID?: string;
+        Cash_NAME?: string;
+        ACC_NO2?: string;
+        ACC_NAME2?: string;
+        ACC_NO3?: string;
+        ACC_NAME3?: string;
+        REP_CD?: string;
+        REP_NAME?: string;
+        REP_CD2?: string;
+        REP_NAME2?: string;
+        CST_CD?: string;
+        CST_NAME?: string;
+        SUM_CD?: string;
+        SUM_NAME?: string;
+        SSUM_CD?: string;
+        SSUM_NAME?: string;
+        SupervisorId?: string;
+        Supervisor_NAME?: string;
+        PStoreID?: string;
+        PTR_NO?: number;
+        PTR_TY?: number;
+        HDSCR_AR?: string;
+        HDSCR_EN?: string;
+        PriceID?: string;
+        Priceedit?: boolean;
+        ReferenceNo?: number;
+        HDISC?: number;
+        HDISC1?: number;
+        HDISC2?: number;
+        HDISC3?: number;
+        HDISC4?: number;
+        HDISC1R?: number;
+        HDISC2R?: number;
+        HDISC3R?: number;
+        HTAX?: number;
+        HTAX1?: number;
+        HTAX2?: number;
+        HTAX3?: number;
+        HTAX4?: number;
+        HTAX1R?: number;
+        HTAX2R?: number;
+        HTAX3R?: number;
+        HAddtions?: number;
+        HdrAddtionsR?: number;
+        PeriodCredit?: string;
+        EXPENSEVL?: number;
+        Notes?: string;
+        Paid?: number;
+        Total?: number;
+        NetTotal?: number;
+        Balance?: number;
+        Periodterm?: number;
+        InvStatus?: number;
+        CurrencyID?: string;
+        Currency_NAME?: string;
+        RATE?: number;
+        CUR_VL?: number;
+        PRT_CNT?: number;
+        Status?: Web.Modules.Common.Status;
+        EnteredBy?: string;
+        EntryDate?: string;
+        UpdatedBy?: string;
+        UpdateDate?: string;
+        NetBeforeTAX?: number;
+        NetAfterTAX?: number;
+        DetailList?: CashReturnASTRDRow[];
+    }
+    namespace CashReturnRow {
+        const idProperty = "HeaderID";
+        const nameProperty = "StoreID";
+        const localTextPrefix = "ALgorithm.CashReturn";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            HeaderID = "HeaderID",
+            TR_TY = "TR_TY",
+            TR_NO = "TR_NO",
+            TR_DT = "TR_DT",
+            StoreID = "StoreID",
+            TR_DS = "TR_DS",
+            TRTY_NAME = "TRTY_NAME",
+            Store_NAME = "Store_NAME",
+            DocTransNo = "DocTransNo",
+            OrderNo = "OrderNo",
+            ACC_NO = "ACC_NO",
+            ACC_NAME = "ACC_NAME",
+            CashBoxID = "CashBoxID",
+            Cash_NAME = "Cash_NAME",
+            ACC_NO2 = "ACC_NO2",
+            ACC_NAME2 = "ACC_NAME2",
+            ACC_NO3 = "ACC_NO3",
+            ACC_NAME3 = "ACC_NAME3",
+            REP_CD = "REP_CD",
+            REP_NAME = "REP_NAME",
+            REP_CD2 = "REP_CD2",
+            REP_NAME2 = "REP_NAME2",
+            CST_CD = "CST_CD",
+            CST_NAME = "CST_NAME",
+            SUM_CD = "SUM_CD",
+            SUM_NAME = "SUM_NAME",
+            SSUM_CD = "SSUM_CD",
+            SSUM_NAME = "SSUM_NAME",
+            SupervisorId = "SupervisorId",
+            Supervisor_NAME = "Supervisor_NAME",
+            PStoreID = "PStoreID",
+            PTR_NO = "PTR_NO",
+            PTR_TY = "PTR_TY",
+            HDSCR_AR = "HDSCR_AR",
+            HDSCR_EN = "HDSCR_EN",
+            PriceID = "PriceID",
+            Priceedit = "Priceedit",
+            ReferenceNo = "ReferenceNo",
+            HDISC = "HDISC",
+            HDISC1 = "HDISC1",
+            HDISC2 = "HDISC2",
+            HDISC3 = "HDISC3",
+            HDISC4 = "HDISC4",
+            HDISC1R = "HDISC1R",
+            HDISC2R = "HDISC2R",
+            HDISC3R = "HDISC3R",
+            HTAX = "HTAX",
+            HTAX1 = "HTAX1",
+            HTAX2 = "HTAX2",
+            HTAX3 = "HTAX3",
+            HTAX4 = "HTAX4",
+            HTAX1R = "HTAX1R",
+            HTAX2R = "HTAX2R",
+            HTAX3R = "HTAX3R",
+            HAddtions = "HAddtions",
+            HdrAddtionsR = "HdrAddtionsR",
+            PeriodCredit = "PeriodCredit",
+            EXPENSEVL = "EXPENSEVL",
+            Notes = "Notes",
+            Paid = "Paid",
+            Total = "Total",
+            NetTotal = "NetTotal",
+            Balance = "Balance",
+            Periodterm = "Periodterm",
+            InvStatus = "InvStatus",
+            CurrencyID = "CurrencyID",
+            Currency_NAME = "Currency_NAME",
+            RATE = "RATE",
+            CUR_VL = "CUR_VL",
+            PRT_CNT = "PRT_CNT",
+            Status = "Status",
+            EnteredBy = "EnteredBy",
+            EntryDate = "EntryDate",
+            UpdatedBy = "UpdatedBy",
+            UpdateDate = "UpdateDate",
+            NetBeforeTAX = "NetBeforeTAX",
+            NetAfterTAX = "NetAfterTAX",
+            DetailList = "DetailList"
+        }
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    namespace CashReturnService {
+        const baseUrl = "ALgorithm/CashReturn";
+        function Create(request: Serenity.SaveRequest<CashReturnRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CashReturnRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function GetNextNumber(request: GetNextNumberRequest, onSuccess?: (response: GetNextNumberResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CashReturnRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CashReturnRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "ALgorithm/CashReturn/Create",
+            Update = "ALgorithm/CashReturn/Update",
+            Delete = "ALgorithm/CashReturn/Delete",
+            GetNextNumber = "ALgorithm/CashReturn/GetNextNumber",
+            Retrieve = "ALgorithm/CashReturn/Retrieve",
+            List = "ALgorithm/CashReturn/List"
+        }
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+}
+declare namespace ALgorithmPro.ALgorithm {
     interface CashSalesASTRDForm {
         ID: Serenity.StringEditor;
         DetailID: Serenity.StringEditor;
@@ -3339,6 +3620,8 @@ declare namespace ALgorithmPro.ALgorithm {
         const idProperty = "ID";
         const nameProperty = "HeaderID";
         const localTextPrefix = "ALgorithm.CashSalesASTRD";
+        const lookupKey = "ALgorithm.CashSalesASTRD";
+        function getLookup(): Q.Lookup<CashSalesASTRDRow>;
         const deletePermission = "Administration:General";
         const insertPermission = "Administration:General";
         const readPermission = "Administration:General";
@@ -6455,6 +6738,286 @@ declare namespace ALgorithmPro.ALgorithm {
 declare namespace ALgorithmPro.ALgorithm {
 }
 declare namespace ALgorithmPro.ALgorithm {
+    interface RestorePurchaseForm {
+        TR_TY: Serenity.LookupEditor;
+        StoreID: Serenity.LookupEditor;
+        CashBoxID: Serenity.LookupEditor;
+        TR_NO: Serenity.IntegerEditor;
+        TR_DS: Serenity.IntegerEditor;
+        TR_DT: Serenity.DateTimeEditor;
+        DocTransNo: Serenity.StringEditor;
+        ACC_NO: Serenity.StringEditor;
+        ACC_NAME: Serenity.StringEditor;
+        REP_CD: Serenity.LookupEditor;
+        REP_CD2: Serenity.LookupEditor;
+        CST_CD: Serenity.LookupEditor;
+        CurrencyID: Serenity.LookupEditor;
+        ReferenceNo: Serenity.IntegerEditor;
+        PriceID: Serenity.LookupEditor;
+        Balance: Serenity.DecimalEditor;
+        Notes: Serenity.TextAreaEditor;
+        HDSCR_AR: Serenity.StringEditor;
+        SSUM_CD: Serenity.LookupEditor;
+        Cash_NAME: Serenity.StringEditor;
+        OrderNo: Serenity.StringEditor;
+        SUM_CD: Serenity.LookupEditor;
+        ACC_NO2: Serenity.StringEditor;
+        ACC_NAME2: Serenity.StringEditor;
+        ACC_NO3: Serenity.StringEditor;
+        ACC_NAME3: Serenity.StringEditor;
+        REP_NAME: Serenity.StringEditor;
+        REP_NAME2: Serenity.StringEditor;
+        TRTY_NAME: Serenity.StringEditor;
+        Store_NAME: Serenity.StringEditor;
+        CST_NAME: Serenity.StringEditor;
+        SUM_NAME: Serenity.StringEditor;
+        SSUM_NAME: Serenity.StringEditor;
+        SupervisorId: Serenity.StringEditor;
+        Supervisor_NAME: Serenity.StringEditor;
+        PStoreID: Serenity.StringEditor;
+        PTR_NO: Serenity.IntegerEditor;
+        PTR_TY: Serenity.IntegerEditor;
+        HDSCR_EN: Serenity.StringEditor;
+        Priceedit: Serenity.BooleanEditor;
+        HDISC1: Serenity.DecimalEditor;
+        HDISC2: Serenity.DecimalEditor;
+        HDISC3: Serenity.DecimalEditor;
+        HDISC4: Serenity.DecimalEditor;
+        HDISC1R: Serenity.DecimalEditor;
+        HDISC2R: Serenity.DecimalEditor;
+        HDISC3R: Serenity.DecimalEditor;
+        HTAX1: Serenity.DecimalEditor;
+        HTAX2: Serenity.DecimalEditor;
+        HTAX3: Serenity.DecimalEditor;
+        HTAX4: Serenity.DecimalEditor;
+        HTAX1R: Serenity.DecimalEditor;
+        HTAX2R: Serenity.DecimalEditor;
+        HTAX3R: Serenity.DecimalEditor;
+        HdrAddtionsR: Serenity.DecimalEditor;
+        PeriodCredit: Serenity.StringEditor;
+        Periodterm: Serenity.IntegerEditor;
+        InvStatus: Serenity.IntegerEditor;
+        Currency_NAME: Serenity.StringEditor;
+        RATE: Serenity.DecimalEditor;
+        CUR_VL: Serenity.DecimalEditor;
+        PRT_CNT: Serenity.IntegerEditor;
+        Status: Serenity.EnumEditor;
+        EnteredBy: Serenity.StringEditor;
+        EntryDate: Serenity.DateEditor;
+        UpdatedBy: Serenity.StringEditor;
+        UpdateDate: Serenity.DateEditor;
+        EXPENSEVL: Serenity.DecimalEditor;
+        DetailList: RestoreASTRDEditor;
+        Total: Serenity.DecimalEditor;
+        Paid: Serenity.DecimalEditor;
+        HDISC: Serenity.DecimalEditor;
+        NetAfterTAX: Serenity.DecimalEditor;
+        HTAX: Serenity.DecimalEditor;
+        HAddtions: Serenity.DecimalEditor;
+        NetBeforeTAX: Serenity.DecimalEditor;
+        NetTotal: Serenity.DecimalEditor;
+    }
+    class RestorePurchaseForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    interface RestorePurchaseRow {
+        HeaderID?: number;
+        TR_TY?: number;
+        TR_NO?: number;
+        TR_DT?: string;
+        TR_DS?: number;
+        StoreID?: string;
+        TRTY_NAME?: string;
+        Store_NAME?: string;
+        DocTransNo?: string;
+        OrderNo?: string;
+        ACC_NO?: string;
+        ACC_NAME?: string;
+        CashBoxID?: string;
+        Cash_NAME?: string;
+        ACC_NO2?: string;
+        ACC_NAME2?: string;
+        ACC_NO3?: string;
+        ACC_NAME3?: string;
+        REP_CD?: string;
+        REP_NAME?: string;
+        REP_CD2?: string;
+        REP_NAME2?: string;
+        CST_CD?: string;
+        CST_NAME?: string;
+        SUM_CD?: string;
+        SUM_NAME?: string;
+        SSUM_CD?: string;
+        SSUM_NAME?: string;
+        SupervisorId?: string;
+        Supervisor_NAME?: string;
+        PStoreID?: string;
+        PTR_NO?: number;
+        PTR_TY?: number;
+        HDSCR_AR?: string;
+        HDSCR_EN?: string;
+        PriceID?: string;
+        Priceedit?: boolean;
+        ReferenceNo?: number;
+        HDISC?: number;
+        HDISC1?: number;
+        HDISC2?: number;
+        HDISC3?: number;
+        HDISC4?: number;
+        HDISC1R?: number;
+        HDISC2R?: number;
+        HDISC3R?: number;
+        HTAX?: number;
+        HTAX1?: number;
+        HTAX2?: number;
+        HTAX3?: number;
+        HTAX4?: number;
+        HTAX1R?: number;
+        HTAX2R?: number;
+        HTAX3R?: number;
+        HAddtions?: number;
+        HdrAddtionsR?: number;
+        PeriodCredit?: string;
+        EXPENSEVL?: number;
+        Notes?: string;
+        Paid?: number;
+        Total?: number;
+        NetTotal?: number;
+        Balance?: number;
+        Periodterm?: number;
+        InvStatus?: number;
+        CurrencyID?: string;
+        Currency_NAME?: string;
+        RATE?: number;
+        CUR_VL?: number;
+        PRT_CNT?: number;
+        Status?: Web.Modules.Common.Status;
+        EnteredBy?: string;
+        EntryDate?: string;
+        UpdatedBy?: string;
+        UpdateDate?: string;
+        NetBeforeTAX?: number;
+        NetAfterTAX?: number;
+        DetailList?: RestoreASTRDRow[];
+    }
+    namespace RestorePurchaseRow {
+        const idProperty = "HeaderID";
+        const nameProperty = "StoreID";
+        const localTextPrefix = "ALgorithm.RestorePurchase";
+        const lookupKey = "ALgorithm.RestorePurchase";
+        function getLookup(): Q.Lookup<RestorePurchaseRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            HeaderID = "HeaderID",
+            TR_TY = "TR_TY",
+            TR_NO = "TR_NO",
+            TR_DT = "TR_DT",
+            TR_DS = "TR_DS",
+            StoreID = "StoreID",
+            TRTY_NAME = "TRTY_NAME",
+            Store_NAME = "Store_NAME",
+            DocTransNo = "DocTransNo",
+            OrderNo = "OrderNo",
+            ACC_NO = "ACC_NO",
+            ACC_NAME = "ACC_NAME",
+            CashBoxID = "CashBoxID",
+            Cash_NAME = "Cash_NAME",
+            ACC_NO2 = "ACC_NO2",
+            ACC_NAME2 = "ACC_NAME2",
+            ACC_NO3 = "ACC_NO3",
+            ACC_NAME3 = "ACC_NAME3",
+            REP_CD = "REP_CD",
+            REP_NAME = "REP_NAME",
+            REP_CD2 = "REP_CD2",
+            REP_NAME2 = "REP_NAME2",
+            CST_CD = "CST_CD",
+            CST_NAME = "CST_NAME",
+            SUM_CD = "SUM_CD",
+            SUM_NAME = "SUM_NAME",
+            SSUM_CD = "SSUM_CD",
+            SSUM_NAME = "SSUM_NAME",
+            SupervisorId = "SupervisorId",
+            Supervisor_NAME = "Supervisor_NAME",
+            PStoreID = "PStoreID",
+            PTR_NO = "PTR_NO",
+            PTR_TY = "PTR_TY",
+            HDSCR_AR = "HDSCR_AR",
+            HDSCR_EN = "HDSCR_EN",
+            PriceID = "PriceID",
+            Priceedit = "Priceedit",
+            ReferenceNo = "ReferenceNo",
+            HDISC = "HDISC",
+            HDISC1 = "HDISC1",
+            HDISC2 = "HDISC2",
+            HDISC3 = "HDISC3",
+            HDISC4 = "HDISC4",
+            HDISC1R = "HDISC1R",
+            HDISC2R = "HDISC2R",
+            HDISC3R = "HDISC3R",
+            HTAX = "HTAX",
+            HTAX1 = "HTAX1",
+            HTAX2 = "HTAX2",
+            HTAX3 = "HTAX3",
+            HTAX4 = "HTAX4",
+            HTAX1R = "HTAX1R",
+            HTAX2R = "HTAX2R",
+            HTAX3R = "HTAX3R",
+            HAddtions = "HAddtions",
+            HdrAddtionsR = "HdrAddtionsR",
+            PeriodCredit = "PeriodCredit",
+            EXPENSEVL = "EXPENSEVL",
+            Notes = "Notes",
+            Paid = "Paid",
+            Total = "Total",
+            NetTotal = "NetTotal",
+            Balance = "Balance",
+            Periodterm = "Periodterm",
+            InvStatus = "InvStatus",
+            CurrencyID = "CurrencyID",
+            Currency_NAME = "Currency_NAME",
+            RATE = "RATE",
+            CUR_VL = "CUR_VL",
+            PRT_CNT = "PRT_CNT",
+            Status = "Status",
+            EnteredBy = "EnteredBy",
+            EntryDate = "EntryDate",
+            UpdatedBy = "UpdatedBy",
+            UpdateDate = "UpdateDate",
+            NetBeforeTAX = "NetBeforeTAX",
+            NetAfterTAX = "NetAfterTAX",
+            DetailList = "DetailList"
+        }
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    namespace RestorePurchaseService {
+        const baseUrl = "ALgorithm/RestorePurchase";
+        function Create(request: Serenity.SaveRequest<RestorePurchaseRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<RestorePurchaseRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function GetNextNumber(request: GetNextNumberRequest, onSuccess?: (response: GetNextNumberResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<RestorePurchaseRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<RestorePurchaseRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "ALgorithm/RestorePurchase/Create",
+            Update = "ALgorithm/RestorePurchase/Update",
+            Delete = "ALgorithm/RestorePurchase/Delete",
+            GetNextNumber = "ALgorithm/RestorePurchase/GetNextNumber",
+            Retrieve = "ALgorithm/RestorePurchase/Retrieve",
+            List = "ALgorithm/RestorePurchase/List"
+        }
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+}
+declare namespace ALgorithmPro.ALgorithm {
     interface ReturnASTRDForm {
         ID: Serenity.StringEditor;
         DetailID: Serenity.StringEditor;
@@ -6463,6 +7026,7 @@ declare namespace ALgorithmPro.ALgorithm {
         Item_CD: Serenity.StringEditor;
         ITM_NM_AR: Serenity.StringEditor;
         QTY: Serenity.DecimalEditor;
+        ReturnQty: Serenity.DecimalEditor;
         Price: Serenity.DecimalEditor;
         Value: Serenity.DecimalEditor;
         TAX1: Serenity.DecimalEditor;
@@ -6485,7 +7049,6 @@ declare namespace ALgorithmPro.ALgorithm {
         TAX1R: Serenity.DecimalEditor;
         TAX2R: Serenity.DecimalEditor;
         TAX3R: Serenity.DecimalEditor;
-        ReturnQty: Serenity.DecimalEditor;
         RestoreQty: Serenity.DecimalEditor;
         ItemBAL: Serenity.DecimalEditor;
         HeaderID: Serenity.StringEditor;
@@ -6770,6 +7333,284 @@ declare namespace ALgorithmPro.ALgorithm {
         const enum Methods {
             Retrieve = "ALgorithm/ReturnASTRD/Retrieve",
             List = "ALgorithm/ReturnASTRD/List"
+        }
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+}
+declare namespace ALgorithmPro.ALgorithm {
+    interface ReturnSalesForm {
+        TR_TY: Serenity.LookupEditor;
+        StoreID: Serenity.LookupEditor;
+        CashBoxID: Serenity.LookupEditor;
+        TR_NO: Serenity.IntegerEditor;
+        TR_DS: Serenity.IntegerEditor;
+        TR_DT: Serenity.DateTimeEditor;
+        DocTransNo: Serenity.StringEditor;
+        ACC_NO: Serenity.StringEditor;
+        ACC_NAME: Serenity.StringEditor;
+        REP_CD: Serenity.LookupEditor;
+        REP_CD2: Serenity.LookupEditor;
+        CST_CD: Serenity.LookupEditor;
+        CurrencyID: Serenity.LookupEditor;
+        ReferenceNo: Serenity.IntegerEditor;
+        PriceID: Serenity.LookupEditor;
+        Balance: Serenity.DecimalEditor;
+        Notes: Serenity.TextAreaEditor;
+        HDSCR_AR: Serenity.StringEditor;
+        SSUM_CD: Serenity.LookupEditor;
+        Cash_NAME: Serenity.StringEditor;
+        OrderNo: Serenity.StringEditor;
+        SUM_CD: Serenity.LookupEditor;
+        ACC_NO2: Serenity.StringEditor;
+        ACC_NAME2: Serenity.StringEditor;
+        ACC_NO3: Serenity.StringEditor;
+        ACC_NAME3: Serenity.StringEditor;
+        REP_NAME: Serenity.StringEditor;
+        REP_NAME2: Serenity.StringEditor;
+        TRTY_NAME: Serenity.StringEditor;
+        Store_NAME: Serenity.StringEditor;
+        CST_NAME: Serenity.StringEditor;
+        SUM_NAME: Serenity.StringEditor;
+        SSUM_NAME: Serenity.StringEditor;
+        SupervisorId: Serenity.StringEditor;
+        Supervisor_NAME: Serenity.StringEditor;
+        PStoreID: Serenity.StringEditor;
+        PTR_NO: Serenity.IntegerEditor;
+        PTR_TY: Serenity.IntegerEditor;
+        HDSCR_EN: Serenity.StringEditor;
+        Priceedit: Serenity.BooleanEditor;
+        HDISC1: Serenity.DecimalEditor;
+        HDISC2: Serenity.DecimalEditor;
+        HDISC3: Serenity.DecimalEditor;
+        HDISC4: Serenity.DecimalEditor;
+        HDISC1R: Serenity.DecimalEditor;
+        HDISC2R: Serenity.DecimalEditor;
+        HDISC3R: Serenity.DecimalEditor;
+        HTAX1: Serenity.DecimalEditor;
+        HTAX2: Serenity.DecimalEditor;
+        HTAX3: Serenity.DecimalEditor;
+        HTAX4: Serenity.DecimalEditor;
+        HTAX1R: Serenity.DecimalEditor;
+        HTAX2R: Serenity.DecimalEditor;
+        HTAX3R: Serenity.DecimalEditor;
+        HdrAddtionsR: Serenity.DecimalEditor;
+        PeriodCredit: Serenity.StringEditor;
+        Periodterm: Serenity.IntegerEditor;
+        InvStatus: Serenity.IntegerEditor;
+        Currency_NAME: Serenity.StringEditor;
+        RATE: Serenity.DecimalEditor;
+        CUR_VL: Serenity.DecimalEditor;
+        PRT_CNT: Serenity.IntegerEditor;
+        Status: Serenity.EnumEditor;
+        EnteredBy: Serenity.StringEditor;
+        EntryDate: Serenity.DateEditor;
+        UpdatedBy: Serenity.StringEditor;
+        UpdateDate: Serenity.DateEditor;
+        EXPENSEVL: Serenity.DecimalEditor;
+        DetailList: ReturnASTRDEditor;
+        Total: Serenity.DecimalEditor;
+        Paid: Serenity.DecimalEditor;
+        HDISC: Serenity.DecimalEditor;
+        NetAfterTAX: Serenity.DecimalEditor;
+        HTAX: Serenity.DecimalEditor;
+        HAddtions: Serenity.DecimalEditor;
+        NetBeforeTAX: Serenity.DecimalEditor;
+        NetTotal: Serenity.DecimalEditor;
+    }
+    class ReturnSalesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    interface ReturnSalesRow {
+        HeaderID?: number;
+        TR_TY?: number;
+        TR_NO?: number;
+        TR_DT?: string;
+        TR_DS?: number;
+        StoreID?: string;
+        TRTY_NAME?: string;
+        Store_NAME?: string;
+        DocTransNo?: string;
+        OrderNo?: string;
+        ACC_NO?: string;
+        ACC_NAME?: string;
+        CashBoxID?: string;
+        Cash_NAME?: string;
+        ACC_NO2?: string;
+        ACC_NAME2?: string;
+        ACC_NO3?: string;
+        ACC_NAME3?: string;
+        REP_CD?: string;
+        REP_NAME?: string;
+        REP_CD2?: string;
+        REP_NAME2?: string;
+        CST_CD?: string;
+        CST_NAME?: string;
+        SUM_CD?: string;
+        SUM_NAME?: string;
+        SSUM_CD?: string;
+        SSUM_NAME?: string;
+        SupervisorId?: string;
+        Supervisor_NAME?: string;
+        PStoreID?: string;
+        PTR_NO?: number;
+        PTR_TY?: number;
+        HDSCR_AR?: string;
+        HDSCR_EN?: string;
+        PriceID?: string;
+        Priceedit?: boolean;
+        ReferenceNo?: number;
+        HDISC?: number;
+        HDISC1?: number;
+        HDISC2?: number;
+        HDISC3?: number;
+        HDISC4?: number;
+        HDISC1R?: number;
+        HDISC2R?: number;
+        HDISC3R?: number;
+        HTAX?: number;
+        HTAX1?: number;
+        HTAX2?: number;
+        HTAX3?: number;
+        HTAX4?: number;
+        HTAX1R?: number;
+        HTAX2R?: number;
+        HTAX3R?: number;
+        HAddtions?: number;
+        HdrAddtionsR?: number;
+        PeriodCredit?: string;
+        EXPENSEVL?: number;
+        Notes?: string;
+        Paid?: number;
+        Total?: number;
+        NetTotal?: number;
+        Balance?: number;
+        Periodterm?: number;
+        InvStatus?: number;
+        CurrencyID?: string;
+        Currency_NAME?: string;
+        RATE?: number;
+        CUR_VL?: number;
+        PRT_CNT?: number;
+        Status?: Web.Modules.Common.Status;
+        EnteredBy?: string;
+        EntryDate?: string;
+        UpdatedBy?: string;
+        UpdateDate?: string;
+        NetBeforeTAX?: number;
+        NetAfterTAX?: number;
+        DetailList?: ReturnASTRDRow[];
+    }
+    namespace ReturnSalesRow {
+        const idProperty = "HeaderID";
+        const nameProperty = "StoreID";
+        const localTextPrefix = "ALgorithm.ReturnSales";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            HeaderID = "HeaderID",
+            TR_TY = "TR_TY",
+            TR_NO = "TR_NO",
+            TR_DT = "TR_DT",
+            TR_DS = "TR_DS",
+            StoreID = "StoreID",
+            TRTY_NAME = "TRTY_NAME",
+            Store_NAME = "Store_NAME",
+            DocTransNo = "DocTransNo",
+            OrderNo = "OrderNo",
+            ACC_NO = "ACC_NO",
+            ACC_NAME = "ACC_NAME",
+            CashBoxID = "CashBoxID",
+            Cash_NAME = "Cash_NAME",
+            ACC_NO2 = "ACC_NO2",
+            ACC_NAME2 = "ACC_NAME2",
+            ACC_NO3 = "ACC_NO3",
+            ACC_NAME3 = "ACC_NAME3",
+            REP_CD = "REP_CD",
+            REP_NAME = "REP_NAME",
+            REP_CD2 = "REP_CD2",
+            REP_NAME2 = "REP_NAME2",
+            CST_CD = "CST_CD",
+            CST_NAME = "CST_NAME",
+            SUM_CD = "SUM_CD",
+            SUM_NAME = "SUM_NAME",
+            SSUM_CD = "SSUM_CD",
+            SSUM_NAME = "SSUM_NAME",
+            SupervisorId = "SupervisorId",
+            Supervisor_NAME = "Supervisor_NAME",
+            PStoreID = "PStoreID",
+            PTR_NO = "PTR_NO",
+            PTR_TY = "PTR_TY",
+            HDSCR_AR = "HDSCR_AR",
+            HDSCR_EN = "HDSCR_EN",
+            PriceID = "PriceID",
+            Priceedit = "Priceedit",
+            ReferenceNo = "ReferenceNo",
+            HDISC = "HDISC",
+            HDISC1 = "HDISC1",
+            HDISC2 = "HDISC2",
+            HDISC3 = "HDISC3",
+            HDISC4 = "HDISC4",
+            HDISC1R = "HDISC1R",
+            HDISC2R = "HDISC2R",
+            HDISC3R = "HDISC3R",
+            HTAX = "HTAX",
+            HTAX1 = "HTAX1",
+            HTAX2 = "HTAX2",
+            HTAX3 = "HTAX3",
+            HTAX4 = "HTAX4",
+            HTAX1R = "HTAX1R",
+            HTAX2R = "HTAX2R",
+            HTAX3R = "HTAX3R",
+            HAddtions = "HAddtions",
+            HdrAddtionsR = "HdrAddtionsR",
+            PeriodCredit = "PeriodCredit",
+            EXPENSEVL = "EXPENSEVL",
+            Notes = "Notes",
+            Paid = "Paid",
+            Total = "Total",
+            NetTotal = "NetTotal",
+            Balance = "Balance",
+            Periodterm = "Periodterm",
+            InvStatus = "InvStatus",
+            CurrencyID = "CurrencyID",
+            Currency_NAME = "Currency_NAME",
+            RATE = "RATE",
+            CUR_VL = "CUR_VL",
+            PRT_CNT = "PRT_CNT",
+            Status = "Status",
+            EnteredBy = "EnteredBy",
+            EntryDate = "EntryDate",
+            UpdatedBy = "UpdatedBy",
+            UpdateDate = "UpdateDate",
+            NetBeforeTAX = "NetBeforeTAX",
+            NetAfterTAX = "NetAfterTAX",
+            DetailList = "DetailList"
+        }
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    namespace ReturnSalesService {
+        const baseUrl = "ALgorithm/ReturnSales";
+        function Create(request: Serenity.SaveRequest<ReturnSalesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ReturnSalesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function GetNextNumber(request: GetNextNumberRequest, onSuccess?: (response: GetNextNumberResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ReturnSalesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ReturnSalesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "ALgorithm/ReturnSales/Create",
+            Update = "ALgorithm/ReturnSales/Update",
+            Delete = "ALgorithm/ReturnSales/Delete",
+            GetNextNumber = "ALgorithm/ReturnSales/GetNextNumber",
+            Retrieve = "ALgorithm/ReturnSales/Retrieve",
+            List = "ALgorithm/ReturnSales/List"
         }
     }
 }
@@ -9717,22 +10558,6 @@ declare namespace ALgorithmPro.ALgorithm {
         protected getButtons(): Serenity.ToolButton[];
     }
 }
-declare namespace ALgorithmPro.ALgorithm {
-    class ItemsLookupDialog extends Serenity.TemplatedDialog<any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected getDeletePermission(): string;
-        protected getInsertPermission(): string;
-        protected getUpdatePermission(): string;
-        protected form: ItemsForm;
-        private ItemsGrid;
-        static SelectTRTY: AS.TRTYType;
-        constructor(SelectTRTY: any);
-    }
-}
 declare namespace ALgorithmPro.Common {
     class GridEditorDialog<TEntity> extends Serenity.EntityDialog<TEntity, any> {
         protected getIdProperty(): string;
@@ -9745,36 +10570,7 @@ declare namespace ALgorithmPro.Common {
     }
 }
 declare namespace ALgorithmPro.ALgorithm {
-    class AdjustDetialDialog extends Common.GridEditorDialog<AdjustDetailRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        private ItemGrid;
-        protected form: AdjustDetailForm;
-        static PrefixID: string;
-        constructor();
-        protected initDialog(): void;
-        private array;
-        private QTYChanged;
-        private PriceChanged;
-        private PackageChanged;
-        private GetNET;
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    class AdjustDetailEditor extends AS.GridEditorBase<AdjustDetailRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof AdjustDetialDialog;
-        protected getLocalTextPrefix(): string;
-        protected form: AdjustHeaderForm;
-        constructor(container: JQuery);
-        protected validateEntity(row: AdjustDetailRow, id: any): boolean;
-        protected editItem(entity: any): void;
-        private GetDetial;
-        protected getPersistanceStorage(): Serenity.SettingStorage;
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    class AdjustHeaderDialog extends Serenity.EntityDialog<AdjustHeaderRow, any> {
+    class AddInventoryASTRDDialog extends Common.GridEditorDialog<AddInventoryASTRDRow> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -9783,26 +10579,102 @@ declare namespace ALgorithmPro.ALgorithm {
         protected getDeletePermission(): string;
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
-        static HeaderPrefix: string;
-        protected form: AdjustHeaderForm;
-        static PrefixID: string;
-        private ACCNOGrid;
+        private ItemGrid;
+        protected form: AddInventoryASTRDForm;
         constructor();
-        protected initDialog(): void;
-        protected afterLoadEntity(): void;
-        private getNextNumber;
+        protected getDialogButtons(): Serenity.DialogButton[];
+    }
+}
+declare namespace AS {
+    class GridBaseEditor<TEntity> extends AS.GridBase<TEntity, any> implements Serenity.IGetEditValue, Serenity.ISetEditValue, Serenity.IReadOnly {
+        protected getASGridOptions(): ExtGridOptions;
+        protected getIdProperty(): string;
+        isChildGrid: boolean;
+        constructor(container: JQuery, options?: any);
+        private sortGridFunction;
+        protected getQuickFilters(): any[];
+        protected id(entity: any): any;
+        protected setNewID(entity: TEntity): void;
+        protected validateEntity(row: TEntity, id: number): boolean;
+        protected getNewEntity(): TEntity;
+        protected getButtons(): Serenity.ToolButton[];
+        protected setEntities(items: TEntity[]): void;
+        protected editItem(entityOrId: any): void;
+        getEditValue(property: any, target: any): void;
+        setEditValue(source: any, property: any): void;
+        get value(): TEntity[];
+        set value(value: TEntity[]);
+        protected getGridCanLoad(): boolean;
+        protected usePager(): boolean;
+        protected getInitialTitle(): any;
+        private searchText;
+        protected createToolbarExtensions(): void;
+        protected onViewFilter(row: any): boolean;
+        private matchContains;
+        protected enableFiltering(): boolean;
+        protected onViewSubmit(): boolean;
+        get_readOnly(): boolean;
+        set_readOnly(value: boolean): void;
+        protected getSlickOptions(): any;
+        protected parentDialog: DialogBase<any, any>;
+        protected onItemsChanged(value: any): void;
+        protected onBeforeGetValue(items: TEntity[]): void;
     }
 }
 declare namespace ALgorithmPro.ALgorithm {
-    class AdjustHeaderGrid extends Serenity.EntityGrid<AdjustHeaderRow, any> {
+    class AddInventoryASTRDEditor extends AS.GridBaseEditor<AddInventoryASTRDRow> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof AdjustHeaderDialog;
+        protected getDialogType(): typeof AddInventoryASTRDDialog;
+        protected getLocalTextPrefix(): string;
+        static GridName: Slick.Grid;
+        protected form: AddInventoryForm;
+        static isEditedFlag: string;
+        constructor(container: JQuery);
+        protected onItemsChanged(items: any): void;
+        protected onBeforeGetValue(items: any): void;
+        protected getItemCssClass(item: ALgorithm.AddInventoryASTRDRow, index: number): string;
+        protected getSlickOptions(): any;
+        protected validateEntity(row: any): boolean;
+        private ClearFooter;
+        private UpdateFooter;
+        protected getPersistanceStorage(): Serenity.SettingStorage;
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    class AddInventoryDialog extends Serenity.EntityDialog<AddInventoryRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: AddInventoryForm;
+        static OldValue: string;
+        static NewValue: string;
+        static StoreID: string;
+        static Grid: Slick.Grid;
+        SelectTRTY: AS.TRTYType;
+        constructor();
+        protected afterLoadEntity(): void;
+        private getNextNumber;
+        getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    class AddInventoryGrid extends Serenity.EntityGrid<AddInventoryRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof AddInventoryDialog;
         protected getIdProperty(): string;
         protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
         protected getPersistanceStorage(): Serenity.SettingStorage;
+        protected getButtons(): Serenity.ToolButton[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
         protected addButtonClick(): void;
     }
 }
@@ -9986,6 +10858,22 @@ declare namespace ALgorithmPro.ALgorithm {
         protected Itemsform: ItemsForm;
         constructor(container: JQuery);
         protected getInitialTitle(): any;
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    class ItemsLookupDialog extends Serenity.TemplatedDialog<any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: ItemsForm;
+        private ItemsGrid;
+        static SelectTRTY: AS.TRTYType;
+        constructor(SelectTRTY: any);
     }
 }
 declare namespace ALgorithmPro.ALgorithm {
@@ -10827,42 +11715,6 @@ declare namespace ALgorithmPro.ALgorithm {
         protected getDialogButtons(): Serenity.DialogButton[];
     }
 }
-declare namespace AS {
-    class GridBaseEditor<TEntity> extends AS.GridBase<TEntity, any> implements Serenity.IGetEditValue, Serenity.ISetEditValue, Serenity.IReadOnly {
-        protected getASGridOptions(): ExtGridOptions;
-        protected getIdProperty(): string;
-        isChildGrid: boolean;
-        constructor(container: JQuery, options?: any);
-        private sortGridFunction;
-        protected getQuickFilters(): any[];
-        protected id(entity: any): any;
-        protected setNewID(entity: TEntity): void;
-        protected validateEntity(row: TEntity, id: number): boolean;
-        protected getNewEntity(): TEntity;
-        protected getButtons(): Serenity.ToolButton[];
-        protected setEntities(items: TEntity[]): void;
-        protected editItem(entityOrId: any): void;
-        getEditValue(property: any, target: any): void;
-        setEditValue(source: any, property: any): void;
-        get value(): TEntity[];
-        set value(value: TEntity[]);
-        protected getGridCanLoad(): boolean;
-        protected usePager(): boolean;
-        protected getInitialTitle(): any;
-        private searchText;
-        protected createToolbarExtensions(): void;
-        protected onViewFilter(row: any): boolean;
-        private matchContains;
-        protected enableFiltering(): boolean;
-        protected onViewSubmit(): boolean;
-        get_readOnly(): boolean;
-        set_readOnly(value: boolean): void;
-        protected getSlickOptions(): any;
-        protected parentDialog: DialogBase<any, any>;
-        protected onItemsChanged(value: any): void;
-        protected onBeforeGetValue(items: TEntity[]): void;
-    }
-}
 declare namespace ALgorithmPro.ALgorithm {
     class CashPurchASTRDEditor extends AS.GridBaseEditor<CashPurchASTRDRow> {
         protected getColumnsKey(): string;
@@ -11079,6 +11931,85 @@ declare namespace ALgorithmPro.ALgorithm {
     }
 }
 declare namespace ALgorithmPro.ALgorithm {
+    class RestoreASTRDDialog extends Common.GridEditorDialog<RestoreASTRDRow> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        private ItemGrid;
+        protected form: RestoreASTRDForm;
+        constructor();
+        protected getDialogButtons(): Serenity.DialogButton[];
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    class RestoreASTRDEditor extends AS.GridBaseEditor<RestoreASTRDRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof RestoreASTRDDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        array: object[];
+        static GridName: Slick.Grid;
+        protected form: RestorePurchaseForm;
+        static isEditedFlag: string;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected onItemsChanged(items: any): void;
+        protected onBeforeGetValue(items: any): void;
+        protected getItemCssClass(item: ALgorithm.RestoreASTRDRow, index: number): string;
+        protected getSlickOptions(): any;
+        protected validateEntity(row: RestoreASTRDRow): boolean;
+        private PackageChange;
+        private UpdateGrid;
+        private ClearFooter;
+        private UpdateFooter;
+        protected getPersistanceStorage(): Serenity.SettingStorage;
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    class RestorePurchaseDialog extends Serenity.EntityDialog<RestorePurchaseRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        private ACCNOGrid;
+        protected form: RestorePurchaseForm;
+        static OldValue: string;
+        static NewValue: string;
+        static StoreID: string;
+        static Grid: Slick.Grid;
+        SelectTRTY: AS.TRTYType;
+        constructor();
+        protected afterLoadEntity(): void;
+        private getNextNumber;
+        getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    class RestorePurchaseGrid extends Serenity.EntityGrid<RestorePurchaseRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof RestorePurchaseDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getPersistanceStorage(): Serenity.SettingStorage;
+        protected addButtonClick(): void;
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
     class CashReturnASTRDDialog extends Common.GridEditorDialog<CashReturnASTRDRow> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -11118,6 +12049,43 @@ declare namespace ALgorithmPro.ALgorithm {
         private ClearFooter;
         private UpdateFooter;
         protected getPersistanceStorage(): Serenity.SettingStorage;
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    class CashReturnDialog extends Serenity.EntityDialog<CashReturnRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        private ACCNOGrid;
+        protected form: CashReturnForm;
+        static OldValue: string;
+        static NewValue: string;
+        static StoreID: string;
+        static Grid: Slick.Grid;
+        SelectTRTY: AS.TRTYType;
+        constructor();
+        protected afterLoadEntity(): void;
+        private getNextNumber;
+        getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    class CashReturnGrid extends Serenity.EntityGrid<CashReturnRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CashReturnDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getPersistanceStorage(): Serenity.SettingStorage;
+        protected addButtonClick(): void;
     }
 }
 declare namespace ALgorithmPro.ALgorithm {
@@ -11310,6 +12278,43 @@ declare namespace ALgorithmPro.ALgorithm {
         private ClearFooter;
         private UpdateFooter;
         protected getPersistanceStorage(): Serenity.SettingStorage;
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    class ReturnSalesDialog extends Serenity.EntityDialog<ReturnSalesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        private ACCNOGrid;
+        protected form: ReturnSalesForm;
+        static OldValue: string;
+        static NewValue: string;
+        static StoreID: string;
+        static Grid: Slick.Grid;
+        SelectTRTY: AS.TRTYType;
+        constructor();
+        protected afterLoadEntity(): void;
+        private getNextNumber;
+        getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
+    }
+}
+declare namespace ALgorithmPro.ALgorithm {
+    class ReturnSalesGrid extends Serenity.EntityGrid<ReturnSalesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ReturnSalesDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getPersistanceStorage(): Serenity.SettingStorage;
+        protected addButtonClick(): void;
     }
 }
 declare namespace AS {
@@ -12736,992 +13741,5 @@ declare namespace ALgorithmPro {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    class RestorePurchaseDialog extends Serenity.EntityDialog<RestorePurchaseRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected getDeletePermission(): string;
-        protected getInsertPermission(): string;
-        protected getUpdatePermission(): string;
-        private ACCNOGrid;
-        protected form: RestorePurchaseForm;
-        static OldValue: string;
-        static NewValue: string;
-        static StoreID: string;
-        static Grid: Slick.Grid;
-        SelectTRTY: AS.TRTYType;
-        constructor();
-        protected afterLoadEntity(): void;
-        private getNextNumber;
-        getToolbarButtons(): Serenity.ToolButton[];
-        protected updateInterface(): void;
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    class RestorePurchaseGrid extends Serenity.EntityGrid<RestorePurchaseRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof RestorePurchaseDialog;
-        protected getIdProperty(): string;
-        protected getInsertPermission(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getPersistanceStorage(): Serenity.SettingStorage;
-        protected addButtonClick(): void;
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-}
-declare namespace ALgorithmPro.ALgorithm {
-    interface RestorePurchaseForm {
-        TR_TY: Serenity.LookupEditor;
-        StoreID: Serenity.LookupEditor;
-        CashBoxID: Serenity.LookupEditor;
-        TR_NO: Serenity.IntegerEditor;
-        TR_DS: Serenity.IntegerEditor;
-        TR_DT: Serenity.DateTimeEditor;
-        DocTransNo: Serenity.StringEditor;
-        ACC_NO: Serenity.StringEditor;
-        ACC_NAME: Serenity.StringEditor;
-        REP_CD: Serenity.LookupEditor;
-        REP_CD2: Serenity.LookupEditor;
-        CST_CD: Serenity.LookupEditor;
-        CurrencyID: Serenity.LookupEditor;
-        ReferenceNo: Serenity.IntegerEditor;
-        PriceID: Serenity.LookupEditor;
-        Balance: Serenity.DecimalEditor;
-        Notes: Serenity.TextAreaEditor;
-        HDSCR_AR: Serenity.StringEditor;
-        SSUM_CD: Serenity.LookupEditor;
-        Cash_NAME: Serenity.StringEditor;
-        OrderNo: Serenity.StringEditor;
-        SUM_CD: Serenity.LookupEditor;
-        ACC_NO2: Serenity.StringEditor;
-        ACC_NAME2: Serenity.StringEditor;
-        ACC_NO3: Serenity.StringEditor;
-        ACC_NAME3: Serenity.StringEditor;
-        REP_NAME: Serenity.StringEditor;
-        REP_NAME2: Serenity.StringEditor;
-        TRTY_NAME: Serenity.StringEditor;
-        Store_NAME: Serenity.StringEditor;
-        CST_NAME: Serenity.StringEditor;
-        SUM_NAME: Serenity.StringEditor;
-        SSUM_NAME: Serenity.StringEditor;
-        SupervisorId: Serenity.StringEditor;
-        Supervisor_NAME: Serenity.StringEditor;
-        PStoreID: Serenity.StringEditor;
-        PTR_NO: Serenity.IntegerEditor;
-        PTR_TY: Serenity.IntegerEditor;
-        HDSCR_EN: Serenity.StringEditor;
-        Priceedit: Serenity.BooleanEditor;
-        HDISC1: Serenity.DecimalEditor;
-        HDISC2: Serenity.DecimalEditor;
-        HDISC3: Serenity.DecimalEditor;
-        HDISC4: Serenity.DecimalEditor;
-        HDISC1R: Serenity.DecimalEditor;
-        HDISC2R: Serenity.DecimalEditor;
-        HDISC3R: Serenity.DecimalEditor;
-        HTAX1: Serenity.DecimalEditor;
-        HTAX2: Serenity.DecimalEditor;
-        HTAX3: Serenity.DecimalEditor;
-        HTAX4: Serenity.DecimalEditor;
-        HTAX1R: Serenity.DecimalEditor;
-        HTAX2R: Serenity.DecimalEditor;
-        HTAX3R: Serenity.DecimalEditor;
-        HdrAddtionsR: Serenity.DecimalEditor;
-        PeriodCredit: Serenity.StringEditor;
-        Periodterm: Serenity.IntegerEditor;
-        InvStatus: Serenity.IntegerEditor;
-        Currency_NAME: Serenity.StringEditor;
-        RATE: Serenity.DecimalEditor;
-        CUR_VL: Serenity.DecimalEditor;
-        PRT_CNT: Serenity.IntegerEditor;
-        Status: Serenity.EnumEditor;
-        EnteredBy: Serenity.StringEditor;
-        EntryDate: Serenity.DateEditor;
-        UpdatedBy: Serenity.StringEditor;
-        UpdateDate: Serenity.DateEditor;
-        EXPENSEVL: Serenity.DecimalEditor;
-        DetailList: RestoreASTRDEditor;
-        Total: Serenity.DecimalEditor;
-        Paid: Serenity.DecimalEditor;
-        HDISC: Serenity.DecimalEditor;
-        NetAfterTAX: Serenity.DecimalEditor;
-        HTAX: Serenity.DecimalEditor;
-        HAddtions: Serenity.DecimalEditor;
-        NetBeforeTAX: Serenity.DecimalEditor;
-        NetTotal: Serenity.DecimalEditor;
-    }
-    class RestorePurchaseForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    interface RestorePurchaseRow {
-        HeaderID?: number;
-        TR_TY?: number;
-        TR_NO?: number;
-        TR_DT?: string;
-        TR_DS?: number;
-        StoreID?: string;
-        TRTY_NAME?: string;
-        Store_NAME?: string;
-        DocTransNo?: string;
-        OrderNo?: string;
-        ACC_NO?: string;
-        ACC_NAME?: string;
-        CashBoxID?: string;
-        Cash_NAME?: string;
-        ACC_NO2?: string;
-        ACC_NAME2?: string;
-        ACC_NO3?: string;
-        ACC_NAME3?: string;
-        REP_CD?: string;
-        REP_NAME?: string;
-        REP_CD2?: string;
-        REP_NAME2?: string;
-        CST_CD?: string;
-        CST_NAME?: string;
-        SUM_CD?: string;
-        SUM_NAME?: string;
-        SSUM_CD?: string;
-        SSUM_NAME?: string;
-        SupervisorId?: string;
-        Supervisor_NAME?: string;
-        PStoreID?: string;
-        PTR_NO?: number;
-        PTR_TY?: number;
-        HDSCR_AR?: string;
-        HDSCR_EN?: string;
-        PriceID?: string;
-        Priceedit?: boolean;
-        ReferenceNo?: number;
-        HDISC?: number;
-        HDISC1?: number;
-        HDISC2?: number;
-        HDISC3?: number;
-        HDISC4?: number;
-        HDISC1R?: number;
-        HDISC2R?: number;
-        HDISC3R?: number;
-        HTAX?: number;
-        HTAX1?: number;
-        HTAX2?: number;
-        HTAX3?: number;
-        HTAX4?: number;
-        HTAX1R?: number;
-        HTAX2R?: number;
-        HTAX3R?: number;
-        HAddtions?: number;
-        HdrAddtionsR?: number;
-        PeriodCredit?: string;
-        EXPENSEVL?: number;
-        Notes?: string;
-        Paid?: number;
-        Total?: number;
-        NetTotal?: number;
-        Balance?: number;
-        Periodterm?: number;
-        InvStatus?: number;
-        CurrencyID?: string;
-        Currency_NAME?: string;
-        RATE?: number;
-        CUR_VL?: number;
-        PRT_CNT?: number;
-        Status?: Web.Modules.Common.Status;
-        EnteredBy?: string;
-        EntryDate?: string;
-        UpdatedBy?: string;
-        UpdateDate?: string;
-        NetBeforeTAX?: number;
-        NetAfterTAX?: number;
-        DetailList?: RestoreASTRDRow[];
-    }
-    namespace RestorePurchaseRow {
-        const idProperty = "HeaderID";
-        const nameProperty = "StoreID";
-        const localTextPrefix = "ALgorithm.RestorePurchase";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
-        const enum Fields {
-            HeaderID = "HeaderID",
-            TR_TY = "TR_TY",
-            TR_NO = "TR_NO",
-            TR_DT = "TR_DT",
-            TR_DS = "TR_DS",
-            StoreID = "StoreID",
-            TRTY_NAME = "TRTY_NAME",
-            Store_NAME = "Store_NAME",
-            DocTransNo = "DocTransNo",
-            OrderNo = "OrderNo",
-            ACC_NO = "ACC_NO",
-            ACC_NAME = "ACC_NAME",
-            CashBoxID = "CashBoxID",
-            Cash_NAME = "Cash_NAME",
-            ACC_NO2 = "ACC_NO2",
-            ACC_NAME2 = "ACC_NAME2",
-            ACC_NO3 = "ACC_NO3",
-            ACC_NAME3 = "ACC_NAME3",
-            REP_CD = "REP_CD",
-            REP_NAME = "REP_NAME",
-            REP_CD2 = "REP_CD2",
-            REP_NAME2 = "REP_NAME2",
-            CST_CD = "CST_CD",
-            CST_NAME = "CST_NAME",
-            SUM_CD = "SUM_CD",
-            SUM_NAME = "SUM_NAME",
-            SSUM_CD = "SSUM_CD",
-            SSUM_NAME = "SSUM_NAME",
-            SupervisorId = "SupervisorId",
-            Supervisor_NAME = "Supervisor_NAME",
-            PStoreID = "PStoreID",
-            PTR_NO = "PTR_NO",
-            PTR_TY = "PTR_TY",
-            HDSCR_AR = "HDSCR_AR",
-            HDSCR_EN = "HDSCR_EN",
-            PriceID = "PriceID",
-            Priceedit = "Priceedit",
-            ReferenceNo = "ReferenceNo",
-            HDISC = "HDISC",
-            HDISC1 = "HDISC1",
-            HDISC2 = "HDISC2",
-            HDISC3 = "HDISC3",
-            HDISC4 = "HDISC4",
-            HDISC1R = "HDISC1R",
-            HDISC2R = "HDISC2R",
-            HDISC3R = "HDISC3R",
-            HTAX = "HTAX",
-            HTAX1 = "HTAX1",
-            HTAX2 = "HTAX2",
-            HTAX3 = "HTAX3",
-            HTAX4 = "HTAX4",
-            HTAX1R = "HTAX1R",
-            HTAX2R = "HTAX2R",
-            HTAX3R = "HTAX3R",
-            HAddtions = "HAddtions",
-            HdrAddtionsR = "HdrAddtionsR",
-            PeriodCredit = "PeriodCredit",
-            EXPENSEVL = "EXPENSEVL",
-            Notes = "Notes",
-            Paid = "Paid",
-            Total = "Total",
-            NetTotal = "NetTotal",
-            Balance = "Balance",
-            Periodterm = "Periodterm",
-            InvStatus = "InvStatus",
-            CurrencyID = "CurrencyID",
-            Currency_NAME = "Currency_NAME",
-            RATE = "RATE",
-            CUR_VL = "CUR_VL",
-            PRT_CNT = "PRT_CNT",
-            Status = "Status",
-            EnteredBy = "EnteredBy",
-            EntryDate = "EntryDate",
-            UpdatedBy = "UpdatedBy",
-            UpdateDate = "UpdateDate",
-            NetBeforeTAX = "NetBeforeTAX",
-            NetAfterTAX = "NetAfterTAX",
-            DetailList = "DetailList"
-        }
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    namespace RestorePurchaseService {
-        const baseUrl = "ALgorithm/RestorePurchase";
-        function Create(request: Serenity.SaveRequest<RestorePurchaseRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<RestorePurchaseRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function GetNextNumber(request: GetNextNumberRequest, onSuccess?: (response: GetNextNumberResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<RestorePurchaseRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<RestorePurchaseRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "ALgorithm/RestorePurchase/Create",
-            Update = "ALgorithm/RestorePurchase/Update",
-            Delete = "ALgorithm/RestorePurchase/Delete",
-            GetNextNumber = "ALgorithm/RestorePurchase/GetNextNumber",
-            Retrieve = "ALgorithm/RestorePurchase/Retrieve",
-            List = "ALgorithm/RestorePurchase/List"
-        }
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    class RestoreASTRDDialog extends Common.GridEditorDialog<RestoreASTRDRow> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected getDeletePermission(): string;
-        protected getInsertPermission(): string;
-        protected getUpdatePermission(): string;
-        private ItemGrid;
-        protected form: RestoreASTRDForm;
-        constructor();
-        protected getDialogButtons(): Serenity.DialogButton[];
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    class RestoreASTRDEditor extends AS.GridBaseEditor<RestoreASTRDRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof RestoreASTRDDialog;
-        protected getIdProperty(): string;
-        protected getInsertPermission(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        array: object[];
-        static GridName: Slick.Grid;
-        protected form: RestorePurchaseForm;
-        static isEditedFlag: string;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected onItemsChanged(items: any): void;
-        protected onBeforeGetValue(items: any): void;
-        protected getItemCssClass(item: ALgorithm.RestoreASTRDRow, index: number): string;
-        protected getSlickOptions(): any;
-        protected validateEntity(row: RestoreASTRDRow): boolean;
-        private PackageChange;
-        private UpdateGrid;
-        private ClearFooter;
-        private UpdateFooter;
-        protected getPersistanceStorage(): Serenity.SettingStorage;
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    class CashReturnDialog extends Serenity.EntityDialog<CashReturnRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected getDeletePermission(): string;
-        protected getInsertPermission(): string;
-        protected getUpdatePermission(): string;
-        private ACCNOGrid;
-        protected form: CashReturnForm;
-        static OldValue: string;
-        static NewValue: string;
-        static StoreID: string;
-        static Grid: Slick.Grid;
-        SelectTRTY: AS.TRTYType;
-        constructor();
-        protected afterLoadEntity(): void;
-        private getNextNumber;
-        getToolbarButtons(): Serenity.ToolButton[];
-        protected updateInterface(): void;
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    class CashReturnGrid extends Serenity.EntityGrid<CashReturnRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof CashReturnDialog;
-        protected getIdProperty(): string;
-        protected getInsertPermission(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getPersistanceStorage(): Serenity.SettingStorage;
-        protected addButtonClick(): void;
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    class ReturnSalesDialog extends Serenity.EntityDialog<ReturnSalesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected getDeletePermission(): string;
-        protected getInsertPermission(): string;
-        protected getUpdatePermission(): string;
-        private ACCNOGrid;
-        protected form: ReturnSalesForm;
-        static OldValue: string;
-        static NewValue: string;
-        static StoreID: string;
-        static Grid: Slick.Grid;
-        SelectTRTY: AS.TRTYType;
-        constructor();
-        protected afterLoadEntity(): void;
-        private getNextNumber;
-        getToolbarButtons(): Serenity.ToolButton[];
-        protected updateInterface(): void;
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    class ReturnSalesGrid extends Serenity.EntityGrid<ReturnSalesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof ReturnSalesDialog;
-        protected getIdProperty(): string;
-        protected getInsertPermission(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getPersistanceStorage(): Serenity.SettingStorage;
-        protected addButtonClick(): void;
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-}
-declare namespace ALgorithmPro.ALgorithm {
-    interface CashReturnForm {
-        TR_TY: Serenity.LookupEditor;
-        StoreID: Serenity.LookupEditor;
-        CashBoxID: Serenity.LookupEditor;
-        TR_NO: Serenity.IntegerEditor;
-        TR_DT: Serenity.DateTimeEditor;
-        DocTransNo: Serenity.StringEditor;
-        ACC_NO: Serenity.StringEditor;
-        ACC_NAME: Serenity.StringEditor;
-        REP_CD: Serenity.LookupEditor;
-        REP_CD2: Serenity.LookupEditor;
-        CST_CD: Serenity.LookupEditor;
-        SourceId: Serenity.StringEditor;
-        CurrencyID: Serenity.LookupEditor;
-        PriceID: Serenity.LookupEditor;
-        Balance: Serenity.DecimalEditor;
-        Notes: Serenity.TextAreaEditor;
-        HDSCR_AR: Serenity.StringEditor;
-        SSUM_CD: Serenity.LookupEditor;
-        Cash_NAME: Serenity.StringEditor;
-        OrderNo: Serenity.StringEditor;
-        SUM_CD: Serenity.LookupEditor;
-        ACC_NO2: Serenity.StringEditor;
-        ACC_NAME2: Serenity.StringEditor;
-        ACC_NO3: Serenity.StringEditor;
-        ACC_NAME3: Serenity.StringEditor;
-        REP_NAME: Serenity.StringEditor;
-        REP_NAME2: Serenity.StringEditor;
-        TRTY_NAME: Serenity.StringEditor;
-        Store_NAME: Serenity.StringEditor;
-        CST_NAME: Serenity.StringEditor;
-        SUM_NAME: Serenity.StringEditor;
-        SSUM_NAME: Serenity.StringEditor;
-        SupervisorId: Serenity.StringEditor;
-        Supervisor_NAME: Serenity.StringEditor;
-        PStoreID: Serenity.StringEditor;
-        PTR_NO: Serenity.IntegerEditor;
-        PTR_TY: Serenity.IntegerEditor;
-        HDSCR_EN: Serenity.StringEditor;
-        Priceedit: Serenity.BooleanEditor;
-        ReferenceNo: Serenity.IntegerEditor;
-        HDISC1: Serenity.DecimalEditor;
-        HDISC2: Serenity.DecimalEditor;
-        HDISC3: Serenity.DecimalEditor;
-        HDISC4: Serenity.DecimalEditor;
-        HDISC1R: Serenity.DecimalEditor;
-        HDISC2R: Serenity.DecimalEditor;
-        HDISC3R: Serenity.DecimalEditor;
-        HTAX1: Serenity.DecimalEditor;
-        HTAX2: Serenity.DecimalEditor;
-        HTAX3: Serenity.DecimalEditor;
-        HTAX4: Serenity.DecimalEditor;
-        HTAX1R: Serenity.DecimalEditor;
-        HTAX2R: Serenity.DecimalEditor;
-        HTAX3R: Serenity.DecimalEditor;
-        HdrAddtionsR: Serenity.DecimalEditor;
-        PeriodCredit: Serenity.StringEditor;
-        Periodterm: Serenity.IntegerEditor;
-        InvStatus: Serenity.IntegerEditor;
-        Currency_NAME: Serenity.StringEditor;
-        RATE: Serenity.DecimalEditor;
-        CUR_VL: Serenity.DecimalEditor;
-        PRT_CNT: Serenity.IntegerEditor;
-        Status: Serenity.EnumEditor;
-        EnteredBy: Serenity.StringEditor;
-        EntryDate: Serenity.DateEditor;
-        UpdatedBy: Serenity.StringEditor;
-        UpdateDate: Serenity.DateEditor;
-        EXPENSEVL: Serenity.DecimalEditor;
-        DetailList: CashSalesASTRDEditor;
-        Total: Serenity.DecimalEditor;
-        Paid: Serenity.DecimalEditor;
-        HDISC: Serenity.DecimalEditor;
-        NetBeforeTAX: Serenity.DecimalEditor;
-        HTAX: Serenity.DecimalEditor;
-        HAddtions: Serenity.DecimalEditor;
-        NetAfterTAX: Serenity.DecimalEditor;
-        NetTotal: Serenity.DecimalEditor;
-    }
-    class CashReturnForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    interface CashReturnRow {
-        HeaderID?: number;
-        TR_TY?: number;
-        TR_NO?: number;
-        TR_DT?: string;
-        StoreID?: string;
-        TRTY_NAME?: string;
-        Store_NAME?: string;
-        DocTransNo?: string;
-        OrderNo?: string;
-        ACC_NO?: string;
-        ACC_NAME?: string;
-        CashBoxID?: string;
-        Cash_NAME?: string;
-        ACC_NO2?: string;
-        ACC_NAME2?: string;
-        ACC_NO3?: string;
-        ACC_NAME3?: string;
-        REP_CD?: string;
-        REP_NAME?: string;
-        REP_CD2?: string;
-        REP_NAME2?: string;
-        CST_CD?: string;
-        CST_NAME?: string;
-        SUM_CD?: string;
-        SUM_NAME?: string;
-        SSUM_CD?: string;
-        SSUM_NAME?: string;
-        SourceId?: string;
-        SupervisorId?: string;
-        Supervisor_NAME?: string;
-        PStoreID?: string;
-        PTR_NO?: number;
-        PTR_TY?: number;
-        HDSCR_AR?: string;
-        HDSCR_EN?: string;
-        PriceID?: string;
-        Priceedit?: boolean;
-        ReferenceNo?: number;
-        HDISC?: number;
-        HDISC1?: number;
-        HDISC2?: number;
-        HDISC3?: number;
-        HDISC4?: number;
-        HDISC1R?: number;
-        HDISC2R?: number;
-        HDISC3R?: number;
-        HTAX?: number;
-        HTAX1?: number;
-        HTAX2?: number;
-        HTAX3?: number;
-        HTAX4?: number;
-        HTAX1R?: number;
-        HTAX2R?: number;
-        HTAX3R?: number;
-        HAddtions?: number;
-        HdrAddtionsR?: number;
-        PeriodCredit?: string;
-        EXPENSEVL?: number;
-        Notes?: string;
-        Paid?: number;
-        Total?: number;
-        NetTotal?: number;
-        Balance?: number;
-        Periodterm?: number;
-        InvStatus?: number;
-        CurrencyID?: string;
-        Currency_NAME?: string;
-        RATE?: number;
-        CUR_VL?: number;
-        PRT_CNT?: number;
-        Status?: Web.Modules.Common.Status;
-        EnteredBy?: string;
-        EntryDate?: string;
-        UpdatedBy?: string;
-        UpdateDate?: string;
-        NetBeforeTAX?: number;
-        NetAfterTAX?: number;
-        DetailList?: CashReturnASTRDRow[];
-    }
-    namespace CashReturnRow {
-        const idProperty = "HeaderID";
-        const nameProperty = "StoreID";
-        const localTextPrefix = "ALgorithm.CashReturn";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
-        const enum Fields {
-            HeaderID = "HeaderID",
-            TR_TY = "TR_TY",
-            TR_NO = "TR_NO",
-            TR_DT = "TR_DT",
-            StoreID = "StoreID",
-            TRTY_NAME = "TRTY_NAME",
-            Store_NAME = "Store_NAME",
-            DocTransNo = "DocTransNo",
-            OrderNo = "OrderNo",
-            ACC_NO = "ACC_NO",
-            ACC_NAME = "ACC_NAME",
-            CashBoxID = "CashBoxID",
-            Cash_NAME = "Cash_NAME",
-            ACC_NO2 = "ACC_NO2",
-            ACC_NAME2 = "ACC_NAME2",
-            ACC_NO3 = "ACC_NO3",
-            ACC_NAME3 = "ACC_NAME3",
-            REP_CD = "REP_CD",
-            REP_NAME = "REP_NAME",
-            REP_CD2 = "REP_CD2",
-            REP_NAME2 = "REP_NAME2",
-            CST_CD = "CST_CD",
-            CST_NAME = "CST_NAME",
-            SUM_CD = "SUM_CD",
-            SUM_NAME = "SUM_NAME",
-            SSUM_CD = "SSUM_CD",
-            SSUM_NAME = "SSUM_NAME",
-            SourceId = "SourceId",
-            SupervisorId = "SupervisorId",
-            Supervisor_NAME = "Supervisor_NAME",
-            PStoreID = "PStoreID",
-            PTR_NO = "PTR_NO",
-            PTR_TY = "PTR_TY",
-            HDSCR_AR = "HDSCR_AR",
-            HDSCR_EN = "HDSCR_EN",
-            PriceID = "PriceID",
-            Priceedit = "Priceedit",
-            ReferenceNo = "ReferenceNo",
-            HDISC = "HDISC",
-            HDISC1 = "HDISC1",
-            HDISC2 = "HDISC2",
-            HDISC3 = "HDISC3",
-            HDISC4 = "HDISC4",
-            HDISC1R = "HDISC1R",
-            HDISC2R = "HDISC2R",
-            HDISC3R = "HDISC3R",
-            HTAX = "HTAX",
-            HTAX1 = "HTAX1",
-            HTAX2 = "HTAX2",
-            HTAX3 = "HTAX3",
-            HTAX4 = "HTAX4",
-            HTAX1R = "HTAX1R",
-            HTAX2R = "HTAX2R",
-            HTAX3R = "HTAX3R",
-            HAddtions = "HAddtions",
-            HdrAddtionsR = "HdrAddtionsR",
-            PeriodCredit = "PeriodCredit",
-            EXPENSEVL = "EXPENSEVL",
-            Notes = "Notes",
-            Paid = "Paid",
-            Total = "Total",
-            NetTotal = "NetTotal",
-            Balance = "Balance",
-            Periodterm = "Periodterm",
-            InvStatus = "InvStatus",
-            CurrencyID = "CurrencyID",
-            Currency_NAME = "Currency_NAME",
-            RATE = "RATE",
-            CUR_VL = "CUR_VL",
-            PRT_CNT = "PRT_CNT",
-            Status = "Status",
-            EnteredBy = "EnteredBy",
-            EntryDate = "EntryDate",
-            UpdatedBy = "UpdatedBy",
-            UpdateDate = "UpdateDate",
-            NetBeforeTAX = "NetBeforeTAX",
-            NetAfterTAX = "NetAfterTAX",
-            DetailList = "DetailList"
-        }
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    namespace CashReturnService {
-        const baseUrl = "ALgorithm/CashReturn";
-        function Create(request: Serenity.SaveRequest<CashReturnRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<CashReturnRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function GetNextNumber(request: GetNextNumberRequest, onSuccess?: (response: GetNextNumberResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CashReturnRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CashReturnRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "ALgorithm/CashReturn/Create",
-            Update = "ALgorithm/CashReturn/Update",
-            Delete = "ALgorithm/CashReturn/Delete",
-            GetNextNumber = "ALgorithm/CashReturn/GetNextNumber",
-            Retrieve = "ALgorithm/CashReturn/Retrieve",
-            List = "ALgorithm/CashReturn/List"
-        }
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-}
-declare namespace ALgorithmPro.ALgorithm {
-    interface ReturnSalesForm {
-        TR_TY: Serenity.LookupEditor;
-        StoreID: Serenity.LookupEditor;
-        CashBoxID: Serenity.LookupEditor;
-        TR_NO: Serenity.IntegerEditor;
-        TR_DT: Serenity.DateTimeEditor;
-        TR_DS: Serenity.IntegerEditor;
-        DocTransNo: Serenity.StringEditor;
-        ACC_NO: Serenity.StringEditor;
-        ACC_NAME: Serenity.StringEditor;
-        REP_CD: Serenity.LookupEditor;
-        REP_CD2: Serenity.LookupEditor;
-        CST_CD: Serenity.LookupEditor;
-        CurrencyID: Serenity.LookupEditor;
-        PriceID: Serenity.LookupEditor;
-        Balance: Serenity.DecimalEditor;
-        Notes: Serenity.TextAreaEditor;
-        HDSCR_AR: Serenity.StringEditor;
-        SSUM_CD: Serenity.LookupEditor;
-        Cash_NAME: Serenity.StringEditor;
-        OrderNo: Serenity.StringEditor;
-        SUM_CD: Serenity.LookupEditor;
-        ACC_NO2: Serenity.StringEditor;
-        ACC_NAME2: Serenity.StringEditor;
-        ACC_NO3: Serenity.StringEditor;
-        ACC_NAME3: Serenity.StringEditor;
-        REP_NAME: Serenity.StringEditor;
-        REP_NAME2: Serenity.StringEditor;
-        TRTY_NAME: Serenity.StringEditor;
-        Store_NAME: Serenity.StringEditor;
-        CST_NAME: Serenity.StringEditor;
-        SUM_NAME: Serenity.StringEditor;
-        SSUM_NAME: Serenity.StringEditor;
-        SupervisorId: Serenity.StringEditor;
-        Supervisor_NAME: Serenity.StringEditor;
-        PStoreID: Serenity.StringEditor;
-        PTR_NO: Serenity.IntegerEditor;
-        PTR_TY: Serenity.IntegerEditor;
-        HDSCR_EN: Serenity.StringEditor;
-        Priceedit: Serenity.BooleanEditor;
-        ReferenceNo: Serenity.IntegerEditor;
-        HDISC1: Serenity.DecimalEditor;
-        HDISC2: Serenity.DecimalEditor;
-        HDISC3: Serenity.DecimalEditor;
-        HDISC4: Serenity.DecimalEditor;
-        HDISC1R: Serenity.DecimalEditor;
-        HDISC2R: Serenity.DecimalEditor;
-        HDISC3R: Serenity.DecimalEditor;
-        HTAX1: Serenity.DecimalEditor;
-        HTAX2: Serenity.DecimalEditor;
-        HTAX3: Serenity.DecimalEditor;
-        HTAX4: Serenity.DecimalEditor;
-        HTAX1R: Serenity.DecimalEditor;
-        HTAX2R: Serenity.DecimalEditor;
-        HTAX3R: Serenity.DecimalEditor;
-        HdrAddtionsR: Serenity.DecimalEditor;
-        PeriodCredit: Serenity.StringEditor;
-        Periodterm: Serenity.IntegerEditor;
-        InvStatus: Serenity.IntegerEditor;
-        Currency_NAME: Serenity.StringEditor;
-        RATE: Serenity.DecimalEditor;
-        CUR_VL: Serenity.DecimalEditor;
-        PRT_CNT: Serenity.IntegerEditor;
-        Status: Serenity.EnumEditor;
-        EnteredBy: Serenity.StringEditor;
-        EntryDate: Serenity.DateEditor;
-        UpdatedBy: Serenity.StringEditor;
-        UpdateDate: Serenity.DateEditor;
-        EXPENSEVL: Serenity.DecimalEditor;
-        DetailList: ReturnASTRDEditor;
-        Total: Serenity.DecimalEditor;
-        Paid: Serenity.DecimalEditor;
-        HDISC: Serenity.DecimalEditor;
-        NetBeforeTAX: Serenity.DecimalEditor;
-        HTAX: Serenity.DecimalEditor;
-        HAddtions: Serenity.DecimalEditor;
-        NetAfterTAX: Serenity.DecimalEditor;
-        NetTotal: Serenity.DecimalEditor;
-    }
-    class ReturnSalesForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    interface ReturnSalesRow {
-        HeaderID?: number;
-        TR_TY?: number;
-        TR_NO?: number;
-        TR_DT?: string;
-        TR_DS?: number;
-        StoreID?: string;
-        TRTY_NAME?: string;
-        Store_NAME?: string;
-        DocTransNo?: string;
-        OrderNo?: string;
-        ACC_NO?: string;
-        ACC_NAME?: string;
-        CashBoxID?: string;
-        Cash_NAME?: string;
-        ACC_NO2?: string;
-        ACC_NAME2?: string;
-        ACC_NO3?: string;
-        ACC_NAME3?: string;
-        REP_CD?: string;
-        REP_NAME?: string;
-        REP_CD2?: string;
-        REP_NAME2?: string;
-        CST_CD?: string;
-        CST_NAME?: string;
-        SUM_CD?: string;
-        SUM_NAME?: string;
-        SSUM_CD?: string;
-        SSUM_NAME?: string;
-        SupervisorId?: string;
-        Supervisor_NAME?: string;
-        PStoreID?: string;
-        PTR_NO?: number;
-        PTR_TY?: number;
-        HDSCR_AR?: string;
-        HDSCR_EN?: string;
-        PriceID?: string;
-        Priceedit?: boolean;
-        ReferenceNo?: number;
-        HDISC?: number;
-        HDISC1?: number;
-        HDISC2?: number;
-        HDISC3?: number;
-        HDISC4?: number;
-        HDISC1R?: number;
-        HDISC2R?: number;
-        HDISC3R?: number;
-        HTAX?: number;
-        HTAX1?: number;
-        HTAX2?: number;
-        HTAX3?: number;
-        HTAX4?: number;
-        HTAX1R?: number;
-        HTAX2R?: number;
-        HTAX3R?: number;
-        HAddtions?: number;
-        HdrAddtionsR?: number;
-        PeriodCredit?: string;
-        EXPENSEVL?: number;
-        Notes?: string;
-        Paid?: number;
-        Total?: number;
-        NetTotal?: number;
-        Balance?: number;
-        Periodterm?: number;
-        InvStatus?: number;
-        CurrencyID?: string;
-        Currency_NAME?: string;
-        RATE?: number;
-        CUR_VL?: number;
-        PRT_CNT?: number;
-        Status?: Web.Modules.Common.Status;
-        EnteredBy?: string;
-        EntryDate?: string;
-        UpdatedBy?: string;
-        UpdateDate?: string;
-        NetBeforeTAX?: number;
-        NetAfterTAX?: number;
-        DetailList?: ReturnASTRDRow[];
-    }
-    namespace ReturnSalesRow {
-        const idProperty = "HeaderID";
-        const nameProperty = "StoreID";
-        const localTextPrefix = "ALgorithm.ReturnSales";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
-        const enum Fields {
-            HeaderID = "HeaderID",
-            TR_TY = "TR_TY",
-            TR_NO = "TR_NO",
-            TR_DT = "TR_DT",
-            TR_DS = "TR_DS",
-            StoreID = "StoreID",
-            TRTY_NAME = "TRTY_NAME",
-            Store_NAME = "Store_NAME",
-            DocTransNo = "DocTransNo",
-            OrderNo = "OrderNo",
-            ACC_NO = "ACC_NO",
-            ACC_NAME = "ACC_NAME",
-            CashBoxID = "CashBoxID",
-            Cash_NAME = "Cash_NAME",
-            ACC_NO2 = "ACC_NO2",
-            ACC_NAME2 = "ACC_NAME2",
-            ACC_NO3 = "ACC_NO3",
-            ACC_NAME3 = "ACC_NAME3",
-            REP_CD = "REP_CD",
-            REP_NAME = "REP_NAME",
-            REP_CD2 = "REP_CD2",
-            REP_NAME2 = "REP_NAME2",
-            CST_CD = "CST_CD",
-            CST_NAME = "CST_NAME",
-            SUM_CD = "SUM_CD",
-            SUM_NAME = "SUM_NAME",
-            SSUM_CD = "SSUM_CD",
-            SSUM_NAME = "SSUM_NAME",
-            SupervisorId = "SupervisorId",
-            Supervisor_NAME = "Supervisor_NAME",
-            PStoreID = "PStoreID",
-            PTR_NO = "PTR_NO",
-            PTR_TY = "PTR_TY",
-            HDSCR_AR = "HDSCR_AR",
-            HDSCR_EN = "HDSCR_EN",
-            PriceID = "PriceID",
-            Priceedit = "Priceedit",
-            ReferenceNo = "ReferenceNo",
-            HDISC = "HDISC",
-            HDISC1 = "HDISC1",
-            HDISC2 = "HDISC2",
-            HDISC3 = "HDISC3",
-            HDISC4 = "HDISC4",
-            HDISC1R = "HDISC1R",
-            HDISC2R = "HDISC2R",
-            HDISC3R = "HDISC3R",
-            HTAX = "HTAX",
-            HTAX1 = "HTAX1",
-            HTAX2 = "HTAX2",
-            HTAX3 = "HTAX3",
-            HTAX4 = "HTAX4",
-            HTAX1R = "HTAX1R",
-            HTAX2R = "HTAX2R",
-            HTAX3R = "HTAX3R",
-            HAddtions = "HAddtions",
-            HdrAddtionsR = "HdrAddtionsR",
-            PeriodCredit = "PeriodCredit",
-            EXPENSEVL = "EXPENSEVL",
-            Notes = "Notes",
-            Paid = "Paid",
-            Total = "Total",
-            NetTotal = "NetTotal",
-            Balance = "Balance",
-            Periodterm = "Periodterm",
-            InvStatus = "InvStatus",
-            CurrencyID = "CurrencyID",
-            Currency_NAME = "Currency_NAME",
-            RATE = "RATE",
-            CUR_VL = "CUR_VL",
-            PRT_CNT = "PRT_CNT",
-            Status = "Status",
-            EnteredBy = "EnteredBy",
-            EntryDate = "EntryDate",
-            UpdatedBy = "UpdatedBy",
-            UpdateDate = "UpdateDate",
-            NetBeforeTAX = "NetBeforeTAX",
-            NetAfterTAX = "NetAfterTAX",
-            DetailList = "DetailList"
-        }
-    }
-}
-declare namespace ALgorithmPro.ALgorithm {
-    namespace ReturnSalesService {
-        const baseUrl = "ALgorithm/ReturnSales";
-        function Create(request: Serenity.SaveRequest<ReturnSalesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<ReturnSalesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function GetNextNumber(request: GetNextNumberRequest, onSuccess?: (response: GetNextNumberResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ReturnSalesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ReturnSalesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "ALgorithm/ReturnSales/Create",
-            Update = "ALgorithm/ReturnSales/Update",
-            Delete = "ALgorithm/ReturnSales/Delete",
-            GetNextNumber = "ALgorithm/ReturnSales/GetNextNumber",
-            Retrieve = "ALgorithm/ReturnSales/Retrieve",
-            List = "ALgorithm/ReturnSales/List"
-        }
     }
 }

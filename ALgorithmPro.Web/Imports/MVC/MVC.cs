@@ -49,6 +49,19 @@ namespace MVC
                 public const string BranchIndex = "~/Modules/ALgorithm/Branch/BranchIndex.cshtml";
             }
 
+            public static class Cash
+            {
+                public static class CashPayed
+                {
+                    public const string CashPayedIndex = "~/Modules/ALgorithm/Cash/CashPayed/CashPayedIndex.cshtml";
+                }
+
+                public static class CashReceive
+                {
+                    public const string CashReceiveIndex = "~/Modules/ALgorithm/Cash/CashReceive/CashReceiveIndex.cshtml";
+                }
+            }
+
             public static class Checks
             {
                 public const string ChecksIndex = "~/Modules/ALgorithm/Checks/ChecksIndex.cshtml";
@@ -76,14 +89,34 @@ namespace MVC
 
             public static class Inventory
             {
-                public static class AdjustDetail
+                public static class AddInventoryDetail
                 {
-                    public const string AdjustDetailIndex = "~/Modules/ALgorithm/Inventory/AdjustDetail/AdjustDetailIndex.cshtml";
+                    public const string AddInventoryASTRDIndex = "~/Modules/ALgorithm/Inventory/AddInventoryDetail/AddInventoryASTRDIndex.cshtml";
                 }
 
-                public static class AdjustHeader
+                public static class AddInventoryHeader
                 {
-                    public const string AdjustHeaderIndex = "~/Modules/ALgorithm/Inventory/AdjustHeader/AdjustHeaderIndex.cshtml";
+                    public const string AddInventoryIndex = "~/Modules/ALgorithm/Inventory/AddInventoryHeader/AddInventoryIndex.cshtml";
+                }
+
+                public static class CorruptedDetail
+                {
+                    public const string CorruptedASTRDIndex = "~/Modules/ALgorithm/Inventory/CorruptedDetail/CorruptedASTRDIndex.cshtml";
+                }
+
+                public static class CorruptedHeader
+                {
+                    public const string CorruptedIndex = "~/Modules/ALgorithm/Inventory/CorruptedHeader/CorruptedIndex.cshtml";
+                }
+
+                public static class RemoveInventoryDetail
+                {
+                    public const string RemoveInventoryASTRDIndex = "~/Modules/ALgorithm/Inventory/RemoveInventoryDetail/RemoveInventoryASTRDIndex.cshtml";
+                }
+
+                public static class RemoveInventoryHeader
+                {
+                    public const string RemoveInventoryIndex = "~/Modules/ALgorithm/Inventory/RemoveInventoryHeader/RemoveInventoryIndex.cshtml";
                 }
             }
 

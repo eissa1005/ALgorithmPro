@@ -39,6 +39,15 @@ using MyPages = ALgorithmPro.ALgorithm.Pages;
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/Cash Return", typeof(MyPages.CashReturnController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/Credit Return", typeof(MyPages.ReturnSalesController), icon: null)]
 
+[assembly: NavigationMenu(13000, "ALgorithm/Inventory", icon: "fa-cube")]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Inventory/AddInventory", typeof(MyPages.AddInventoryController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Inventory/RemoveInventory", typeof(MyPages.RemoveInventoryController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Inventory/CorruptedInventory", typeof(MyPages.CorruptedController), icon: null)]
+
+[assembly: NavigationMenu(13000, "ALgorithm/Cash", icon: "fa-cube")]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Cash/CashReceive", typeof(MyPages.CashReceiveController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Cash/CashPayed", typeof(MyPages.CashPayedController), icon: null)]
+
 
 [assembly: NavigationMenu(14000, "ALgorithm/Checks", icon: "fa-desktop")]
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Checks/Checks", typeof(MyPages.ChecksController), icon: null)]

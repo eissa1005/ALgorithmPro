@@ -27,8 +27,8 @@
         },
         {
           "Tablename": "dbo.ASACCTRH",
-          "Identifier": "ACCTRH",
-          "Module": "Model",
+          "Identifier": "CashPayed",
+          "Module": "ALgorithm/Cash",
           "PermissionKey": "Administration:General"
         },
         {

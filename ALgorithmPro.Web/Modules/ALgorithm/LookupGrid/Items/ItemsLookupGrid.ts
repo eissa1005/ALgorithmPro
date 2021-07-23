@@ -20,42 +20,54 @@ namespace ALgorithmPro.ALgorithm {
         constructor(container: JQuery) {
             super(container);
 
-            if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.CashPurchase) {
-                this.SelectTRTY = AS.TRTYType.CashPurchase;
-                this.Grid = CashPurchASTRDEditor.GridName;
-            }
+            switch (ItemsLookupDialog.SelectTRTY) {
 
-            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.Purchase) {
-                this.SelectTRTY = AS.TRTYType.Purchase;
-                this.Grid = PurchASTRDEditor.GridName;
-            }
+                case AS.TRTYType.CashPurchase:
+                    this.SelectTRTY = AS.TRTYType.CashPurchase;
+                    this.Grid = CashPurchASTRDEditor.GridName;
+                    break;
 
-            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.CashRestore) {
-                this.SelectTRTY = AS.TRTYType.CashRestore;
-                this.Grid = CashRestoreASTRDEditor.GridName;
-            }
+                case AS.TRTYType.Purchase:
+                    this.SelectTRTY = AS.TRTYType.Purchase;
+                    this.Grid = PurchASTRDEditor.GridName;
+                    break;
 
-            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.RestorePurch) {
-                this.SelectTRTY = AS.TRTYType.RestorePurch;
-                this.Grid = RestoreASTRDEditor.GridName;
-            }
+                case AS.TRTYType.CashRestore:
+                    this.SelectTRTY = AS.TRTYType.CashRestore;
+                    this.Grid = CashRestoreASTRDEditor.GridName;
+                    break;
 
-            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.CashSales) {
-                this.SelectTRTY = AS.TRTYType.CashSales;
-                this.Grid = CashSalesASTRDEditor.GridName;
-            }
-            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.Sales) {
-                this.SelectTRTY = AS.TRTYType.Sales;
-                this.Grid = SalesASTRDEditor.GridName;
-            }
+                case AS.TRTYType.RestorePurch:
+                    this.SelectTRTY = AS.TRTYType.RestorePurch;
+                    this.Grid = RestoreASTRDEditor.GridName;
+                    break;
 
-            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.CashReturn) {
-                this.SelectTRTY = AS.TRTYType.CashReturn;
-                this.Grid = CashReturnASTRDEditor.GridName;
-            }
-            else if (ItemsLookupDialog.SelectTRTY == AS.TRTYType.ReturnSales) {
-                this.SelectTRTY = AS.TRTYType.ReturnSales;
-                this.Grid = ReturnASTRDEditor.GridName;
+                case AS.TRTYType.CashSales:
+                    this.SelectTRTY = AS.TRTYType.CashSales;
+                    this.Grid = CashSalesASTRDEditor.GridName;
+                    break;
+
+                case AS.TRTYType.Sales:
+                    this.SelectTRTY = AS.TRTYType.Sales;
+                    this.Grid = SalesASTRDEditor.GridName;
+                    break;
+
+                case AS.TRTYType.CashReturn:
+                    this.SelectTRTY = AS.TRTYType.CashReturn;
+                    this.Grid = CashReturnASTRDEditor.GridName;
+                    break;
+
+                case AS.TRTYType.ReturnSales:
+                    this.SelectTRTY = AS.TRTYType.ReturnSales;
+                    this.Grid = ReturnASTRDEditor.GridName;
+                    break;
+
+                case AS.TRTYType.AddInventory:
+                    this.SelectTRTY = AS.TRTYType.AddInventory;
+                    this.Grid = AddInventoryASTRDEditor.GridName;
+                    break;
+
+                default:
             }
 
             var grid = this.slickGrid;
@@ -108,6 +120,7 @@ namespace ALgorithmPro.ALgorithm {
                 row.PKCST = _row.UCOST;
                 row.ItemBAL = _row.ItemBAL;
                 row.StoreID = _row.StoreID;
+           
 
                 switch (this.SelectTRTY) {
                     case AS.TRTYType.CashPurchase:
@@ -149,6 +162,17 @@ namespace ALgorithmPro.ALgorithm {
                         row.NetAfterTAX = row.Value + SumTAX;
                         row.NET = row.Value + SumTAX - SumDisc;
                         break;
+
+                    case AS.TRTYType.AddInventory:
+                        var Price = 0;
+                        var Cost = AS.IsNull(_row.UCOST, 1);
+                        if (Cost > 1) Price = Cost; else Price = AS.IsNull(_row.PPRC2,1);
+                        row.Price = Price;
+                        row.PKID = !AS.IsNullValue(_row.PRCH_PK)? _row.PRCH_PK : _row.SLS_PK;
+                        row.Value = Price * this.One;
+                        row.NET = row.Value;
+                        break;
+
 
                     default:
                         break;
@@ -207,6 +231,14 @@ namespace ALgorithmPro.ALgorithm {
                         row.NetAfterTAX = row.Value + SumTAX;
                         row.NET = row.Value + SumTAX - SumDisc;
                         break;
+                    case AS.TRTYType.AddInventory:
+                        var Price = 0;
+                        var Cost = AS.IsNull(_row.UCOST, 1);
+                        if (Cost > 1) Price = Cost; else Price = AS.IsNull(_row.PPRC2, 1);
+                        row.Price = Price;
+                        row.PKID = !AS.IsNullValue(_row.PRCH_PK) ? _row.PRCH_PK : _row.SLS_PK;
+                        row.Value = Price * this.One;
+                        row.NET = row.Value;
 
                     default:
                         break;

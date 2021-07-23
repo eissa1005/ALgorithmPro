@@ -191,7 +191,7 @@ namespace AS {
                         column.cssClass += ' align-left';
                         column.width = column.minWidth > 100 ? column.minWidth : 100;
                     } else if (formatterType == "Enum") {
-                        column.width = column.minWidth > 100 ? column.minWidth : 100;
+                        column.width = column.minWidth > 99 ? column.minWidth : 100;
                     } else if (formatterType == "Date") {
                         column.cssClass += ' align-center';
                         column.width = column.minWidth > 99 ? column.minWidth : 99;
@@ -200,7 +200,7 @@ namespace AS {
                         column.width = column.minWidth > 140 ? column.minWidth : 140;
                     } else if (formatterType == "Number") {
                         column.width = column.minWidth > 100 ? column.minWidth : 110;
-                        column.cssClass += ' align-center';
+                        column.cssClass += ' align-left';
 
                     }else if (formatterType == "String") {
                         column.width = column.minWidth > 200 ? column.minWidth : 200;

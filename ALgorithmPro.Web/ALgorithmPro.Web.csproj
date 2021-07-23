@@ -262,6 +262,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Imports\ServerTypings\" />
+    <Folder Include="Modules\ALgorithm\Cash\CashPayed\" />
+    <Folder Include="Modules\ALgorithm\Cash\CashReceive\" />
     <Folder Include="wwwroot\Content\devexpress\css\" />
   </ItemGroup>
   <ItemGroup>

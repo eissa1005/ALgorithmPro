@@ -31,13 +31,13 @@ namespace ALgorithmPro.ALgorithm {
                     break;
                 case AS.TRTYType.CashRestore:
                     this.SelectTRTY = AS.TRTYType.CashRestore;
-                    this.IdPrefixed = BS.GetPrefixId(CashRestoreASTRHForm.formKey);
-                    this.form = new CashRestoreASTRHForm(this.IdPrefixed);
+                    this.IdPrefixed = BS.GetPrefixId(CashRestoreForm.formKey);
+                    this.form = new CashRestoreForm(this.IdPrefixed);
                     break;
                 case AS.TRTYType.RestorePurch:
                     this.SelectTRTY = AS.TRTYType.RestorePurch;
-                    this.IdPrefixed = BS.GetPrefixId(RestoreASTRHForm.formKey);
-                    this.form = new RestoreASTRHForm(this.IdPrefixed);
+                    this.IdPrefixed = BS.GetPrefixId(RestorePurchaseForm.formKey);
+                    this.form = new RestorePurchaseForm(this.IdPrefixed);
                     break;
                 case AS.TRTYType.CashSales:
                     this.SelectTRTY = AS.TRTYType.CashSales;
@@ -51,19 +51,31 @@ namespace ALgorithmPro.ALgorithm {
                     break;
                 case AS.TRTYType.CashReturn:
                     this.SelectTRTY = AS.TRTYType.CashReturn;
-                    this.IdPrefixed = BS.GetPrefixId(CashReturnASTRHForm.formKey);
-                    this.form = new CashReturnASTRHForm(this.IdPrefixed);
+                    this.IdPrefixed = BS.GetPrefixId(CashReturnForm.formKey);
+                    this.form = new CashReturnForm(this.IdPrefixed);
                     break;
                 case AS.TRTYType.ReturnSales:
                     this.SelectTRTY = AS.TRTYType.ReturnSales;
-                    this.IdPrefixed = BS.GetPrefixId(ReturnASTRHForm.formKey);
-                    this.form = new ReturnASTRHForm(this.IdPrefixed);
+                    this.IdPrefixed = BS.GetPrefixId(ReturnSalesForm.formKey);
+                    this.form = new ReturnSalesForm(this.IdPrefixed);
                     break;
                 case AS.TRTYType.AddInventory:
                     this.SelectTRTY = AS.TRTYType.AddInventory;
                     break;
                 case AS.TRTYType.RemoveInventory:
                     this.SelectTRTY = AS.TRTYType.RemoveInventory;
+                    break;
+
+                case AS.TRTYType.CashReceive:
+                    this.SelectTRTY = AS.TRTYType.CashReceive;
+                    this.IdPrefixed = BS.GetPrefixId(CashReceiveForm.formKey);
+                    this.form = new CashReceiveForm(this.IdPrefixed);
+                    break;
+
+                case AS.TRTYType.CashPayed:
+                    this.SelectTRTY = AS.TRTYType.CashPayed;
+                    this.IdPrefixed = BS.GetPrefixId(CashPayedForm.formKey);
+                    this.form = new CashPayedForm(this.IdPrefixed);
                     break;
 
                 default:
