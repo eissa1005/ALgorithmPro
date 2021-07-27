@@ -32,7 +32,7 @@ namespace ALgorithmPro.ALgorithm.Repositories
             {
 
                 header.TR_TY = (int)TRTYType.CashPayed;
-                header.TRTY_NAME = AS.GetName(uow, FunctionName.GetTRTYNAME, header.TR_TY.ToString());
+                header.TRTY_NAME = "يومية الخزينة - سند صرف";
                 header.TR_DS = (int)TRDSTYPE.CashPayed;
                 header.TR_DT = header.TR_DT != null ? header.TR_DT : DateTime.Now;
                 header.Store_NAME = AS.GetName(uow, FunctionName.GetStoreName, "'" + header.StoreID + "'");
@@ -75,7 +75,7 @@ namespace ALgorithmPro.ALgorithm.Repositories
             try
             {
                 header.TR_TY = (int)TRTYType.CashPayed;
-                header.TRTY_NAME = AS.GetName(uow, FunctionName.GetTRTYNAME, header.TR_TY.ToString());
+                header.TRTY_NAME = "يومية الخزينة - سند صرف"; 
                 header.TR_DS = (int)TRDSTYPE.CashPayed;
                 header.TR_DT = header.TR_DT != null ? header.TR_DT : DateTime.Now;
                 header.Store_NAME = AS.GetName(uow, FunctionName.GetStoreName, "'" + header.StoreID + "'");

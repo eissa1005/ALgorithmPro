@@ -60,6 +60,16 @@ namespace MVC
                 {
                     public const string CashReceiveIndex = "~/Modules/ALgorithm/Cash/CashReceive/CashReceiveIndex.cshtml";
                 }
+
+                public static class Expenses
+                {
+                    public const string ExpensesIndex = "~/Modules/ALgorithm/Cash/Expenses/ExpensesIndex.cshtml";
+                }
+
+                public static class Revenues
+                {
+                    public const string RevenuesIndex = "~/Modules/ALgorithm/Cash/Revenues/RevenuesIndex.cshtml";
+                }
             }
 
             public static class Checks

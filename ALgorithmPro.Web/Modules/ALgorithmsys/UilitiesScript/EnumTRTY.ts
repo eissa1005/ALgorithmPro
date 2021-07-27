@@ -14,6 +14,8 @@
         RestorePurch = 17,
         CashPayed = 21,
         CashReceive = 22,
+        Expenses = 27,
+        Revenu = 28,
         AddInventory = 33,
         RemoveInventory = 42,
         BGNBAL = 100,

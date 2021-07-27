@@ -41,8 +41,6 @@
     <None Remove="Modules\ALgorithm\LookupGrid\CashBox\CashBoxGrid.ts" />
     <None Remove="Modules\ALgorithm\LookupGrid\Customer\CustomerDialog.ts" />
     <None Remove="Modules\ALgorithm\LookupGrid\Customer\CustomerGrid.ts" />
-    <None Remove="Modules\ALgorithm\LookupGrid\Expenses\ExpensesDialog.ts" />
-    <None Remove="Modules\ALgorithm\LookupGrid\Expenses\ExpensesGrid.ts" />
     <None Remove="Modules\ALgorithm\LookupGrid\Items\ItemsLookupDialog.ts" />
     <None Remove="Modules\ALgorithm\LookupGrid\Items\ItemsLookupGrid.ts" />
     <None Remove="Modules\ALgorithm\LookupGrid\Revenu\RevenuDialog.ts" />

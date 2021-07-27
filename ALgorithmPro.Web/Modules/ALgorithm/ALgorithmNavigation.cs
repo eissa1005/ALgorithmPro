@@ -47,6 +47,8 @@ using MyPages = ALgorithmPro.ALgorithm.Pages;
 [assembly: NavigationMenu(13000, "ALgorithm/Cash", icon: "fa-cube")]
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Cash/CashReceive", typeof(MyPages.CashReceiveController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Cash/CashPayed", typeof(MyPages.CashPayedController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Cash/Expenses", typeof(MyPages.ExpensesController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Cash/Revenu", typeof(MyPages.RevenuesController), icon: null)]
 
 
 [assembly: NavigationMenu(14000, "ALgorithm/Checks", icon: "fa-desktop")]
