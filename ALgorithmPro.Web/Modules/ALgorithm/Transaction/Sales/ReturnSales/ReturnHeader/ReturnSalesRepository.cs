@@ -943,7 +943,6 @@ namespace ALgorithmPro.ALgorithm.Repositories
                 {
                     d.ID = Request.Entity.HeaderID;
                     d.DetailID = Request.Entity.HeaderID;
-                    d.HeaderID = Request.Entity.HeaderID;
                     d.TR_NO = Request.Entity.TR_NO;
                     d.StoreID = Request.Entity.StoreID;
                     d.PK = (!AS.IsNullValue(d.PK)) ? d.PK : 1;

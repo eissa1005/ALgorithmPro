@@ -25,21 +25,16 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.ID[this] = value;
 
         }
+        
         [Hidden]
-        [DisplayName("DetailID"), Column("DetailID")]
+        [DisplayName("DetailID"), Column("DetailID"), NotNull, NameProperty, LookupInclude, ForeignKey("[dbo].[ASTRH]", "HeaderID"), LeftJoin("jHeaderID")]
         public Int64? DetailID
         {
             get => fields.DetailID[this];
             set => fields.DetailID[this] = value;
 
         }
-        [Hidden]
-        [DisplayName("HeaderID"), NotNull, NameProperty,LookupInclude, ForeignKey("[dbo].[ASTRH]", "HeaderID"), LeftJoin("jHeaderID")]
-        public Int64? HeaderID
-        {
-            get => fields.HeaderID[this];
-            set => fields.HeaderID[this] = value;
-        }
+       
         [Hidden]
         [DisplayName("Transaction NAME"), Column("TR_TY"), PrimaryKey, LookupInclude, NotNull, ForeignKey("[dbo].[ASTRH]", "TR_TY"), LeftJoin("jTRTY"), Updatable(false), Width(130)]
         [LookupEditor(typeof(CashSalesTRTYLookup), AutoComplete = true)]
@@ -695,7 +690,6 @@ namespace ALgorithmPro.ALgorithm.Entities
         {
             public Int64Field ID;
             public Int64Field DetailID;
-            public Int64Field HeaderID;
             public Int32Field TR_TY;
             public StringField TRTY_NAME;
             public Int32Field TR_NO;

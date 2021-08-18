@@ -7,7 +7,7 @@ namespace ALgorithmPro
     {
         public string id { get; set; }
         public bool visible { get; set; }
-        public int width { get; set; }
+        public long width { get; set; }
         public int sort { get; set; }
     }
 

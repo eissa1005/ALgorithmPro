@@ -27,7 +27,7 @@ namespace ALgorithmPro.Reports
             {
                 var sqlConnections = serviceScope.ServiceProvider.GetService(typeof(ISqlConnections));
                 var connection = ((ISqlConnections)sqlConnections).NewByKey("Default");
-                string SQL = "SELECT * FROM ASTRDVIEW WHERE HeaderID=" +HeaderID+ " AND TR_TY="+(int)TRTYType.CashReturn+"";
+                string SQL = "SELECT * FROM ASTRDVIEW WHERE DetailID=" + HeaderID+ " AND TR_TY="+(int)TRTYType.CashReturn+"";
                 var data = connection.Query<ASTRDVIEWRow>(SQL).ToList();
                 var ASTRDVIEW = new List<ASTRDVIEWRow>();
                 foreach (var ASTRD in data)

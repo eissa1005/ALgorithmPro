@@ -87,8 +87,6 @@ namespace ALgorithmPro.ALgorithm {
                 var field = columns[cell].field;
                 this.PackageChange(field, index, row);
                 this.UpdateGrid(index, row);
-                var items = this.slickGrid.getData().slice();
-                this.value = items;
                 if (row) {
                     // this.validateEntity(row);
                 }

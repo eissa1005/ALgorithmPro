@@ -1,10 +1,5 @@
-﻿using Serenity;
+﻿using System;
 using Serenity.ComponentModel;
-using Serenity.Data;
-using System;
-using System.ComponentModel;
-using System.Collections.Generic;
-using System.IO;
 
 namespace ALgorithmPro.ALgorithm.Columns
 {
@@ -16,8 +11,7 @@ namespace ALgorithmPro.ALgorithm.Columns
         public Int64 ID { get; set; }
         [Hidden]
         public Int64 DetailID { get; set; }
-        [Hidden]
-        public Int64 HeaderID { get; set; }
+        
         [EditLink, Width(120)]
         public String Item_CD { get; set; }
         public String ITM_NM_AR { get; set; }

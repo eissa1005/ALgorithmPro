@@ -44,7 +44,7 @@ namespace ALgorithmPro.ALgorithm
                     .Select(od.STAX_VL)
                     .Select(od.NET)
                     .Select(od.NetBeforeTAX)
-                    .Where(od.HeaderID == this.HeaderID));
+                    .Where(od.DetailID == this.HeaderID));
             }
 
             return data;

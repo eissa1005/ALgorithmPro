@@ -142,7 +142,7 @@ namespace ALgorithmPro.ALgorithm {
                 reportKey: 'ALgorithm.ReturnSalesASTRD',
                 Url: 'ReturnSales/Index',
                 getParams: () => ({
-                    HeaderID: this.get_entityId()
+                    DetailID: this.get_entityId()
                 })
             }));
 

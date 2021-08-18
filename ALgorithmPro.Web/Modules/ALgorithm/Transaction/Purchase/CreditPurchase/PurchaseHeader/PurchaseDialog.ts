@@ -144,7 +144,7 @@ namespace ALgorithmPro.ALgorithm {
                 reportKey: 'ALgorithm.PurchASTRD',
                 Url: 'Purch/Index',
                 getParams: () => ({
-                    HeaderID: this.get_entityId()
+                    DetailID: this.get_entityId()
                 })
             }));
            

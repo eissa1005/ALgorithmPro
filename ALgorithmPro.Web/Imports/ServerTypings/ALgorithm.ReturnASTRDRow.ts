@@ -2,7 +2,6 @@
     export interface ReturnASTRDRow {
         ID?: number;
         DetailID?: number;
-        HeaderID?: number;
         TR_TY?: number;
         TRTY_NAME?: string;
         TR_NO?: number;
@@ -98,7 +97,7 @@
 
     export namespace ReturnASTRDRow {
         export const idProperty = 'ID';
-        export const nameProperty = 'HeaderID';
+        export const nameProperty = 'DetailID';
         export const localTextPrefix = 'ALgorithm.ReturnASTRD';
         export const lookupKey = 'ALgorithm.ReturnASTRD';
 
@@ -113,7 +112,6 @@
         export declare const enum Fields {
             ID = "ID",
             DetailID = "DetailID",
-            HeaderID = "HeaderID",
             TR_TY = "TR_TY",
             TRTY_NAME = "TRTY_NAME",
             TR_NO = "TR_NO",

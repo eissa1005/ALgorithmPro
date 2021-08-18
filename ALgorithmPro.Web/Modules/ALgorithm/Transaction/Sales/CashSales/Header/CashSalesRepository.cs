@@ -307,7 +307,6 @@ namespace ALgorithmPro.ALgorithm.Repositories
                 {
                     d.ID = Request.Entity.HeaderID;
                     d.DetailID = Request.Entity.HeaderID;
-                    d.HeaderID = Request.Entity.HeaderID;
                     d.TR_NO = Request.Entity.TR_NO;
                     d.StoreID = Request.Entity.StoreID;
                     d.PK = (!AS.IsNullValue(d.PK)) ? d.PK : 1;
@@ -343,25 +342,25 @@ namespace ALgorithmPro.ALgorithm.Repositories
 
         private class MyDeleteHandler : DeleteRequestHandler<MyRow>
         {
-            public MyDeleteHandler(IRequestContext context)
-                : base(context)
+            public MyDeleteHandler(IRequestContext context): base(context)
             {
+
             }
         }
 
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
         {
-            public MyRetrieveHandler(IRequestContext context)
-                : base(context)
+            public MyRetrieveHandler(IRequestContext context): base(context)
             {
+
             }
         }
 
         private class MyListHandler : ListRequestHandler<MyRow>
         {
-            public MyListHandler(IRequestContext context)
-                : base(context)
+            public MyListHandler(IRequestContext context): base(context)
             {
+
             }
         }
     }

@@ -140,7 +140,7 @@ namespace ALgorithmPro.ALgorithm {
                 reportKey: 'ALgorithm.CashRestoreASTRD',
                 Url: 'CashReturnSales/Index',
                 getParams: () => ({
-                    HeaderID: this.get_entityId()
+                    DetailID: this.get_entityId()
                 })
             }));
 

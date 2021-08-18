@@ -128,7 +128,7 @@ namespace ALgorithmPro.ALgorithm {
                 reportKey: 'ALgorithm.CashPurchASTRD',
                 Url:'CashPurch/Index',
                 getParams: () => ({
-                    HeaderID: this.get_entityId()
+                    DetailID: this.get_entityId()
                 })
             }));
 

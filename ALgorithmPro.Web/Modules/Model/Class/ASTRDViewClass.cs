@@ -9,7 +9,7 @@ namespace ALgorithmPro
   public class ASTRDViewClass 
     {
         public long ID { get; set; }
-        public long HeaderID { get ; set; }
+        public long DetailID { get ; set; }
         public int TR_NO { get; set; }
         public int TR_TY { get; set; }
         public string TRTYName { set; get; }

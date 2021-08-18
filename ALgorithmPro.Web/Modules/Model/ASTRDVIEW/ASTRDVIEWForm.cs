@@ -9,11 +9,13 @@ namespace ALgorithmPro
     public class ASTRDVIEWForm
     {
         [Hidden]
-        public Int64 HeaderID { get; set; }
+        public Int64 DetailID { get; set; }
         [Hidden]
         public String StoreID { get; set; }
         [Hidden]
         public String Store_NAME { get; set; }
+		[Hidden]
+        public String Store_Name2 { get; set; }
         [Hidden]
         public Int32 TR_NO { get; set; }
         [Hidden]

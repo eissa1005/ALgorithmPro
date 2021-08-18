@@ -141,7 +141,7 @@ namespace ALgorithmPro.ALgorithm {
                 reportKey: 'ALgorithm.RestoreASTRD',
                 Url: 'RestorePurch/Index',
                 getParams: () => ({
-                    HeaderID: this.get_entityId()
+                    DetailID: this.get_entityId()
                 })
             }));
 

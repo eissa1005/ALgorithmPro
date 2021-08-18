@@ -6392,8 +6392,10 @@ fieldset[disabled] .btn-yahoo.active {
   margin-top: -4px;
 }
 .select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
-  padding-right: 6px;
-  padding-left: 20px;
+    padding-right: 6px;
+    padding-left: 20px;
+    height: auto;
+    margin-top: -4px;
 }
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 28px;

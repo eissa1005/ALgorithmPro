@@ -12,11 +12,11 @@ namespace ALgorithmPro
     [ModifyPermission("Administration:General")]
     public sealed class ASTRDVIEWRow : Row<ASTRDVIEWRow.RowFields>, IIdRow, INameRow
     {
-        [DisplayName("HeaderID"), NotNull, IdProperty]
-        public Int64? HeaderID
+        [DisplayName("DetailID"), NotNull, IdProperty]
+        public Int64? DetailID
         {
-            get => fields.HeaderID[this];
-            set => fields.HeaderID[this] = value;
+            get => fields.DetailID[this];
+            set => fields.DetailID[this] = value;
         }
 
         [DisplayName("TR_NO"), Column("TR_NO"),PrimaryKey, NotNull]
@@ -59,6 +59,13 @@ namespace ALgorithmPro
         {
             get => fields.Store_NAME[this];
             set => fields.Store_NAME[this] = value;
+        }
+
+        [DisplayName("Store_Name2"), Column("Store_Name2")]
+        public String Store_Name2
+        {
+            get => fields.Store_Name2[this];
+            set => fields.Store_Name2[this] = value;
         }
 
         [DisplayName("ReferenNumer"), Column("ReferenNumer")]
@@ -801,13 +808,14 @@ namespace ALgorithmPro
 
         public class RowFields : RowFieldsBase
         {
-            public Int64Field HeaderID;
+            public Int64Field DetailID;
             public Int32Field TR_NO;
             public Int32Field TR_TY;
             public DateTimeField TR_DT;
             public StringField TRTY_NAME;
             public StringField StoreID;
             public StringField Store_NAME;
+            public StringField Store_Name2;
             public Int32Field ReferenNumer;
             public StringField ACC_NO;
             public StringField ACC_NAME;

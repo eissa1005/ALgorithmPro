@@ -67,12 +67,8 @@ namespace ALgorithmPro.ALgorithm {
                 var index = args.row;
                 var columns = grd.getColumns();
                 var field = columns[cell].field;
-                if (field == FLD.PKID) {
-                    BS.PackageChange(grd, field, index, row);
-                }
+                BS.PackageChange(grd, field, index, row);
                 BS.UpdateGrid(grd, index, row);
-                var items = this.slickGrid.getData().slice();
-                this.value = items;
                 if (row) {
                     this.validateEntity(row);
                 }

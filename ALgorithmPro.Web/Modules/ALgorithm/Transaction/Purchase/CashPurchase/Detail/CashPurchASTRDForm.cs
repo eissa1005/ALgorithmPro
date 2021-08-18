@@ -1,10 +1,5 @@
-﻿using Serenity;
+﻿using System;
 using Serenity.ComponentModel;
-using Serenity.Data;
-using System;
-using System.ComponentModel;
-using System.Collections.Generic;
-using System.IO;
 
 namespace ALgorithmPro.ALgorithm.Forms
 {
@@ -68,9 +63,7 @@ namespace ALgorithmPro.ALgorithm.Forms
         public Double RestoreQty { get; set; }
         [Hidden]
         public Double ItemBAL { get; set; }
-
-        [Hidden]
-        public Int64 HeaderID { get; set; }
+       
         [Hidden]
         public Int32 TR_TY { get; set; }
         [Hidden]

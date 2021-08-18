@@ -49,9 +49,6 @@ namespace BS {
         var TAX2 = AS.IsNull(row.TAX2);
         var TAX3 = AS.IsNull(row.TAX3);
         var SumTAX = TAX1 + TAX2 + TAX3;
-        var PKID = row.PKID;
-        var PK = Q.tryFirst(ALgorithmPro.ALgorithm.PackageRow.getLookup().items, x => x.PKID == PKID).PKCNT;
-        row.PK = PK;
         row.Price = price;
         row.QTY = QTY;
         row.Value = value;

@@ -513,7 +513,7 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.UpdateDate[this] = value;
         }
 
-        [DisplayName("Add Detail"), MasterDetailRelation(foreignKey: "HeaderID"), NotMapped, NotNull]
+        [DisplayName("Add Detail"), MasterDetailRelation(foreignKey: "DetailID"), NotMapped, NotNull]
         public List<SalesASTRDRow> DetailList
         {
             get => fields.DetailList[this];

@@ -39,6 +39,10 @@ using MyPages = ALgorithmPro.ALgorithm.Pages;
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/Cash Return", typeof(MyPages.CashReturnController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Transactions/Sales/Credit Return", typeof(MyPages.ReturnSalesController), icon: null)]
 
+[assembly: NavigationMenu(13000, "ALgorithm/Transfer", icon: "fa-cube")]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transfer/TransferIn", typeof(MyPages.TransferInController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "ALgorithm/Transfer/TransferTo", typeof(MyPages.TransferToController), icon: null)]
+
 [assembly: NavigationMenu(13000, "ALgorithm/Inventory", icon: "fa-cube")]
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Inventory/AddInventory", typeof(MyPages.AddInventoryController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "ALgorithm/Inventory/RemoveInventory", typeof(MyPages.RemoveInventoryController), icon: null)]

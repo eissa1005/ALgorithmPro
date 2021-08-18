@@ -2,7 +2,6 @@
     export interface CashPurchASTRDRow {
         ID?: number;
         DetailID?: number;
-        HeaderID?: number;
         TR_TY?: number;
         TRTY_NAME?: string;
         TR_NO?: number;
@@ -98,7 +97,7 @@
 
     export namespace CashPurchASTRDRow {
         export const idProperty = 'ID';
-        export const nameProperty = 'HeaderID';
+        export const nameProperty = 'DetailID';
         export const localTextPrefix = 'ALgorithm.CashPurchASTRD';
         export const lookupKey = 'ALgorithm.CashPurchASTRD';
 
@@ -113,7 +112,6 @@
         export declare const enum Fields {
             ID = "ID",
             DetailID = "DetailID",
-            HeaderID = "HeaderID",
             TR_TY = "TR_TY",
             TRTY_NAME = "TRTY_NAME",
             TR_NO = "TR_NO",

@@ -95,7 +95,7 @@ namespace ALgorithmPro
             public const string ADJITMLOCBAL = "ADJITMLOCBAL";
             public const string SP_ItemBAL = "SP_ItemBAL";
             public const string SP_UserPreferences = "SP_UserPreferences";
-           
+            public const string ProceGetMaxCode = "ProceGetMaxCode";
         }
         public static class ViewName
         {

@@ -30,50 +30,50 @@ namespace ALgorithmPro.Common.Repositories
                 throw new ArgumentNullException("name");
             if (request.PreferenceType is null)
                 throw new ArgumentNullException("preferenceType");
-
-            var userId = Convert.ToInt32(Context.User.GetIdentifier());
-
-            var criteria = fld.UserId == userId &
-                fld.PreferenceType == request.PreferenceType &
-                fld.Name == request.Name;
-
-            var lstPreference = JSON.Parse<Preference>(request.Value);
-            var lstColumn = new List<Column>();
-            foreach (var item in lstPreference.columns)
-            {
-                int width = item.width;
-                int newwidth = 0;
-                if (width < 100)
-                    newwidth = 100;
-                else
-                    newwidth = width;
-
-                var column = new Column();
-                column.id = item.id;
-                column.width = newwidth;
-                column.visible = item.visible;
-                column.sort = item.sort;
-
-                lstColumn.Add(column);
-            }
-            var lst = new Preference();
-            lst.columns = lstColumn;
-            lst.filterItems = new List<object>();
-            lst.includeDeleted = false;
-
-            var values = JSON.Stringify(lst);
-
-
-            if (string.IsNullOrEmpty(request.Value))
-            {
-                new SqlDelete(fld.TableName)
-                    .Where(criteria)
-                    .Execute(uow.Connection, ExpectedRows.ZeroOrOne);
-
-                return new SaveResponse();
-            }
             try
             {
+                var userId = Convert.ToInt32(Context.User.GetIdentifier());
+
+                var criteria = fld.UserId == userId &
+                    fld.PreferenceType == request.PreferenceType &
+                    fld.Name == request.Name;
+
+                var lstPreference = JSON.Parse<Preference>(request.Value);
+                var lstColumn = new List<Column>();
+                foreach (var item in lstPreference.columns)
+                {
+                    long width = item.width;
+                    long newwidth = 0;
+                    if (width < 100)
+                        newwidth = 100;
+                    else
+                        newwidth = width;
+
+                    var column = new Column();
+                    column.id = item.id;
+                    column.width = newwidth;
+                    column.visible = item.visible;
+                    column.sort = item.sort;
+
+                    lstColumn.Add(column);
+                }
+                var lst = new Preference();
+                lst.columns = lstColumn;
+                lst.filterItems = new List<object>();
+                lst.includeDeleted = false;
+
+                var values = JSON.Stringify(lst);
+
+
+                if (string.IsNullOrEmpty(request.Value))
+                {
+                    new SqlDelete(fld.TableName)
+                        .Where(criteria)
+                        .Execute(uow.Connection, ExpectedRows.ZeroOrOne);
+
+                    return new SaveResponse();
+                }
+
                 var row = uow.Connection.List<MyRow>().FirstOrDefault<MyRow>(x => x.UserId == userId && x.PreferenceType == request.PreferenceType && x.Name == request.Name);
                 var Count = uow.Connection.List<MyRow>().Where<MyRow>(x => x.UserId == userId && x.PreferenceType == request.PreferenceType && x.Name == request.Name).Count();
                 if (Count > 1)

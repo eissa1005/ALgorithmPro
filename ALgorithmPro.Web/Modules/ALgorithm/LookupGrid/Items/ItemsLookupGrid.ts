@@ -67,6 +67,16 @@ namespace ALgorithmPro.ALgorithm {
                     this.Grid = AddInventoryASTRDEditor.GridName;
                     break;
 
+                case AS.TRTYType.TransferIN:
+                    this.SelectTRTY = AS.TRTYType.TransferIN;
+                    this.Grid = TransferInASTRDEditor.GridName;
+                    break;
+
+                case AS.TRTYType.TransferTO:
+                    this.SelectTRTY = AS.TRTYType.TransferTO;
+                    this.Grid = TransferToASTRDEditor.GridName;
+                    break;
+
                 default:
             }
 
@@ -111,17 +121,14 @@ namespace ALgorithmPro.ALgorithm {
 
                 var row: ASTRD = new ASTRD();
                 row.ID = 0;
-                row.HeaderID = 0;
                 row.DetailID = 0;
                 row.RowNum = nextId;
                 row.Item_CD = _row.Item_CD;
                 row.ITM_NM_AR = _row.Item_Name_AR;
                 row.QTY = this.One;
                 row.PKCST = _row.UCOST;
-                row.ItemBAL = _row.ItemBAL;
                 row.StoreID = _row.StoreID;
-           
-
+                row.ItemBAL =BS.GetItemBAL(_row.StoreID, _row.Item_CD);
                 switch (this.SelectTRTY) {
                     case AS.TRTYType.CashPurchase:
                     case AS.TRTYType.Purchase:
@@ -173,6 +180,18 @@ namespace ALgorithmPro.ALgorithm {
                         row.NET = row.Value;
                         break;
 
+                    case AS.TRTYType.TransferIN:
+                    case AS.TRTYType.TransferTO:
+                        var Price = 0;
+                        row.StoreID = _row.StoreID;
+                        var Cost = AS.IsNull(_row.UCOST, 1);
+                        if (Cost > 1) Price = Cost; else Price = AS.IsNull(_row.PPRC2, 1);
+                        row.Price = Price;
+                        row.PKCST = _row.UCOST;
+                        row.PKID = !AS.IsNullValue(_row.PRCH_PK) ? _row.PRCH_PK : _row.SLS_PK;
+                        row.Value = Price * this.One;
+                        row.NET = row.Value;
+                        break;
 
                     default:
                         break;
@@ -184,7 +203,6 @@ namespace ALgorithmPro.ALgorithm {
                 var LNNO = RowsCount + 1;
                 var row: ASTRD = new ASTRD();
                 row.ID = 0;
-                row.HeaderID = 0;
                 row.DetailID = 0;
                 row.RowNum = LNNO;
                 row.Item_CD = _row.Item_CD;
@@ -219,6 +237,7 @@ namespace ALgorithmPro.ALgorithm {
                     case AS.TRTYType.ReturnSales:
                         SumDisc = 0;
                         SumTAX = 0;
+                        row.StoreID = _row.StoreID;
                         row.Price = _row.SPRC6;
                         row.PKID = _row.SLS_PK;
                         row.Value = _row.SPRC6 * this.One;
@@ -236,6 +255,17 @@ namespace ALgorithmPro.ALgorithm {
                         var Cost = AS.IsNull(_row.UCOST, 1);
                         if (Cost > 1) Price = Cost; else Price = AS.IsNull(_row.PPRC2, 1);
                         row.Price = Price;
+                        row.PKID = !AS.IsNullValue(_row.PRCH_PK) ? _row.PRCH_PK : _row.SLS_PK;
+                        row.Value = Price * this.One;
+                        row.NET = row.Value;
+
+                    case AS.TRTYType.TransferIN:
+                    case AS.TRTYType.TransferTO:
+                        var Price = 0;
+                        var Cost = AS.IsNull(_row.UCOST, 1);
+                        if (Cost > 1) Price = Cost; else Price = AS.IsNull(_row.PPRC2, 1);
+                        row.Price = Price;
+                        row.PKCST = _row.UCOST;
                         row.PKID = !AS.IsNullValue(_row.PRCH_PK) ? _row.PRCH_PK : _row.SLS_PK;
                         row.Value = Price * this.One;
                         row.NET = row.Value;

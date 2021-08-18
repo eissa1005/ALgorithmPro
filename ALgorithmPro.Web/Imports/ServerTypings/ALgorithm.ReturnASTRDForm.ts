@@ -32,7 +32,6 @@
         TAX3R: Serenity.DecimalEditor;
         RestoreQty: Serenity.DecimalEditor;
         ItemBAL: Serenity.DecimalEditor;
-        HeaderID: Serenity.StringEditor;
         TR_TY: Serenity.LookupEditor;
         TRTY_NAME: Serenity.StringEditor;
         TR_NO: Serenity.IntegerEditor;
@@ -148,7 +147,6 @@
                     'TAX3R', w2,
                     'RestoreQty', w2,
                     'ItemBAL', w2,
-                    'HeaderID', w0,
                     'TR_TY', w1,
                     'TRTY_NAME', w0,
                     'TR_NO', w3,

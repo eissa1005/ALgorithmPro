@@ -1,8 +1,9 @@
 ﻿namespace ALgorithmPro {
     export interface ASTRDVIEWForm {
-        HeaderID: Serenity.StringEditor;
+        DetailID: Serenity.StringEditor;
         StoreID: Serenity.StringEditor;
         Store_NAME: Serenity.StringEditor;
+        Store_Name2: Serenity.StringEditor;
         TR_NO: Serenity.IntegerEditor;
         TR_TY: Serenity.IntegerEditor;
         TRTY_NAME: Serenity.StringEditor;
@@ -131,9 +132,10 @@
                 var w4 = s.BooleanEditor;
 
                 Q.initFormType(ASTRDVIEWForm, [
-                    'HeaderID', w0,
+                    'DetailID', w0,
                     'StoreID', w0,
                     'Store_NAME', w0,
+                    'Store_Name2', w0,
                     'TR_NO', w1,
                     'TR_TY', w1,
                     'TRTY_NAME', w0,

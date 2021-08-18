@@ -30,7 +30,7 @@ namespace ALgorithmPro.Reports
             {
                 var sqlConnections = serviceScope.ServiceProvider.GetService(typeof(ISqlConnections));
                 var connection = ((ISqlConnections)sqlConnections).NewByKey("Default");
-                string SQL = "SELECT * FROM ASTRDVIEW WHERE HeaderID=" +HeaderID+ " AND TR_TY="+(int)TRTYType.CashSales+"";
+                string SQL = "SELECT * FROM ASTRDVIEW WHERE DetailID=" + HeaderID+ " AND TR_TY="+(int)TRTYType.CashSales+"";
                 var data = connection.Query<ASTRDVIEWRow>(SQL).ToList();
                 var ASTRDVIEW = new List<ASTRDVIEWRow>();
                 foreach (var ASTRD in data)
@@ -62,7 +62,7 @@ namespace ALgorithmPro.Reports
                     using (var connection = ((ISqlConnections)sqlConnections).NewByKey("Default"))
                     {
                         var untwork = new UnitOfWork(connection);
-                        string SQL = "SELECT * FROM ASTRDVIEW WHERE HeaderID=" + ProHeaderID + " AND TR_TY=" + (int)TRTYType.CashSales + "";
+                        string SQL = "SELECT * FROM ASTRDVIEW WHERE DetailID=" + ProHeaderID + " AND TR_TY=" + (int)TRTYType.CashSales + "";
                         var ASTRH = untwork.Connection.Query<CashSalesRow>(SQL).FirstOrDefault();
                         if (ASTRH != null && ASTRH.PRT_CNT == 0)
                         {

@@ -1,12 +1,13 @@
 ﻿namespace ALgorithmPro {
     export interface ASTRDVIEWRow {
-        HeaderID?: number;
+        DetailID?: number;
         TR_NO?: number;
         TR_TY?: number;
         TR_DT?: string;
         TRTY_NAME?: string;
         StoreID?: string;
         Store_NAME?: string;
+        Store_Name2?: string;
         ReferenNumer?: number;
         ACC_NO?: string;
         ACC_NAME?: string;
@@ -114,7 +115,7 @@
     }
 
     export namespace ASTRDVIEWRow {
-        export const idProperty = 'HeaderID';
+        export const idProperty = 'DetailID';
         export const nameProperty = 'StoreID';
         export const localTextPrefix = 'Model.ASTRDVIEW';
         export const deletePermission = 'Administration:General';
@@ -123,13 +124,14 @@
         export const updatePermission = 'Administration:General';
 
         export declare const enum Fields {
-            HeaderID = "HeaderID",
+            DetailID = "DetailID",
             TR_NO = "TR_NO",
             TR_TY = "TR_TY",
             TR_DT = "TR_DT",
             TRTY_NAME = "TRTY_NAME",
             StoreID = "StoreID",
             Store_NAME = "Store_NAME",
+            Store_Name2 = "Store_Name2",
             ReferenNumer = "ReferenNumer",
             ACC_NO = "ACC_NO",
             ACC_NAME = "ACC_NAME",

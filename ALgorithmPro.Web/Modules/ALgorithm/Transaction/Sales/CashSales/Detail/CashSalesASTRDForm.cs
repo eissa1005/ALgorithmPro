@@ -69,9 +69,7 @@ namespace ALgorithmPro.ALgorithm.Forms
         public Double RestoreQty { get; set; }
         [Hidden]
         public Double ItemBAL { get; set; }
-
-        [Hidden]
-        public Int64 HeaderID { get; set; }
+       
         [Hidden]
         public Int32 TR_TY { get; set; }
         [Hidden]

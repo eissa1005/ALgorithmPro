@@ -31,6 +31,22 @@ namespace ALgorithmPro
                 return default(object);
             }
         }
+        public static object GetValue(IDbConnection connection, string SQL)
+        {
+            var cmd = connection.CreateCommand();
+            try
+            {
+                cmd.CommandText = SQL;
+                cmd.CommandType = CommandType.Text;
+                object value = cmd.ExecuteScalar();
+                return value;
+            }
+            catch (Exception ex)
+            {
+                AS.AppendException(ex, ex.Message);
+                return default(object);
+            }
+        }
         public static IDbConnection GetConnection()
         {
             using (var scope = ServiceActivator.GetScope())
@@ -402,6 +418,42 @@ namespace ALgorithmPro
 
                 }
                 var cmd = connectionkey.Connection.CreateCommand();
+                string SQL = "SELECT dbo." + builder;
+                cmd.CommandText = SQL;
+                object value = cmd.ExecuteScalar();
+                return value;
+            }
+            catch (Exception exception)
+            {
+                AS.AppendException(exception, exception.Message);
+                return string.Empty;
+            }
+        }
+
+        public static object GetValue(IDbConnection connection, string FunctionName, params string[] para)
+        {
+            if (AS.IsNullValue(para)) return string.Empty;
+            try
+            {
+                StringBuilder builder = new StringBuilder();
+                if (para.Length == 1)
+                {
+                    builder.Append(FunctionName);
+                    builder.Append("(");
+                    builder.Append(para[0].ToString());
+                    builder.Append(")");
+                }
+                else if (para.Length == 2)
+                {
+                    builder.Append(FunctionName);
+                    builder.Append("(");
+                    builder.Append(para[0].ToString());
+                    builder.Append(",");
+                    builder.Append(para[1].ToString());
+                    builder.Append(")");
+
+                }
+                var cmd = connection.CreateCommand();
                 string SQL = "SELECT dbo." + builder;
                 cmd.CommandText = SQL;
                 object value = cmd.ExecuteScalar();

@@ -2,7 +2,6 @@
     export class ASTRD  {
         ID?: number;
         DetailID?: number;
-        HeaderID?: number;
         RowNum?: number;
         TR_TY?: number;
         TRTY_NAME?: string;

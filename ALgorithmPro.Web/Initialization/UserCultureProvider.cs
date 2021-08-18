@@ -12,6 +12,7 @@ namespace ALgorithmPro.AppServices
     {
         private static Dictionary<string, string> TwoLetterToFourLetter = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
         {
+            { "ar", "ar-EG" },
             { "en", "en-US" },
             { "zh", "zh-CN" },
             { "vi", "vi-VN" },
@@ -51,7 +52,8 @@ namespace ALgorithmPro.AppServices
             "ru-RU",
             "tr-TR",
             "vi-VN",
-            "zh-CN"
+            "zh-CN",
+            "ar-EG"
         };
 
 

@@ -60,49 +60,49 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.TR_TY[this] = value;
         }
 
-        [DisplayName("BGNBAL"), Column("BGNBAL"), DefaultValue(0), Width(120)]
+        [DisplayName("BGNBAL"), Column("BGNBAL"), DefaultValue(0), Width(120), LookupInclude]
         public Double? BGNBAL
         {
             get => fields.BGNBAL[this];
             set => fields.BGNBAL[this] = value;
         }
 
-        [DisplayName("BGNCST"), Column("BGNCST"),DefaultValue(0), Width(120)]
+        [DisplayName("BGNCST"), Column("BGNCST"),DefaultValue(0), Width(120), LookupInclude]
         public Double? BGNCST
         {
             get => fields.BGNCST[this];
             set => fields.BGNCST[this] = value;
         }
 
-        [DisplayName("UCST"), Column("UCST"),DefaultValue(0), Width(120)]
+        [DisplayName("UCST"), Column("UCST"),DefaultValue(0), Width(120),LookupInclude]
         public Double? UCST
         {
             get => fields.UCST[this];
             set => fields.UCST[this] = value;
         }
 
-        [DisplayName("Price"),DefaultValue(0), Width(120)]
+        [DisplayName("Price"),DefaultValue(0), Width(120), LookupInclude]
         public Double? Price
         {
             get => fields.Price[this];
             set => fields.Price[this] = value;
         }
 
-        [DisplayName("INQTY"), Column("INQTY"), DefaultValue(0),ReadOnly(true), Width(120)]
+        [DisplayName("INQTY"), Column("INQTY"), DefaultValue(0),ReadOnly(true), Width(120), LookupInclude]
         public Double? INQTY
         {
             get => fields.INQTY[this];
             set => fields.INQTY[this] = value;
         }
 
-        [DisplayName("OUTQTY"), Column("OUTQTY"), DefaultValue(0),ReadOnly(true), Width(120)]
+        [DisplayName("OUTQTY"), Column("OUTQTY"), DefaultValue(0),ReadOnly(true), Width(120), LookupInclude]
         public Double? OUTQTY
         {
             get => fields.OUTQTY[this];
             set => fields.OUTQTY[this] = value;
         }
 
-        [DisplayName("BAL"), Column("BAL"), DefaultValue(0), ReadOnly(true), Width(120),LookupInclude]
+        [DisplayName("BAL"), Column("BAL"), DefaultValue(0), ReadOnly(true), Width(120), LookupInclude]
         public Double? BAL
         {
             get => fields.BAL[this];
@@ -131,14 +131,14 @@ namespace ALgorithmPro.ALgorithm.Entities
             set => fields.BONASQTY[this] = value;
         }
 
-        [DisplayName("MinQty"), DefaultValue(0), Width(90)]
+        [DisplayName("MinQty"), DefaultValue(0), Width(90), LookupInclude]
         public Double? MinQty
         {
             get => fields.MinQty[this];
             set => fields.MinQty[this] = value;
         }
 
-        [DisplayName("MaxQty"), DefaultValue(0), Width(90)]
+        [DisplayName("MaxQty"), DefaultValue(0), Width(90), LookupInclude]
         public Double? MaxQty
         {
             get => fields.MaxQty[this];

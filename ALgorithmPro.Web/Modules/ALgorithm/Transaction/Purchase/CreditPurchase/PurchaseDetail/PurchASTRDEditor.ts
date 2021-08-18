@@ -63,8 +63,6 @@ namespace ALgorithmPro.ALgorithm {
 
             // onCellChange 👈
             this.slickGrid.onCellChange.subscribe((e, args) => {
-
-                Q.getRemoteData
                 var grd = args.grid as Slick.Grid;
                 var row = args.item;
                 var cell = args.cell;
@@ -74,8 +72,6 @@ namespace ALgorithmPro.ALgorithm {
                 row.ItemBAL = BS.GetItemBAL(row.StoreID, row.Item_CD);
                 BS.PackageChange(grd, field, index, row);
                 BS.UpdateGrid(grd, index, row);
-                var items = this.slickGrid.getData().slice();
-                this.value = items;
                 if (row) {
                     this.validateEntity(row);
                 }

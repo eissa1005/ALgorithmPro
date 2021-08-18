@@ -23,7 +23,7 @@ namespace ALgorithmPro
             value.ToString().Trim() == "" || value.ToString().Trim() == "''" || value.ToString().Trim() == "0" ||
             value.ToString().Trim() == "0." || value.ToString().Trim() == "0.00%" || value.ToString().Trim() == "{}" ||
             String.IsNullOrWhiteSpace(value.ToString());
-          
+
         }
         public static string ConvertToString(this object value)
         {
@@ -42,6 +42,7 @@ namespace ALgorithmPro
             }
             return false;
         }
+
         public static bool IsIntegerType(this object value)
         {
             return value != null && (value is int || value is long || (value.GetType().IsPrimitive &&
@@ -210,20 +211,27 @@ namespace ALgorithmPro
                 return (input ?? 0).ToRound(decimalPlace);
         }
 
-        public static void AppendException(this Exception exception , string message)
+        public static void AppendException(this Exception exception, string message)
         {
-            string filename = string.Format("{0}.log", "AppException");
-            
-            string logFilePath = string.Format(@"{0}\{1}", Environment.CurrentDirectory, filename);
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("--------------------------------------");
-            sb.AppendLine(DateTime.Now.ToString());
-            sb.AppendLine(message);
-            sb.AppendLine(exception.StackTrace);
-            using (StreamWriter sw = new StreamWriter(logFilePath, true))
+            try
             {
-                sw.Write(sb.ToString());
-                sw.Flush();
+                string filename = string.Format("{0}.log", "AppException");
+                string logFilePath = string.Format(@"{0}\{1}", Environment.CurrentDirectory, filename);
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("--------------------------------------");
+                sb.AppendLine(DateTime.Now.ToString());
+                sb.AppendLine(message);
+                sb.AppendLine(exception.StackTrace);
+                using (StreamWriter sw = new StreamWriter(logFilePath, true))
+                {
+                    sw.Write(sb.ToString());
+                    sw.Flush();
+                    sw.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
             }
         }
         public static bool HasValue(this object input)

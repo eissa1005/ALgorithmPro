@@ -54,6 +54,8 @@
     <None Remove="Modules\ALgorithm\Transaction\Sales\CashSales\Header\CashSalesInvoice.vsrepx" />
     <None Remove="Modules\ALgorithm\Transaction\Sales\CreditSales\SalesHeader\SalesInvoice.vsrepx" />
     <None Remove="Modules\ALgorithm\Transaction\Sales\ReturnSales\ReturnHeader\ReturnSalesInvoice.vsrepx" />
+    <None Remove="Modules\ALgorithm\Transfer\TransferIn\TransferInHeader\TransferInInvoice.vsrepx" />
+    <None Remove="Modules\ALgorithm\Transfer\TransferTo\TransferToHeader\TransferToInvoice.vsrepx" />
     <None Remove="Modules\Common\Helpers\CustomSlider.ts" />
     <None Remove="Modules\ALgorithm\LookupGrid\ACCNODialog.ts" />
     <None Remove="Modules\ALgorithm\LookupGrid\ACCNOGrid.ts" />
@@ -73,6 +75,8 @@
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Sales\CashSales\Header\CashSalesInvoice.vsrepx" />
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Sales\CreditSales\SalesHeader\SalesInvoice.vsrepx" />
     <EmbeddedResource Include="Modules\ALgorithm\Transaction\Sales\ReturnSales\ReturnHeader\ReturnSalesInvoice.vsrepx" />
+    <EmbeddedResource Include="Modules\ALgorithm\Transfer\TransferIn\TransferInHeader\TransferInInvoice.vsrepx" />
+    <EmbeddedResource Include="Modules\ALgorithm\Transfer\TransferTo\TransferToHeader\TransferToInvoice.vsrepx" />
     <None Include="wwwroot\Content\adminlte\.csslintrc" />
     <None Include="wwwroot\Content\adminlte\404_500_errors.less" />
     <None Include="wwwroot\Content\adminlte\AdminLTE.less" />
@@ -323,6 +327,18 @@
     </Compile>
     <Compile Update="Modules\ALgorithm\Transaction\Sales\ReturnSales\ReturnHeader\ReturnSalesInvoice.Designer.cs">
       <DependentUpon>ReturnSalesInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transfer\TransferIn\TransferInHeader\TransferInInvoice.cs">
+      <DependentUpon>TransferInInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transfer\TransferIn\TransferInHeader\TransferInInvoice.Designer.cs">
+      <DependentUpon>TransferInInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transfer\TransferTo\TransferToHeader\TransferToInvoice.cs">
+      <DependentUpon>TransferToInvoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\ALgorithm\Transfer\TransferTo\TransferToHeader\TransferToInvoice.Designer.cs">
+      <DependentUpon>TransferToInvoice.vsrepx</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(SolutionDir)Serenity\build\submodule.targets" Condition="Exists('$(SolutionDir)Serenity\build\submodule.targets')" />

@@ -271,11 +271,11 @@ namespace ALgorithmPro.Model
             set => fields.CHK_TYP[this] = value;
         }
 
-        [DisplayName("CKHTYP_NAME"), Column("CKHTYP_NAME")]
-        public String CKHTYP_NAME
+        [DisplayName("CHKTYP_NAME"), Column("CHKTYP_NAME")]
+        public String CHKTYP_NAME
         {
-            get => fields.CKHTYP_NAME[this];
-            set => fields.CKHTYP_NAME[this] = value;
+            get => fields.CHKTYP_NAME[this];
+            set => fields.CHKTYP_NAME[this] = value;
         }
 
         [DisplayName("CHKTRTY"), Column("CHKTRTY"), Size(100)]
@@ -593,7 +593,7 @@ namespace ALgorithmPro.Model
             public StringField ACC_NAME3;
             public StringField CHK_NO;
             public Int32Field CHK_TYP;
-            public StringField CKHTYP_NAME;
+            public StringField CHKTYP_NAME;
             public Int32Field CHKTRTY;
             public StringField CHKTRTY_NAME;
             public DateTimeField ISU_DT;

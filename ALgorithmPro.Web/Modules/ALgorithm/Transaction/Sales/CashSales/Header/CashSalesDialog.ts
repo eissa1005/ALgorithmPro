@@ -129,7 +129,7 @@ namespace ALgorithmPro.ALgorithm {
                 reportKey: 'ALgorithm.CashSalesASTRD',
                 Url: 'CashSales/Index',
                 getParams: () => ({
-                    HeaderID: this.get_entityId()
+                    DetailID: this.get_entityId()
                 })
             }));
 

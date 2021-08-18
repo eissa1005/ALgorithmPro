@@ -37,7 +37,7 @@
         ACC_NAME3?: string;
         CHK_NO?: string;
         CHK_TYP?: number;
-        CKHTYP_NAME?: string;
+        CHKTYP_NAME?: string;
         CHKTRTY?: number;
         CHKTRTY_NAME?: string;
         ISU_DT?: string;
@@ -125,7 +125,7 @@
             ACC_NAME3 = "ACC_NAME3",
             CHK_NO = "CHK_NO",
             CHK_TYP = "CHK_TYP",
-            CKHTYP_NAME = "CKHTYP_NAME",
+            CHKTYP_NAME = "CHKTYP_NAME",
             CHKTRTY = "CHKTRTY",
             CHKTRTY_NAME = "CHKTRTY_NAME",
             ISU_DT = "ISU_DT",

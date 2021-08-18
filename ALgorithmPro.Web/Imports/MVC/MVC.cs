@@ -99,34 +99,45 @@ namespace MVC
 
             public static class Inventory
             {
-                public static class AddInventoryDetail
+                public static class AddInventory
                 {
-                    public const string AddInventoryASTRDIndex = "~/Modules/ALgorithm/Inventory/AddInventoryDetail/AddInventoryASTRDIndex.cshtml";
+                    public static class AddInventoryDetail
+                    {
+                        public const string AddInventoryASTRDIndex = "~/Modules/ALgorithm/Inventory/AddInventory/AddInventoryDetail/AddInventoryASTRDIndex.cshtml";
+                    }
+
+                    public static class AddInventoryHeader
+                    {
+                        public const string AddInventoryIndex = "~/Modules/ALgorithm/Inventory/AddInventory/AddInventoryHeader/AddInventoryIndex.cshtml";
+                    }
+
                 }
 
-                public static class AddInventoryHeader
+                public static class Corrupted
                 {
-                    public const string AddInventoryIndex = "~/Modules/ALgorithm/Inventory/AddInventoryHeader/AddInventoryIndex.cshtml";
+                    public static class CorruptedDetail
+                    {
+                        public const string CorruptedASTRDIndex = "~/Modules/ALgorithm/Inventory/Corrupted/CorruptedDetail/CorruptedASTRDIndex.cshtml";
+                    }
+
+                    public static class CorruptedHeader
+                    {
+                        public const string CorruptedIndex = "~/Modules/ALgorithm/Inventory/Corrupted/CorruptedHeader/CorruptedIndex.cshtml";
+                    }
+
                 }
 
-                public static class CorruptedDetail
+                public static class RemoveInventory
                 {
-                    public const string CorruptedASTRDIndex = "~/Modules/ALgorithm/Inventory/CorruptedDetail/CorruptedASTRDIndex.cshtml";
-                }
+                    public static class RemoveInventoryDetail
+                    {
+                        public const string RemoveInventoryASTRDIndex = "~/Modules/ALgorithm/Inventory/RemoveInventory/RemoveInventoryDetail/RemoveInventoryASTRDIndex.cshtml";
+                    }
 
-                public static class CorruptedHeader
-                {
-                    public const string CorruptedIndex = "~/Modules/ALgorithm/Inventory/CorruptedHeader/CorruptedIndex.cshtml";
-                }
-
-                public static class RemoveInventoryDetail
-                {
-                    public const string RemoveInventoryASTRDIndex = "~/Modules/ALgorithm/Inventory/RemoveInventoryDetail/RemoveInventoryASTRDIndex.cshtml";
-                }
-
-                public static class RemoveInventoryHeader
-                {
-                    public const string RemoveInventoryIndex = "~/Modules/ALgorithm/Inventory/RemoveInventoryHeader/RemoveInventoryIndex.cshtml";
+                    public static class RemoveInventoryHeader
+                    {
+                        public const string RemoveInventoryIndex = "~/Modules/ALgorithm/Inventory/RemoveInventory/RemoveInventoryHeader/RemoveInventoryIndex.cshtml";
+                    }
                 }
             }
 
@@ -321,6 +332,40 @@ namespace MVC
                             public const string ReturnSalesIndex = "~/Modules/ALgorithm/Transaction/Sales/ReturnSales/ReturnHeader/ReturnSalesIndex.cshtml";
                             public const string ReturnSalesInvoice = "~/Modules/ALgorithm/Transaction/Sales/ReturnSales/ReturnHeader/ReturnSalesInvoice.cshtml";
                         }
+                    }
+
+                }
+
+            }
+
+            public static class Transfer
+            {
+                public static class TransferIn
+                {
+                    public static class TransferInDetail
+                    {
+                        public const string TransferInASTRDIndex = "~/Modules/ALgorithm/Transfer/TransferIn/TransferInDetail/TransferInASTRDIndex.cshtml";
+                    }
+
+                    public static class TransferInHeader
+                    {
+                        public const string TransferInIndex = "~/Modules/ALgorithm/Transfer/TransferIn/TransferInHeader/TransferInIndex.cshtml";
+                        public const string TransferInInvoice = "~/Modules/ALgorithm/Transfer/TransferIn/TransferInHeader/TransferInInvoice.cshtml";
+                    }
+
+                }
+
+                public static class TransferTo
+                {
+                    public static class TransferToDetail
+                    {
+                        public const string TransferToASTRDIndex = "~/Modules/ALgorithm/Transfer/TransferTo/TransferToDetail/TransferToASTRDIndex.cshtml";
+                    }
+
+                    public static class TransferToHeader
+                    {
+                        public const string TransferToIndex = "~/Modules/ALgorithm/Transfer/TransferTo/TransferToHeader/TransferToIndex.cshtml";
+                        public const string TransferToInvoice = "~/Modules/ALgorithm/Transfer/TransferTo/TransferToHeader/TransferToInvoice.cshtml";
                     }
                 }
             }
