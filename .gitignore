@@ -44,7 +44,6 @@ npm-debug.log
 /.axoCover/
 /ALgorithmPro.Web/wwwroot/Script/*.min.js
 /ALgorithmPro.Web/wwwroot/Script/*.map
-/ALgorithmPro.Web/App_Data/
 /ALgorithmPro.Web/bin/Debug/net5.0/
 /ALgorithmPro.Web/wwwroot/Script/serenity/Serenity.CoreLib.*
 /ALgorithmPro.Web/wwwroot/Script/serenity/Serenity.CodeGeneration.*
