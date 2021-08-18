@@ -2,7 +2,7 @@
 **/bin/Release/*
 obj/
 packages/*/*
-*.bak
+
 *.orig
 *.pdb
 *.suo

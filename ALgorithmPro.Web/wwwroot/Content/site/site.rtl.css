@@ -10986,7 +10986,6 @@ a.quick-search-field {
     -ms-flex-negative: 1;
     -ms-flex-preferred-size: auto;
 }
-
 @media (max-width: 760px) {
     .flex-layout .field {
         -webkit-box-lines: multiple;
